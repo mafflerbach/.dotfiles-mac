@@ -48,6 +48,7 @@ notify-osd
 npm
 openfortivpn
 openjdk8-src
+picom-ibhagwan-git
 protobuf
 psi
 pulseaudio-alsa

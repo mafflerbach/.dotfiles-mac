@@ -17,6 +17,9 @@ pip3 install requests tldextract pywal youtube-dl
 # go get github.com/go-jira/jira/cmd/jira
 curl -L https://github.com/gokcehan/lf/releases/latest/download/lf-linux-amd64.tar.gz | tar xzC ~/.local/bin
 
+git clone git@github.com:mafflerbach/.dotfiles.git
+cd .dotfiles
+
 stow awesome
 stow compton
 stow goJira
