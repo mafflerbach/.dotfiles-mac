@@ -1,0 +1,25 @@
+DEEN|/home/maren/.local/bin/collection/translate.sh -e
+ENDE|/home/maren/.local/bin/collection/translate.sh -d
+Pause MPV|/home/maren/.local/bin/collection/mpv.sh -s
+Resume MPV|/home/maren/.local/bin/collection/mpv.sh -r
+dark|/home/maren/.local/bin/collection/themeswitcher.sh -d
+fqsn|/home/maren/.local/bin/collection/copyFqsn.sh
+keyboard activate|/home/maren/.local/bin/collection/keyboardSwitch.sh true
+keyboard deaktivate|/home/maren/.local/bin/collection/keyboardSwitch.sh false
+light|/home/maren/.local/bin/collection/themeswitcher.sh -l
+tuser|/home/maren/.local/bin/collection/user.sh --type
+user|/home/maren/.local/bin/collection/user.sh
+pass|/home/maren/.local/bin/collection/passScript.sh
+queue|/home/maren/.local/bin/collection/copyErrorQueue.sh
+tpass|/home/maren/.local/bin/collection/passScript.sh --type
+megatron|/home/maren/.local/bin/collection/megatron.sh
+jenkins|/home/maren/.local/bin/collection/jenkins.sh
+watson restart|watson restart
+watson stop|watson stop
+workplace Home|autorandr home
+workplace Work|autorandr work
+workplace wfh|autorandr wfh
+screen Area|maim -s /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png
+screen window|maim -i $(xdotool getactivewindow) /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png
+connect vpn|/home/maren/.local/bin/collection/vpn.sh -c
+disconnect vpn|/home/maren/.local/bin/collection/vpn.sh -k

@@ -1,0 +1,163 @@
+configuration {
+    lines:							15;
+    columns:						1;
+    font: 							"Material Design Icons 12";
+    bw: 							0;
+    location: 						1;
+    padding: 						0;
+    fixed-num-lines: 				true;
+    show-icons: 					false;
+    sidebar-mode: 					false;
+    separator-style: 				"none";
+    hide-scrollbar: 				true;
+    fullscreen: 					false;
+    fake-transparency: 				false;
+    scroll-method: 					0;
+    window-format: 					"{c}  {t}";
+    click-to-exit: 					true;
+    show-match: 					false;
+    combi-hide-mode-prefix: 		false;
+    display-window: 				"󱘈";
+    display-windowcd: 				"";
+    display-run: 					"󱆃";
+    display-ssh: 					"";
+    display-drun: 					"";
+    display-combi: 					"";
+}
+
+* {
+    background-color:             	#061130ff;
+}
+
+window {
+    border: 						0px;
+    border-color: 					#061130ff;
+    padding: 						10;
+    width: 							50%;
+    height: 						100%;
+    background-color:             	#061130ff;
+}
+
+prompt {
+    spacing: 						0;
+    border: 						0;
+    text-color: 					#dcc4d6;
+}
+
+textbox-prompt-colon {
+    expand: 						false;
+    str: 							" ";
+    margin:							0px 4px 0px 0px;
+    text-color: 					inherit;
+}
+
+entry {
+    spacing:    					0;
+    text-color: 					#dcc4d6;
+}
+
+case-indicator {
+    spacing:    					0;
+    text-color: 					#dcc4d6;
+}
+
+inputbar {
+    spacing:    					0px;
+    text-color: 					#dcc4d6;
+    padding:    					1px;
+    children: 						[ prompt,textbox-prompt-colon,entry,case-indicator ];
+}
+
+mainbox {
+    border: 						0px;
+    border-color: 					@ac;
+}
+
+listview {
+    fixed-height: 					0;
+    border: 						0px;
+    border-color: 					@ac;
+    spacing: 						4px;
+    scrollbar: 						false;
+}
+
+element {
+    border: 						0px;
+    padding: 						5px;
+}
+element normal.normal {
+    background-color: 				#061130ff;
+    text-color:       				#dcc4d6;
+}
+element normal.urgent {
+    background-color: 				#061130ff;
+    text-color:       				#dcc4d6;
+}
+element normal.active {
+    background-color: 				#061130ff;
+    text-color:       				#dcc4d6;
+}
+element selected.normal {
+    background-color: 				#7279C3ff;
+    text-color:       				#dcc4d6;
+}
+element selected.urgent {
+    background-color: 				#7279C3ff;
+    text-color:       				#dcc4d6;
+}
+element selected.active {
+    background-color: 				#7279C3ff;
+    text-color:       				#dcc4d6;
+}
+element alternate.normal {
+    background-color: 				#061130ff;
+    text-color:       				#dcc4d6;
+}
+element alternate.urgent {
+    background-color: 				#061130ff;
+    text-color:       				#dcc4d6;
+}
+element alternate.active {
+    background-color: 				#061130ff;
+    text-color:       				#dcc4d6;
+}
+
+sidebar {
+    border:       					0px;
+    border-color: 					@ac;
+}
+
+button {
+    background-color:             	#061130ff;
+    margin: 						5px;
+    padding: 						5px;
+    text-color: 					#dcc4d6;
+    border: 						0px;
+    border-color: 					#dcc4d6;
+}
+
+button selected {
+    background-color:             	#061130ff;
+    text-color: 					#dcc4d6;
+    border: 						0px;
+    border-color: 					#dcc4d6;
+}
+
+scrollbar {
+    width:        					4px;
+    border:       					0px;
+    handle-color: 					#dcc4d6;
+    handle-width: 					8px;
+    padding:      					0;
+}
+
+message {
+    border: 						0px;
+    border-color: 					@ac;
+    padding: 						1px;
+}
+
+textbox {
+    text-color: 					#dcc4d6;
+}
+

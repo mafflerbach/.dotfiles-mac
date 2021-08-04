@@ -1,0 +1,3 @@
+curl https://www.googleapis.com/youtube/v3/channels\?part\=contentDetails\&forUsername\=Gronkh\&key\=$youtubeToken
+
+curl https://www.googleapis.com/youtube/v3/search?key=$youtubeToken&channelId=UCYJ61XIK64sp6ZFFS8sctxw&part=snippet,id&order=date&maxResults=20

@@ -1,0 +1,210 @@
+" sourcing some additional files
+
+let mapleader = ","
+let g:mapleader = ","
+
+set noswapfile
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
+
+set path+=**
+set clipboard=unnamedplus
+set nu
+set number relativenumber
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set hidden
+set nobackup
+set nowritebackup
+set updatetime=300
+set shortmess+=c
+set numberwidth=4 
+" save buffer on switch 
+set autowrite
+set tabstop=4 softtabstop=4 expandtab shiftwidth=4 shiftround smarttab
+set cmdheight=2 
+    let g:vimwiki_global_ext = 0
+
+inoremap <Left>  <NOP>
+inoremap <Right> <NOP>
+inoremap <Up>    <NOP>
+inoremap <Down>  <NOP>
+nnoremap <Left>  <NOP>
+nnoremap <Right> <NOP>
+nnoremap <Up>    <NOP>
+nnoremap <Down>  <NOP>
+
+syntax on
+
+
+let g:arduino_dir = "/home/maren/Arduino"
+
+let g:far#enable_undo=1
+let g:airline_powerline_fonts = 1
+let vim_markdown_preview_github=1
+let g:castrlp_use_caching = 1
+let g:NERDTreeHijackNetrw = 0
+
+
+let g:airline_theme='wal'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" set tags+=~/tags,$DOC/tags,./.tags/tags,./.git/tags,../tags/tags,~/development/.tags/tags
+set tags+=~/tags,$DOC/tags,./.tags/tags,./.git/tags,../tags/tags
+
+augroup numbertoggle
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
+augroup PatchDiffHighlight
+    autocmd! 
+    autocmd FileType diff           syntax enable
+augroup END
+
+
+" fzf ripgrep
+set completeopt=longest,menuone
+let g:fzf_layout = {'window': {'width':0.8, 'height':0.8}}
+
+command! -bang -nargs=* Rg
+            \ call fzf#vim#grep(
+            \   'rg --column --line-number --no-heading --color=always --ignore-case -g\!"target" <q-args>, 5,
+            \   <bang>0 ? fzf#vim#with_preview('up:60%')
+            \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+            \   <bang>0)
+
+
+let g:tmux_navigator_no_mappings = 1
+
+let g:NERDTreeDirArrowExpandable = "├"
+let g:NERDTreeDirArrowCollapsible = "╰"
+let NERDTreeQuitOnOpen = 0
+let g:NERDTreeWinSize=60
+
+
+let g:quickr_preview_on_cursor = 1
+let g:quickr_preview_exit_on_enter = 1
+
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+augroup pandoc_syntax
+    au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
+augroup END
+
+augroup httpFiles
+    au! BufNewFile,BufFilePre,BufRead *.post set filetype=rest
+augroup END
+au BufRead,BufNewFile *.ino,*.pde set filetype=c++
+
+let g:vimspector_enable_mappings = 'HUMAN'
+colorscheme wal 
+
+
+":hi LineNr  ctermfg=0 ctermbg=2
+hi MatchParen cterm=none ctermbg=green ctermfg=blue
+"highlight link JavaIdentifier NONE
+"hi vertsplit guifg=fg guibg=bg
+"hi! VertSplit guifg=black guibg=black ctermfg=black ctermbg=black
+"highlight Pmenu ctermbg=blue guibg=bg ctermfg=black
+"highlight PmenuSbar ctermbg=black guibg=bg ctermfg=1
+"highlight PmenuSel ctermfg=black ctermbg=1 guibg=black
+set fillchars+=vert:│
+set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete\ 12
+"set guifont=Material\ Design\ Icons\ 15
+set encoding=UTF-8
+
+let g:rust_use_custom_ctags_defs = 0  " if using rust.vim
+let g:tagbar_type_rust = {
+  \ 'ctagsbin' : '/usr/bin/ctags',
+  \ 'ctagstype' : 'rust',
+  \ 'kinds' : [
+      \ 'n:modules',
+      \ 's:structures:1',
+      \ 'i:interfaces',
+      \ 'c:implementations',
+      \ 'f:functions:1',
+      \ 'g:enumerations:1',
+      \ 't:type aliases:1:0',
+      \ 'v:constants:1:0',
+      \ 'M:macros:1',
+      \ 'm:fields:1:0',
+      \ 'e:enum variants:1:0',
+      \ 'P:methods:1',
+  \ ],
+  \ 'sro': '::',
+  \ 'kind2scope' : {
+      \ 'n': 'module',
+      \ 's': 'struct',
+      \ 'i': 'interface',
+      \ 'c': 'implementation',
+      \ 'f': 'function',
+      \ 'g': 'enum',
+      \ 't': 'typedef',
+      \ 'v': 'variable',
+      \ 'M': 'macro',
+      \ 'm': 'field',
+      \ 'e': 'enumerator',
+      \ 'P': 'method',
+  \ },
+\ }
+let g:tagbar_type_json = {
+    \ 'ctagstype' : 'json',
+    \ 'kinds' : [
+      \ 'o:objects',
+      \ 'a:arrays',
+      \ 'n:numbers',
+      \ 's:strings',
+      \ 'b:booleans',
+      \ 'z:nulls'
+    \ ],
+  \ 'sro' : '.',
+    \ 'scope2kind': {
+    \ 'object': 'o',
+      \ 'array': 'a',
+      \ 'number': 'n',
+      \ 'string': 's',
+      \ 'boolean': 'b',
+      \ 'null': 'z'
+    \ },
+    \ 'kind2scope': {
+    \ 'o': 'object',
+      \ 'a': 'array',
+      \ 'n': 'number',
+      \ 's': 'string',
+      \ 'b': 'boolean',
+      \ 'z': 'null'
+    \ },
+    \ 'sort' : 0
+    \ }
+autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
+autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
+
+let g:syntastic_java_checkers = ['checkstyle']
+let g:syntastic_java_checkstyle_classpath = '~/nvim/libs/checkstyle-8.36.2-all.jar'
+let g:syntastic_java_checkstyle_conf_file = '~/development/platform.utils.java-common-env/eclipse-java-google-style-adopted.xml'
+
+" set guifont=DroidSansMono\ Nerd\ Font\ 30
+
+" oracle://TALEND_INT:talend@sxbi-d01.sixt.de/sxbidev_rw.sixt.de
+let g:dbs = {
+\ 'dev': 'oracle://TALEND_INT:talend@sxbi-d01.sixt.de/sxbidev_rw.sixt.de',
+\ 'bot': 'sqlite:/home/maren/development/binance-bot/data',
+\ 'mediamate': 'sqlite:/home/maren/development/rust/mpv/db/restmpv.db',
+\ }
+

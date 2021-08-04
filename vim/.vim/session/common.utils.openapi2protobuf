@@ -1,0 +1,221 @@
+let SessionLoad = 1
+if &cp | set nocp | endif
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+let v:this_session=expand("<sfile>:p")
+silent only
+silent tabonly
+cd ~/development/common.utils.openapi2protobuf
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+set shortmess=aoO
+argglobal
+%argdel
+tabnew
+tabnew
+tabrewind
+edit src/main/java/com/sixt/integration/utils/App.java
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 60 + 120) / 240)
+exe 'vert 2resize ' . ((&columns * 179 + 120) / 240)
+argglobal
+enew
+file NERD_tree_1
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal nofen
+wincmd w
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 82 - ((5 * winheight(0) + 22) / 44)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+82
+normal! 013|
+wincmd w
+exe 'vert 1resize ' . ((&columns * 60 + 120) / 240)
+exe 'vert 2resize ' . ((&columns * 179 + 120) / 240)
+tabnext
+edit src/test/java/test/test/AppTest.java
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 36 - ((27 * winheight(0) + 22) / 44)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+36
+normal! 0
+tabnext
+edit src/main/java/com/sixt/integration/utils/App.java
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd _ | wincmd |
+split
+wincmd _ | wincmd |
+split
+2wincmd k
+wincmd w
+wincmd w
+wincmd w
+wincmd _ | wincmd |
+split
+1wincmd k
+wincmd w
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe '1resize ' . ((&lines * 14 + 24) / 48)
+exe 'vert 1resize ' . ((&columns * 80 + 120) / 240)
+exe '2resize ' . ((&lines * 13 + 24) / 48)
+exe 'vert 2resize ' . ((&columns * 80 + 120) / 240)
+exe '3resize ' . ((&lines * 14 + 24) / 48)
+exe 'vert 3resize ' . ((&columns * 80 + 120) / 240)
+exe '4resize ' . ((&lines * 32 + 24) / 48)
+exe 'vert 4resize ' . ((&columns * 159 + 120) / 240)
+exe '5resize ' . ((&lines * 9 + 24) / 48)
+exe 'vert 5resize ' . ((&columns * 159 + 120) / 240)
+argglobal
+enew
+file vimspector.Variables
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+wincmd w
+argglobal
+enew
+file vimspector.Watches
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+wincmd w
+argglobal
+enew
+file vimspector.StackTrace
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+wincmd w
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 103 - ((2 * winheight(0) + 16) / 32)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+103
+normal! 031|
+wincmd w
+argglobal
+enew
+file vimspector.Console
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+wincmd w
+4wincmd w
+exe '1resize ' . ((&lines * 14 + 24) / 48)
+exe 'vert 1resize ' . ((&columns * 80 + 120) / 240)
+exe '2resize ' . ((&lines * 13 + 24) / 48)
+exe 'vert 2resize ' . ((&columns * 80 + 120) / 240)
+exe '3resize ' . ((&lines * 14 + 24) / 48)
+exe 'vert 3resize ' . ((&columns * 80 + 120) / 240)
+exe '4resize ' . ((&lines * 32 + 24) / 48)
+exe 'vert 4resize ' . ((&columns * 159 + 120) / 240)
+exe '5resize ' . ((&lines * 9 + 24) / 48)
+exe 'vert 5resize ' . ((&columns * 159 + 120) / 240)
+tabnext 3
+badd +1 src/main/java/com/sixt/integration/utils/ProtoBuilder.java
+badd +31 src/main/java/com/sixt/integration/utils/App.java
+badd +36 src/test/java/test/test/AppTest.java
+badd +43 __Potion_Bytecode__
+badd +0 _vimspector_log_Vimspector_out
+badd +0 _vimspector_log_Vimspector_err
+if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=20 shortmess=filnxtToOScI
+set winminheight=1 winminwidth=1
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if filereadable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &so = s:so_save | let &siso = s:siso_save
+nohlsearch
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :

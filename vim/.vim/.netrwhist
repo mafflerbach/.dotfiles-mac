@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/home/maren/dotfiles/vim'
+let g:netrw_dirhist_5='/home/maren/dotfiles/scripts/data'
+let g:netrw_dirhist_4='/home/maren/dotfiles/scripts'
+let g:netrw_dirhist_3='/home/maren/dotfiles'
+let g:netrw_dirhist_2='/home/maren/development/solutions.common.configuration.stage/src/com.sixt.integration.exchange_rate/solution-conf'
+let g:netrw_dirhist_1='/home/maren/development/solutions.java.com.sixt.integration.exchange_rate/viper-input-file-producer/src/test/resources/data/solution-input-templates'
+let g:netrw_dirhist_0='/home/maren/development/solutions.java.com.sixt.integration.exchange_rate/viper-input-file-producer/src/test/resources/data/solution-archive/viper_exchange_rate'
+let g:netrw_dirhist_9='/home/maren/development/solutions.java.com.sixt.integration.exchange_rate/exchange-rate-common/src/main/java/com/sixt/integration/exchange_rate/exchange_rate_common/util'
+let g:netrw_dirhist_8='/home/maren/development/solutions.java.com.sixt.integration.exchange_rate/viper-input-file-producer/src/test/resources/data/output'
+let g:netrw_dirhist_7='/home/maren/qmk_firmware'

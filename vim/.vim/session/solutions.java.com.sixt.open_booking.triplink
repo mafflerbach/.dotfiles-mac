@@ -1,0 +1,120 @@
+let SessionLoad = 1
+if &cp | set nocp | endif
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+let v:this_session=expand("<sfile>:p")
+silent only
+silent tabonly
+cd ~/development/solutions.java.com.sixt.open_booking.triplink
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+set shortmess=aoO
+argglobal
+%argdel
+tabnew
+tabrewind
+edit concur-triplink/src/test/stories/com/sixt/open_booking/triplink/testing/jbehave/rental_receipt/ScanviewEnrichRouteTest.story
+set splitbelow splitright
+wincmd _ | wincmd |
+split
+1wincmd k
+wincmd w
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe '1resize ' . ((&lines * 23 + 30) / 61)
+exe 'vert 1resize ' . ((&columns * 174 + 120) / 240)
+exe '2resize ' . ((&lines * 1 + 30) / 61)
+exe 'vert 2resize ' . ((&columns * 174 + 120) / 240)
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 1 - ((0 * winheight(0) + 11) / 23)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
+normal! 0
+wincmd w
+argglobal
+if bufexists("/tmp/logs/error_rental-receipt-scanview-enrich_LAPTOP3457.log") | buffer /tmp/logs/error_rental-receipt-scanview-enrich_LAPTOP3457.log | else | edit /tmp/logs/error_rental-receipt-scanview-enrich_LAPTOP3457.log | endif
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 8 - ((0 * winheight(0) + 0) / 1)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+8
+normal! 0384|
+wincmd w
+exe '1resize ' . ((&lines * 23 + 30) / 61)
+exe 'vert 1resize ' . ((&columns * 174 + 120) / 240)
+exe '2resize ' . ((&lines * 1 + 30) / 61)
+exe 'vert 2resize ' . ((&columns * 174 + 120) / 240)
+tabnext
+edit concur-triplink/src/main/java/com/sixt/open_booking/triplink/common/scanview_client/aggregation/ScanViewGetDocumentAggregationStrategy.java
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 51 - ((1 * winheight(0) + 28) / 57)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+51
+normal! 013|
+tabnext 2
+badd +1 concur-triplink/src/test/stories/com/sixt/open_booking/triplink/testing/jbehave/rental_receipt/ScanviewEnrichRouteTest.story
+badd +23 concur-triplink/src/main/java/com/sixt/open_booking/triplink/rental_receipt/scanview_enrich/aggregation/ScanviewClientAggregationStrategy.java
+badd +34 concur-triplink/src/main/java/com/sixt/open_booking/triplink/rental_receipt/scanview_enrich/routes/ConcurTriplinkReceiptScanviewEnrichRouteDefinitions.java
+badd +34 concur-triplink/src/main/java/com/sixt/open_booking/triplink/rental_receipt/scanview_enrich/processors/PrepareScanviewClientInputProcessor.java
+badd +248 __Potion_Bytecode__
+badd +0 /tmp/logs/error_rental-receipt-scanview-enrich_LAPTOP3457.log
+badd +20 concur-triplink/src/main/java/com/sixt/open_booking/triplink/common/scanview_client/aggregation/ScanViewGetDocumentAggregationStrategy.java
+badd +7 concur-triplink/src/main/java/com/sixt/open_booking/triplink/common/error/EnrichmentExceptionProcessor.java
+if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=20 shortmess=filnxtToOScI
+set winminheight=1 winminwidth=1
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if filereadable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :

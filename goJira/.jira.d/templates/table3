@@ -1,0 +1,6 @@
+{{/*  table template */ -}} 
+{{$w := sub termWidth 270 -}}
+{{ range .issues -}} 
+{{.fields.issuetype.name }} : {{ .key | printf "%-10s"}} {{ .fields.summary  | printf "%-12s"}}       
+{{ end -}}
+
