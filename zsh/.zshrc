@@ -103,7 +103,7 @@ plugins=(
   )
 
 source $ZSH/oh-my-zsh.sh
-source ~/dotfiles/zsh/ghCompletion.zsh
+source ~/.dotfiles/misc/zsh/ghCompletion.sh
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"

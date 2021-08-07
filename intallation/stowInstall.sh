@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pacman -S --needed git base-devel zsh
+pacman -S --needed git base-devel zsh exa
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
@@ -30,4 +30,10 @@ stow rofi
 stow scripts
 stow tmux
 stow vim2
+
 stow zsh
+stow fzf
+
+rm ~/.Xresources
+rm ~/.xinitrc
+stow xinit
