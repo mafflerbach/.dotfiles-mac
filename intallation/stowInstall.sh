@@ -20,6 +20,11 @@ curl -L https://github.com/gokcehan/lf/releases/latest/download/lf-linux-amd64.t
 git clone git@github.com:mafflerbach/.dotfiles.git
 cd .dotfiles
 
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
+
+
 stow awesome
 stow compton
 stow goJira
