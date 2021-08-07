@@ -23,3 +23,7 @@ screen Area|maim -s /tmp/foo.png && xclip -selection clipboard -t image/png -i /
 screen window|maim -i $(xdotool getactivewindow) /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png
 connect vpn|/home/maren/.local/bin/collection/vpn.sh -c
 disconnect vpn|/home/maren/.local/bin/collection/vpn.sh -k
+play | /home/maren/.local/bin/collection/playUrl.sh
+
+
+

@@ -84,8 +84,8 @@ dap.configurations.java = {
             name = "Debug (Attach) - Remote";
             hostName = "127.0.0.1";
             port = 5005;
-            },
-        }
+    },
+}
 
 dap.configurations.jbehave = {
     {
@@ -94,8 +94,8 @@ dap.configurations.jbehave = {
             name = "Debug (Attach) - Remote";
             hostName = "127.0.0.1";
             port = 5005;
-            },
-        }
+    },
+}
 
     require('dap')
     vim.fn.sign_define('DapBreakpoint', {text='🔴', texthl='', linehl='', numhl=''})
@@ -106,6 +106,10 @@ dap.configurations.jbehave = {
     require("dapui").setup()
     require("bubbles")
     require('gitsigns').setup()
+
+
+-- these are all the default values
+
 EOF
 
     nnoremap <silent> <leader>co :lua require'dap'.continue()<CR>
@@ -121,6 +125,25 @@ EOF
 
     nnoremap <silent> <leader>m :MaximizerToggle<CR>
 
-let g:ActualTicket = "INTS-5662"
 
-colorscheme wal
+
+    let g:nvim_tree_disable_netrw = 0
+    let g:nvim_tree_hijack_netrw = 0
+    let g:ActualTicket = "INTS-5662"
+    " https://google.com
+    let g:dbs = {
+                \ 'stage': 'oracle://TALEND_INT:talend@sxbi-s02.sixt.de/sxbista_rw.sixt.de',
+                \ 'dev': 'oracle://TALEND_INT:talend@sxbi-d01.sixt.de/sxbidev_rw.sixt.de',
+                \ 'bot': 'sqlite:/home/maren/development/binance-bot/data',
+                \ 'mediamate': 'sqlite:/home/maren/development/rust/mpv/db/restmpv.db',
+                \ }
+
+
+    " let g:compe.source.vim_dadbod_completion = v:true
+
+    let g:netrw_nogx = 1 " disable netrw's gx mapping.
+
+
+
+    colorscheme wal
+

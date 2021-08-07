@@ -131,3 +131,8 @@ vim.api.nvim_set_keymap('n', '<leader>A',':Rg <C-r>=expand(\'<CWORD>\') <CR>', {
 vim.api.nvim_set_keymap('n', '<leader>ds',':VimuxRunCommand "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk; mvn -Dmaven.surefire.debug  -Dtest=".expand("%:t:r")." test --offline"<CR>', {noremap = true})
 
 
+vim.api.nvim_set_keymap('n', 'gx','<Plug>(openbrowser-smart-search)', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('v', 'gx','<Plug>(openbrowser-smart-search)', {noremap = true, silent = true})
+
+
+
