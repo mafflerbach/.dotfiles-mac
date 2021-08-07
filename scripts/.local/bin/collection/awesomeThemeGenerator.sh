@@ -19,7 +19,7 @@ sed -i "s/$color/$hex$alpha/g" /tmp/theme.lua
 echo "replace $color $hex$alpha"
 
 magick convert /home/maren/.dotfiles/awesome/.config/awesome/icons/display/mask-right.png  -alpha set  -channel RGBA \
-  -fuzz 50%  -fill "$hex$alpha" -opaque black /home/maren/.dotfiles/awesome/.config/awesome/icons/display/$i-l.png
+  -fuzz 50%  -fill "$hex$alpha" -opaque black /home/maren/.dotfiles/awesome/.config/awesome/icons/display/$i-l.png \
   -fuzz 50%  -fill "$hex$alpha" -opaque black /home/maren/.dotfiles/awesome/.config/awesome/icons/display/$i-l.png
 
 echo "generate $i-l.png"

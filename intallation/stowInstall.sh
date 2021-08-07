@@ -10,12 +10,10 @@ yay -S --needed - < pacman.lst
 wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
 sh install.sh
 
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 pip3 install requests tldextract pywal youtube-dl  pywal
 
-# go get github.com/go-jira/jira/cmd/jira
-curl -L https://github.com/gokcehan/lf/releases/latest/download/lf-linux-amd64.tar.gz | tar xzC ~/.local/bin
+go get github.com/go-jira/jira/cmd/jira
 
 git clone git@github.com:mafflerbach/.dotfiles.git
 cd .dotfiles
@@ -36,9 +34,15 @@ stow scripts
 stow tmux
 stow vim2
 
-stow zsh
 stow fzf
+
+rm ~/.zshrc
+stow zsh
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 rm ~/.Xresources
 rm ~/.xinitrc
 stow xinit
+
+touch ~/exportedVars
+touch ~/.dotfiles/misc/.credencials

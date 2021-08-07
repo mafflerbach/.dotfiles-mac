@@ -244,7 +244,7 @@ PERL_MB_OPT="--install_base \"/home/maren/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/maren/perl5"; export PERL_MM_OPT;
 
 
-source ~/dotfiles/.credencials
+#source ~/dotfiles/.credencials
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -4,7 +4,7 @@ alpha=ff
 
 colors=$(yq e '.colors' ~/.cache/wal/colors.yml)
 
-cp /home/maren/dotfiles/rofi/colors-rofi-template.rasi /tmp/rofi.rasi
+cp ~/.dotfiles/rofi/.config/rofi/colors-rofi-template.rasi /tmp/rofi.rasi
 
 while IFS= read -r line ; do 
 
