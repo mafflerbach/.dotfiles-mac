@@ -30,8 +30,8 @@ vim.g.mapleader = ","
 vim.api.nvim_set_keymap('n', '<leader>f', ':FZF <CR>', { noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>b', ':Buffers <CR>', { noremap = true})
 
-vim.api.nvim_set_keymap('i', '<c-x><c-x>', 'fzf#vim#complete({\'down\': \'20%\', \'source\': \'cat ~/dotfiles/scripts/data/jbehaveAsserts\'})', { noremap = true, expr=true})
-vim.api.nvim_set_keymap('i', '<c-l><c-l>', 'fzf#vim#complete({\'left\': \'40%\', \'source\': \'~/dotfiles/scripts/jiraCompletion.sh\'})', { noremap = true, expr=true})
+vim.api.nvim_set_keymap('i', '<c-x><c-x>', 'fzf#vim#complete({\'down\': \'20%\', \'source\': \'cat ~/.local/bin/collection/data/jbehaveAsserts\'})', { noremap = true, expr=true})
+vim.api.nvim_set_keymap('i', '<c-l><c-l>', 'fzf#vim#complete({\'left\': \'40%\', \'source\': \'jiraCompletion.sh\'})', { noremap = true, expr=true})
 
 vim.api.nvim_set_keymap('n', '<leader>ge',':Gblame<CR>', { noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>gs',':Git<CR>', { noremap = true})
@@ -44,7 +44,7 @@ vim.api.nvim_set_keymap('n', '<c-j>',':TmuxNavigateDown<cr>', { noremap = true, 
 vim.api.nvim_set_keymap('n', '<c-k>',':TmuxNavigateUp<cr>', { noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<c-l>',':TmuxNavigateRight<cr>', { noremap = true, silent = true})
 
-vim.api.nvim_set_keymap('n', '<leader>cpr',':Dispatch /home/maren/dotfiles/scripts/createPr.sh<cr>', {})
+vim.api.nvim_set_keymap('n', '<leader>cpr',':Dispatch createPr.sh<cr>', {})
 
 vim.api.nvim_set_keymap('n', 'vv','<C-W>v', {})
 vim.api.nvim_set_keymap('n', 'ss','<C-W>s', {})

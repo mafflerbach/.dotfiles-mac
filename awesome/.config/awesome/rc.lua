@@ -238,7 +238,7 @@ local bat = lain.widget.bat({
                 bat_icon2:set_image( "/home/maren/.config/awesome/icons/bar/battery-charging-icon.png")
             end
             if bat_now.perc >= 30 and  bat_now.perc <= 40  then
-                bat_icon2:set_image( "/home/maren/dotfiles/awesome/icons/bar/battery-charging-icon.png")
+                bat_icon2:set_image( "/home/maren/.config/awesome/icons/bar/battery-charging-icon.png")
             end
             if bat_now.perc >= 40 and  bat_now.perc <= 50  then
                 bat_icon2:set_image( "/home/maren/.config/awesome/icons/bar/battery-charging-icon.png")

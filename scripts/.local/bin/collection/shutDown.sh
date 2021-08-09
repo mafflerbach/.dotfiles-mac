@@ -20,13 +20,13 @@ fi
 
 if [ "$CHOICE" == "Suspend" ]
 then
-    bash /home/maren/dotfiles/i3/script/lock.sh 
+    bash /home/maren/.dotfiles/scripts/.local/bin/collection/lock.sh 
     systemctl suspend
 fi
 
 if [ "$CHOICE" == "Lock" ]
 then
-    bash /home/maren/dotfiles/i3/script/lock.sh 
+    bash /home/maren/.dotfiles/scripts/.local/bin/collection/lock.sh 
 fi
 if [ "$CHOICE" == "Exit" ]
 then

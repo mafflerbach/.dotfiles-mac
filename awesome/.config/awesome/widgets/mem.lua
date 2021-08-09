@@ -9,7 +9,7 @@ pink           = "#B85C8A"
 }
 
 
-local mem_icon = wibox.widget.imagebox("/home/maren/dotfiles/awesome/icons/widgets/mem.png")
+local mem_icon = wibox.widget.imagebox("/home/maren/.config/awesome/icons/widgets/mem.png")
 
 local mem = lain.widget.mem({
     settings = function()

@@ -47,11 +47,11 @@ config.set('url.searchengines',{"d": "https://duckduckgo.com/?q={}", "DEFAULT": 
 # Type: Bool
 config.set('content.javascript.enabled', True, 'qute://*/*')
 
-config.bind('<Ctrl-Shift-y>', 'hint links spawn --verbose --detach /home/maren/dotfiles/i3/script/playYtOnClient.sh "{hint-url}" ')
+config.bind('<Ctrl-Shift-y>', 'hint links spawn --verbose --detach playYtOnClient.sh "{hint-url}" ')
 
-config.bind('<Ctrl-Shift-p>', 'hint links spawn --verbose --detach /home/maren/dotfiles/i3/script/fillplaylist.sh push {hint-url}')
+config.bind('<Ctrl-Shift-p>', 'hint links spawn --verbose --detach fillplaylist.sh push {hint-url}')
 
-config.bind('<Ctrl-Shift-o>', 'spawn --verbose --detach /home/maren/dotfiles/i3/script/fillplaylist.sh play')
+config.bind('<Ctrl-Shift-o>', 'spawn --verbose --detach fillplaylist.sh play')
 
 config.bind('<Ctrl-Shift-l>', 'hint links spawn --verbose --detach  youtube-dl {hint-url} --output /home/maren/Downloads/ytFiles/%(title)s.%(ext)s')
 
@@ -61,7 +61,5 @@ config.bind('<Ctrl-Shift-f>', 'hint links spawn --verbose --detach  /opt/nzb-mon
 config.bind('<Ctrl-Shift-d>', 'hint links spawn --verbose --detach mpv {hint-url} --input-ipc-server=/tmp/mpvsocket')
 
 config.set('content.headers.user_agent', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36')
-
-config.bind('<Ctrl-Shift-k>', 'open -t /home/maren/dotfiles/i3/script/translate.sh')
 
 config.source('/home/maren/.config/qutebrowser/qutewal.py')

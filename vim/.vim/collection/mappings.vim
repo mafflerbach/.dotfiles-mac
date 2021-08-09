@@ -24,7 +24,7 @@ noremap <leader>f :FZF<CR>
 command! -bang ProjectFiles call fzf#vim#files('src', {'options': ['--layout=reverse', '--info=inline', '--preview', 'bat {}']}, <bang>0)
 noremap <leader>F :ProjectFiles<CR>
 inoremap <expr> <c-x><c-x> fzf#vim#complete({'down': '20%', 'source': 'cat ~/dotfiles/scripts/data/jbehaveAsserts'})
-inoremap <expr> <c-l><c-l> fzf#vim#complete({'left': '37%', 'source': '~/dotfiles/scripts/jiraCompletion.sh'})
+inoremap <expr> <c-l><c-l> fzf#vim#complete({'left': '37%', 'source': 'jiraCompletion.sh'})
 "
 " some fungitive shortings
 noremap <leader>ge :Gblame<CR>
@@ -131,7 +131,7 @@ nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 nmap <leader>fo gg=G''
 " use Intelij Formatter and settings
 nmap <leader>fO :Dispatch! /home/maren/dotfiles/scripts/format.sh %<cr>
-nmap <leader>cpr :Dispatch /home/maren/dotfiles/scripts/createPr.sh<cr>
+nmap <leader>cpr :Dispatch createPr.sh<cr>
 
 
 " format json file
