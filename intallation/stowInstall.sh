@@ -1,27 +1,22 @@
 #!/bin/bash
-
-pacman -S --needed git base-devel zsh exa
+sudo pacman -Suy --needed git base-devel zsh exa
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
-
+cd /home/maren/.dotfiles/intallation
 yay -S --needed - < pacman.lst
 
-wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
-sh install.sh
-
+yay -Suy go-yq-bin
 
 pip3 install requests tldextract pywal youtube-dl  pywal
 
 go get github.com/go-jira/jira/cmd/jira
 
-git clone git@github.com:mafflerbach/.dotfiles.git
-cd .dotfiles
-
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
-
+wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+sh install.sh
 
 stow awesome
 stow compton
@@ -33,8 +28,6 @@ stow rofi
 stow scripts
 stow tmux
 stow vim2
-
-stow fzf
 
 rm ~/.zshrc
 stow zsh
