@@ -1,14 +1,13 @@
 #!/bin/bash
 sudo pacman -Suy --needed git base-devel zsh exa
-git clone https://aur.archlinux.org/yay.git
+it clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
-
 cd /home/maren/.dotfiles/intallation
 yay -S --needed - < pacman.lst
 
 yay -Suy go-yq-bin
-
+yay -Suy ttf-material-design-icons-git
 pip3 install requests tldextract pywal youtube-dl  pywal
 
 go get github.com/go-jira/jira/cmd/jira
