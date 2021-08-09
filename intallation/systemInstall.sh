@@ -1,8 +1,9 @@
 #!/bin/bash
 sudo pacman -Suy --needed git base-devel zsh exa
-it clone https://aur.archlinux.org/yay.git
+git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
+
 cd /home/maren/.dotfiles/intallation
 yay -S --needed - < pacman.lst
 
