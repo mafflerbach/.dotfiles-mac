@@ -39,7 +39,7 @@ config.set('fonts.default_size' , '12pt')
 config.set('content.javascript.enabled', True, 'chrome://*/*')
 config.set('content.javascript.can_access_clipboard', True)
 config.set('window.transparent', True)
-
+config.set('statusbar.position', 'top')
 config.set('url.searchengines',{"d": "https://duckduckgo.com/?q={}", "DEFAULT": "https://www.google.com/search?q={}"})
 
 
