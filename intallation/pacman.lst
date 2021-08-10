@@ -1,5 +1,4 @@
 acpi
-nerd-font-complete
 acpid
 alsa-firmware
 alsa-plugins
@@ -12,7 +11,6 @@ autoconf
 automake
 autorandr
 awesome
-awesome-terminal-fonts
 bat
 blueman
 bluez-tools
@@ -56,11 +54,11 @@ pulseaudio-alsa
 pulseaudio-bluetooth
 pulseaudio-ctl
 python-adblock
+python-pip
 python-websocket-client
 qutebrowser
 ranger
 ripgrep
-python-pip
 rofi
 shadow
 sshpass
@@ -71,14 +69,12 @@ ttc-iosevka
 ttf-bitstream-vera
 ttf-dejavu
 ttf-droid
-ttf-font-awesome
 ttf-icomoon-icons
 ttf-inconsolata
 ttf-indic-otf
 ttf-jetbrains-mono
 ttf-liberation
 ttf-monoid
-ttf-ubuntu-font-family
 udiskie
 unzip
 vi
