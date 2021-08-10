@@ -69,15 +69,12 @@ return require('packer').startup(function()
     use 'jremmen/vim-ripgrep'
 
     use {
-        'glepnir/galaxyline.nvim',
-        branch = 'main',
-        -- your statusline
-        -- some optional icons
-        requires = {'kyazdani42/nvim-web-devicons', opt = true}
-    }
-    use {
         'yamatsum/nvim-nonicons',
         requires = {'kyazdani42/nvim-web-devicons'}
+    }
+    use {
+        'glepnir/galaxyline.nvim',
+        branch = 'main',
     }
 end)
 

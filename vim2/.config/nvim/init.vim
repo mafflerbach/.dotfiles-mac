@@ -125,6 +125,9 @@ EOF
 
     nnoremap <silent> <leader>m :MaximizerToggle<CR>
 
+nmap <leader>fj :%!python -m json.tool<CR>
+" format visual selected json
+vmap <leader>fj :'<,'> call BeautifyMvnLog()<CR>
 
 
     let g:nvim_tree_disable_netrw = 0
