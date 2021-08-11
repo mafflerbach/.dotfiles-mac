@@ -134,19 +134,12 @@ vmap <leader>fj :'<,'> call BeautifyMvnLog()<CR>
     let g:nvim_tree_hijack_netrw = 0
     let g:ActualTicket = "INTS-5662"
     " https://google.com
-    let g:dbs = {
-                \ 'stage': 'oracle://TALEND_INT:talend@sxbi-s02.sixt.de/sxbista_rw.sixt.de',
-                \ 'dev': 'oracle://TALEND_INT:talend@sxbi-d01.sixt.de/sxbidev_rw.sixt.de',
-                \ 'bot': 'sqlite:/home/maren/development/binance-bot/data',
-                \ 'mediamate': 'sqlite:/home/maren/development/rust/mpv/db/restmpv.db',
-                \ }
 
 
     " let g:compe.source.vim_dadbod_completion = v:true
 
     let g:netrw_nogx = 1 " disable netrw's gx mapping.
-
-
+    let g:notoire_folders = ['~/.notes']
 
     colorscheme wal
 
