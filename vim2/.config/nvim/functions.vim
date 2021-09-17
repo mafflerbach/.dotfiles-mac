@@ -68,7 +68,7 @@ endfunction
 
 function! DecryptMessage() 
     let selection = Selection()
-    :execute "!{bash ~/.local/bin/collection/decryptMessage.sh '".selection. "'}"
+    :execute "!{bash ~/.local/bin/collection/decryptMessageStage.sh '".selection. "'}"
     let output = system("cat /tmp/decryptMessage")
     "bd! __Potion_Message__
     "split __Potion_Message__

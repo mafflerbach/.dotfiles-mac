@@ -64,7 +64,7 @@ lua require('completion_config')
 lua require('mapping')
 
 :so /home/maren/.dotfiles/vim2/.config/nvim/functions.vim
-let g:nvim_tree_ignore = [ '.git', 'node_modules' ,'target']
+let g:nvim_tree_ignore = [ '.git', 'node_modules' ]
 
 lua <<EOF
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
@@ -76,37 +76,13 @@ parser_config.jbehave = {
     filetype = "story" -- if filetype does not agrees with parser name
     }
 
-local dap = require('dap')
-dap.configurations.java = {
-    {
-            type = 'java';
-            request = 'attach';
-            name = "Debug (Attach) - Remote";
-            hostName = "127.0.0.1";
-            port = 5005;
-    },
-}
-
-dap.configurations.jbehave = {
-    {
-            type = 'jbehave';
-            request = 'attach';
-            name = "Debug (Attach) - Remote";
-            hostName = "127.0.0.1";
-            port = 5005;
-    },
-}
-
-    require('dap')
-    vim.fn.sign_define('DapBreakpoint', {text='🔴', texthl='', linehl='', numhl=''})
-    vim.fn.sign_define('DapLogPoint', {text='⭐️', texthl='DAPLogPointSign', linehl='', numhl='DAPLogPointSign'})
-    vim.fn.sign_define('DapStopped', {text='➡️l', texthl='', linehl='debugPC', numhl=''})
 
     require'nvim-treesitter.configs'.setup {highlight = {enable = true}}
+    require("dap_configuration")
     require("dapui").setup()
     require("bubbles")
     require('gitsigns').setup()
-
+    require('rust-tools').setup({})
 
 -- these are all the default values
 
@@ -129,6 +105,7 @@ nmap <leader>fj :%!python -m json.tool<CR>
 " format visual selected json
 vmap <leader>fj :'<,'> call BeautifyMvnLog()<CR>
 
+vmap <leader>de :'<,'> call DecryptMessage()<CR>
 
     let g:nvim_tree_disable_netrw = 0
     let g:nvim_tree_hijack_netrw = 0

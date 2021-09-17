@@ -13,6 +13,8 @@ return require('packer').startup(function()
     use 'junegunn/fzf.vim'
     use 'junegunn/vim-easy-align'
 
+    use 'preservim/nerdcommenter'
+
     use  'dylanaraps/wal.vim'
     use {
         'lewis6991/gitsigns.nvim',
@@ -55,16 +57,20 @@ return require('packer').startup(function()
             'kabouzeid/nvim-lspinstall',
             'mfussenegger/nvim-jdtls',
             'hrsh7th/nvim-compe',
+            'simrat39/rust-tools.nvim',
+            'nvim-lua/popup.nvim',
+            'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope.nvim',
             'hrsh7th/vim-vsnip',
             'hrsh7th/vim-vsnip-integ',
             'RishabhRD/popfix',
             'mfussenegger/nvim-dap',
+            'rcarriga/nvim-dap-ui',
             'RishabhRD/nvim-lsputils',
             "ray-x/lsp_signature.nvim"
         }
     }
 
-    use 'rcarriga/nvim-dap-ui'
     use 'szw/vim-maximizer'
     use 'jremmen/vim-ripgrep'
 
@@ -72,9 +78,13 @@ return require('packer').startup(function()
         'yamatsum/nvim-nonicons',
         requires = {'kyazdani42/nvim-web-devicons'}
     }
+    use 'rcarriga/nvim-notify'
     use {
         'glepnir/galaxyline.nvim',
         branch = 'main',
     }
+
+use "ellisonleao/glow.nvim"
+
 end)
 

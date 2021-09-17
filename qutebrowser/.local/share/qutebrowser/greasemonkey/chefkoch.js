@@ -28,7 +28,9 @@
 function addLink() {
 
 
+    let baseUrl = "https://img.chefkoch-cdn.de/"
         let title = jQuery("h1").text().trim().replace(/ /gi, "_");
+    let image = $("#recipe-image-carousel > div > div.i-amphtml-carousel-scroll > div:nth-child(1) > div > a > amp-img > img").attr("src");
         let content='# '+title+' #' + "\n"+
             '<div style="display:grid;grid-template-columns: auto auto; ">'+"\n"+
                     '<div>'+"\n\n"+
@@ -52,6 +54,7 @@ tmpContent+="\n";
         content+='</div>'+"\n";
         content+='</div>'+"\n";
 
+    content+="!["+title+"]("+baseUrl+image+")";
     content+= jQuery("body > main > article.ds-box.ds-grid-float.ds-col-12.ds-col-m-8.ds-or-3 > div:nth-child(3)").text();
 
 

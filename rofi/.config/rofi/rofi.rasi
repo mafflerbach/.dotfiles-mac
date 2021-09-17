@@ -1,21 +1,13 @@
 configuration {
-    lines:							15;
-    columns:						1;
+
     font: 							"Material Design Icons 12";
-    bw: 							0;
     location: 						1;
-    padding: 						0;
     fixed-num-lines: 				true;
     show-icons: 					false;
     sidebar-mode: 					false;
-    separator-style: 				"none";
-    hide-scrollbar: 				true;
-    fullscreen: 					false;
-    fake-transparency: 				false;
     scroll-method: 					0;
     window-format: 					"{c}  {t}";
     click-to-exit: 					true;
-    show-match: 					false;
     combi-hide-mode-prefix: 		false;
     display-window: 				"󱘈";
     display-windowcd: 				"";
@@ -26,22 +18,23 @@ configuration {
 }
 
 * {
-    background-color:             	#0c0a14ff;
+    background-color:             	#0A0806ff;
+    text-color: 					#e9bfce;
 }
 
 window {
-    border: 						0px;
-    border-color: 					#0c0a14ff;
+    border: 						1;
+    border-color: 					#0A0806ff;
     padding: 						10;
     width: 							50%;
     height: 						100%;
-    background-color:             	#0c0a14ff;
+    background-color:             	#0A0806ff;
 }
 
 prompt {
     spacing: 						0;
     border: 						0;
-    text-color: 					#d7afd4;
+    text-color: 					#e9bfce;
 }
 
 textbox-prompt-colon {
@@ -53,17 +46,17 @@ textbox-prompt-colon {
 
 entry {
     spacing:    					0;
-    text-color: 					#d7afd4;
+    text-color: 					#e9bfce;
 }
 
 case-indicator {
     spacing:    					0;
-    text-color: 					#d7afd4;
+    text-color: 					#e9bfce;
 }
 
 inputbar {
     spacing:    					0px;
-    text-color: 					#d7afd4;
+    text-color: 					#e9bfce;
     padding:    					1px;
     children: 						[ prompt,textbox-prompt-colon,entry,case-indicator ];
 }
@@ -86,40 +79,40 @@ element {
     padding: 						5px;
 }
 element normal.normal {
-    background-color: 				#0c0a14ff;
-    text-color:       				#d7afd4;
+    background-color: 				#0A0806ff;
+    text-color:       				#e9bfce;
 }
 element normal.urgent {
-    background-color: 				#0c0a14ff;
-    text-color:       				#d7afd4;
+    background-color: 				#0A0806ff;
+    text-color:       				#e9bfce;
 }
 element normal.active {
-    background-color: 				#0c0a14ff;
-    text-color:       				#d7afd4;
+    background-color: 				#0A0806ff;
+    text-color:       				#e9bfce;
 }
 element selected.normal {
-    background-color: 				#A2525Fff;
-    text-color:       				#d7afd4;
+    background-color: 				#C74F79ff;
+    text-color:       				#e9bfce;
 }
 element selected.urgent {
-    background-color: 				#A2525Fff;
-    text-color:       				#d7afd4;
+    background-color: 				#C74F79ff;
+    text-color:       				#e9bfce;
 }
 element selected.active {
-    background-color: 				#A2525Fff;
-    text-color:       				#d7afd4;
+    background-color: 				#C74F79ff;
+    text-color:       				#e9bfce;
 }
 element alternate.normal {
-    background-color: 				#0c0a14ff;
-    text-color:       				#d7afd4;
+    background-color: 				#0A0806ff;
+    text-color:       				#e9bfce;
 }
 element alternate.urgent {
-    background-color: 				#0c0a14ff;
-    text-color:       				#d7afd4;
+    background-color: 				#0A0806ff;
+    text-color:       				#e9bfce;
 }
 element alternate.active {
-    background-color: 				#0c0a14ff;
-    text-color:       				#d7afd4;
+    background-color: 				#0A0806ff;
+    text-color:       				#e9bfce;
 }
 
 sidebar {
@@ -128,25 +121,25 @@ sidebar {
 }
 
 button {
-    background-color:             	#0c0a14ff;
+    background-color:             	#0A0806ff;
     margin: 						5px;
     padding: 						5px;
-    text-color: 					#d7afd4;
+    text-color: 					#e9bfce;
     border: 						0px;
-    border-color: 					#d7afd4;
+    border-color: 					#e9bfce;
 }
 
 button selected {
-    background-color:             	#0c0a14ff;
-    text-color: 					#d7afd4;
+    background-color:             	#0A0806ff;
+    text-color: 					#e9bfce;
     border: 						0px;
-    border-color: 					#d7afd4;
+    border-color: 					#e9bfce;
 }
 
 scrollbar {
     width:        					4px;
     border:       					0px;
-    handle-color: 					#d7afd4;
+    handle-color: 					#e9bfce;
     handle-width: 					8px;
     padding:      					0;
 }
@@ -158,6 +151,6 @@ message {
 }
 
 textbox {
-    text-color: 					#d7afd4;
+    text-color: 					#e9bfce;
 }
 

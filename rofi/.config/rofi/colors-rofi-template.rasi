@@ -1,21 +1,13 @@
 configuration {
-    lines:							15;
-    columns:						1;
+
     font: 							"Material Design Icons 12";
-    bw: 							0;
     location: 						1;
-    padding: 						0;
     fixed-num-lines: 				true;
     show-icons: 					false;
     sidebar-mode: 					false;
-    separator-style: 				"none";
-    hide-scrollbar: 				true;
-    fullscreen: 					false;
-    fake-transparency: 				false;
     scroll-method: 					0;
     window-format: 					"{c}  {t}";
     click-to-exit: 					true;
-    show-match: 					false;
     combi-hide-mode-prefix: 		false;
     display-window: 				"󱘈";
     display-windowcd: 				"";
@@ -27,10 +19,11 @@ configuration {
 
 * {
     background-color:             	BGCOLOR;
+    text-color: 					FGCOLOR;
 }
 
 window {
-    border: 						0px;
+    border: 						1;
     border-color: 					BGCOLOR;
     padding: 						10;
     width: 							50%;
