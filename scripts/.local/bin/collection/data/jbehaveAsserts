@@ -1,0 +1,194 @@
+And $howMany mails were sent 
+And Docker container $containerBeanId is running 
+And Error Queue $queueName has the $messageType message with expected $expectedExceptionClassName in the cause chain and based on file $filePath 
+And Error Queue $queueName has the $messageType messages with expected $expectedExceptionClassName in the cause chain and based on template file $templateFilePath with the following values: $valuesTable 
+And Error Queue $queueName has the $messageType messages with expected $expectedExceptionClassName in the cause chain and payload based on file $filePath with headers: $headersTable 
+And Error Queue $queueName has the $messageType messages with expected $expectedExceptionClassName in the cause chain and payload based on template file $templateFilePath with the following values: $valuesTable and with headers: $headersTable 
+And Queue $queueName has $msgCount messages 
+And Queue $queueName has messages with no headers at all 
+And Queue $queueName has messages with no other headers than the following: $headerKeysList 
+And Queue $queueName has no message 
+And Queue $queueName has the $messageType message based on file $filePath 
+And Queue $queueName has the $messageType messages based on template file $templateFilePath with the following values: $valuesTable 
+And Queue $queueName has the $messageType messages with payload based on file $filePath with headers: $headersTable 
+And Queue $queueName has the $messageType messages with payload based on template file $templateFilePath with the following values: $valuesTable and with headers: $headersTable 
+And Topic $topicName has $msgCount messages 
+And Topic $topicName has messages with no headers at all 
+And Topic $topicName has messages with no other headers than the following: $headerKeysList 
+And Topic $topicName has no message 
+And Topic $topicName has the $messageType message based on file $filePath 
+And Topic $topicName has the $messageType messages based on template file $templateFilePath with the following values: $valuesTable 
+And Topic $topicName has the $messageType messages with payload based on file $filePath with headers: $headersTable 
+And Topic $topicName has the $messageType messages with payload based on template file $templateFilePath with the following values: $valuesTable and with headers: $headersTable 
+And WireMock was invoked accordingly: $invokeCheckTable 
+And all Queues have no messages 
+And all Queues have not seen any messages, except the following: $queueStatesTable 
+And all Topics have no messages 
+And all Topics have not seen any messages, except the following: $topicStatesTable 
+And all error Queues have no messages 
+And email was sent to $recipient for $howMany times 
+And file $actualFilePath exists and has the $contentType content based on example file $exampleFilePath 
+And file $actualFilePath exists and has the $contentType content based on template file $templateFilePath with the following values: $valuesTable 
+And file at $filePath does not exist 
+And file at $filePath exists 
+And no email was sent 
+And on Queue $queueName we have not seen any messages 
+And on Queue $queueName we have seen $msgCount messages 
+And on Queue $queueName we have seen messages only with no headers at all 
+And on Queue $queueName we have seen messages only with no other headers than the following: $headerKeysList 
+And on Queue $queueName we have seen the $messageType message based on file $filePath 
+And on Queue $queueName we have seen the $messageType messages based on template file $templateFilePath with the following values: $valuesTable 
+And on Queue $queueName we have seen the $messageType messages with payload based on file $filePath with headers: $headersTable 
+And on Queue $queueName we have seen the $messageType messages with payload based on template file $templateFilePath with the following values: $valuesTable and with headers: $headersTable 
+And on Topic $topicName we have not seen any messages 
+And on Topic $topicName we have seen $msgCount messages 
+And on Topic $topicName we have seen messages only with no headers at all 
+And on Topic $topicName we have seen messages only with no other headers than the following: $headerKeysList 
+And on Topic $topicName we have seen the $messageType message based on file $filePath 
+And on Topic $topicName we have seen the $messageType messages based on template file $templateFilePath with the following values: $valuesTable 
+And on Topic $topicName we have seen the $messageType messages with payload based on file $filePath with headers: $headersTable 
+And on Topic $topicName we have seen the $messageType messages with payload based on template file $templateFilePath with the following values: $valuesTable and with headers: $headersTable 
+And on the following Queues we have seen messages: $queueStatesTable 
+And on the following Topics we have seen messages: $topicStatesTable 
+And table $tableName in $connectionProviderBeanId has $expectedRowCount rows 
+And table $tableName in $connectionProviderBeanId has the following records interpreted with entity builder $tableRowEntityBuilderClassName: $rows 
+And text file at $actualFilePath exists based on the example file $exampleFilePath 
+And text file at $filePath exists based on the template file $templateFilePath with values $valuesTable 
+And the following HTTP response is returned and order does not matter and body contains: $responseSetup 
+And the following HTTP response is returned and order does not matter: $responseSetup 
+And the following HTTP response is returned and order matters and body contains: $responseSetup 
+And the following HTTP response is returned: $responseSetup 
+And virtual queue $queueName has $msgCount messages 
+And virtual queue $queueName has messages with no headers at all 
+And virtual queue $queueName has messages with no other headers than the following: $headerKeysList 
+And virtual queue $queueName has no message 
+And virtual queue $queueName has the $messageType message based on file $filePath 
+And virtual queue $queueName has the $messageType messages based on template file $templateFilePath with the following values: $valuesTable 
+And virtual queue $queueName has the $messageType messages with payload based on file $filePath with headers: $headersTable 
+And virtual queue $queueName has the $messageType messages with payload based on template file $templateFilePath with headers: $headersTable and the following values: $valuesTable 
+And virtual queue $queueName has the $messageType messages with payload based on template file $templateFilePath with the following values: $valuesTable and with headers: $headersTable 
+Given CamelContext named $camelContextBeanId and all routes in it are suspended 
+Given CamelContext named $camelContextBeanId is running 
+Given CamelContext named $camelContextBeanId is suspended 
+Given Docker container $containerBeanId is restarted 
+Given Docker container $containerBeanId is started 
+Given Docker container $containerBeanId is stopped 
+Given Queue $queueName is reset 
+Given Topic $topicName is reset 
+Given WireMock is setup from json files from folder $folderPath 
+Given WireMock setup is flushed 
+Given WireMock will respond for: $requestSetupTable with the following response sequence: $responseSequenceSetupTable 
+Given WireMock will respond the following way: $setupTable 
+Given all Queues are reset 
+Given all Topics are reset 
+Given all routes in CamelContext named $camelContextBeanId are restarted 
+Given all routes in CamelContext named $camelContextBeanId are running 
+Given all routes in CamelContext named $camelContextBeanId are suspended 
+Given all sent emails are flushed 
+Given all virtual queues are reset 
+Given create and store $what with name $name for later use 
+Given create and store $what with name $name for later use 
+Given file at $filePath does not exist 
+Given file at $filePath exists with content based on example file $exampleFilePath 
+Given file at $filePath exists with content based on template file $templateFilePath with the following values: $valuesTable 
+Given object store is empty 
+Given object store is empty 
+Given preAuthFilter returns user $username with roles $roles 
+Given routes defined by routeBuilder $routeBuilderBeanId are restarted 
+Given routes defined by routeBuilder $routeBuilderBeanId are running 
+Given routes defined by routeBuilder $routeBuilderBeanId are suspended 
+Given table $tableName in $connectionProviderBeanId has the following records interpreted with entity builder $tableRowEntityBuilderClassName: $rows 
+Given table $tableName in $connectionProviderBeanId is empty 
+Given the CSV lookup file is present at $filePath with the following content: $valuesTable 
+Given the properties file is present at $filePath with the following content: $valuesTable 
+Given the sql file $sqlFilePath is executed in $connectionProviderBeanId 
+Given the sql file $sqlFilePath is executed with ignoring errors mode in $connectionProviderBeanId 
+Given virtual queue $queueName is reset 
+Then $howMany mails were sent 
+Then Docker container $containerBeanId is running 
+Then Error Queue $queueName has the $messageType message with expected $expectedExceptionClassName in the cause chain and based on file $filePath 
+Then Error Queue $queueName has the $messageType messages with expected $expectedExceptionClassName in the cause chain and based on template file $templateFilePath with the following values: $valuesTable 
+Then Error Queue $queueName has the $messageType messages with expected $expectedExceptionClassName in the cause chain and payload based on file $filePath with headers: $headersTable 
+Then Error Queue $queueName has the $messageType messages with expected $expectedExceptionClassName in the cause chain and payload based on template file $templateFilePath with the following values: $valuesTable and with headers: $headersTable 
+Then Queue $queueName has $msgCount messages 
+Then Queue $queueName has messages with no headers at all 
+Then Queue $queueName has messages with no other headers than the following: $headerKeysList 
+Then Queue $queueName has no message 
+Then Queue $queueName has the $messageType message based on file $filePath 
+Then Queue $queueName has the $messageType messages based on template file $templateFilePath with the following values: $valuesTable 
+Then Queue $queueName has the $messageType messages with payload based on file $filePath with headers: $headersTable 
+Then Queue $queueName has the $messageType messages with payload based on template file $templateFilePath with the following values: $valuesTable and with headers: $headersTable 
+Then Topic $topicName has $msgCount messages 
+Then Topic $topicName has messages with no headers at all 
+Then Topic $topicName has messages with no other headers than the following: $headerKeysList 
+Then Topic $topicName has no message 
+Then Topic $topicName has the $messageType message based on file $filePath 
+Then Topic $topicName has the $messageType messages based on template file $templateFilePath with the following values: $valuesTable 
+Then Topic $topicName has the $messageType messages with payload based on file $filePath with headers: $headersTable 
+Then Topic $topicName has the $messageType messages with payload based on template file $templateFilePath with the following values: $valuesTable and with headers: $headersTable 
+Then WireMock was invoked accordingly: $invokeCheckTable 
+Then all Queues have no messages 
+Then all Queues have not seen any messages, except the following: $queueStatesTable 
+Then all Topics have no messages 
+Then all Topics have not seen any messages, except the following: $topicStatesTable 
+Then all error Queues have no messages 
+Then email was sent to $recipient for $howMany times 
+Then file $actualFilePath exists and has the $contentType content based on example file $exampleFilePath 
+Then file $actualFilePath exists and has the $contentType content based on template file $templateFilePath with the following values: $valuesTable 
+Then file at $filePath does not exist 
+Then file at $filePath exists 
+Then no email was sent 
+Then on Queue $queueName we have not seen any messages 
+Then on Queue $queueName we have seen $msgCount messages 
+Then on Queue $queueName we have seen messages only with no headers at all 
+Then on Queue $queueName we have seen messages only with no other headers than the following: $headerKeysList 
+Then on Queue $queueName we have seen the $messageType message based on file $filePath 
+Then on Queue $queueName we have seen the $messageType messages based on template file $templateFilePath with the following values: $valuesTable 
+Then on Queue $queueName we have seen the $messageType messages with payload based on file $filePath with headers: $headersTable 
+Then on Queue $queueName we have seen the $messageType messages with payload based on template file $templateFilePath with the following values: $valuesTable and with headers: $headersTable 
+Then on Topic $topicName we have not seen any messages 
+Then on Topic $topicName we have seen $msgCount messages 
+Then on Topic $topicName we have seen messages only with no headers at all 
+Then on Topic $topicName we have seen messages only with no other headers than the following: $headerKeysList 
+Then on Topic $topicName we have seen the $messageType message based on file $filePath 
+Then on Topic $topicName we have seen the $messageType messages based on template file $templateFilePath with the following values: $valuesTable 
+Then on Topic $topicName we have seen the $messageType messages with payload based on file $filePath with headers: $headersTable 
+Then on Topic $topicName we have seen the $messageType messages with payload based on template file $templateFilePath with the following values: $valuesTable and with headers: $headersTable 
+Then on the following Queues we have seen messages: $queueStatesTable 
+Then on the following Topics we have seen messages: $topicStatesTable 
+Then table $tableName in $connectionProviderBeanId has $expectedRowCount rows 
+Then table $tableName in $connectionProviderBeanId has the following records interpreted with entity builder $tableRowEntityBuilderClassName: $rows 
+Then text file at $actualFilePath exists based on the example file $exampleFilePath 
+Then text file at $filePath exists based on the template file $templateFilePath with values $valuesTable 
+Then the following HTTP response is returned and order does not matter and body contains: $responseSetup 
+Then the following HTTP response is returned and order does not matter: $responseSetup 
+Then the following HTTP response is returned and order matters and body contains: $responseSetup 
+Then the following HTTP response is returned: $responseSetup 
+Then virtual queue $queueName has $msgCount messages 
+Then virtual queue $queueName has messages with no headers at all 
+Then virtual queue $queueName has messages with no other headers than the following: $headerKeysList 
+Then virtual queue $queueName has no message 
+Then virtual queue $queueName has the $messageType message based on file $filePath 
+Then virtual queue $queueName has the $messageType messages based on template file $templateFilePath with the following values: $valuesTable 
+Then virtual queue $queueName has the $messageType messages with payload based on file $filePath with headers: $headersTable 
+Then virtual queue $queueName has the $messageType messages with payload based on template file $templateFilePath with headers: $headersTable and the following values: $valuesTable 
+Then virtual queue $queueName has the $messageType messages with payload based on template file $templateFilePath with the following values: $valuesTable and with headers: $headersTable 
+When message based on file $filePath is sent to $camelUri camel uri in camel context $contextBeanId 
+When message based on file $filePath is sent to $camelUri camel uri in camel context $contextBeanId with headers: $headersTable 
+When message based on file $filePath is sent to $queueName queue 
+When message based on file $filePath is sent to $queueName virtual queue (sending errors to MessageConsumer $messageConsumerEntryBeanId) 
+When message based on file $filePath is sent to $topicName topic 
+When message based on template file $templateFilePath is sent to $camelUri camel uri in camel context $contextBeanId with values: $valuesTable and with headers: $headersTable 
+When message based on template file $templateFilePath with the following values is sent to $camelUri camel uri in camel context $contextBeanId: $valuesTable 
+When messages based on file $filePath are sent to $queueName queue with headers: $headersTable 
+When messages based on file $filePath are sent to $queueName virtual queue (sending errors to MessageConsumer $messageConsumerEntryBeanId) with headers: $headersTable 
+When messages based on file $filePath are sent to $topicName topic with headers: $headersTable 
+When messages based on template file $templateFilePath are sent to $queueName queue with values: $valuesTable and with headers: $headersTable 
+When messages based on template file $templateFilePath are sent to $queueName virtual queue (sending errors to MessageConsumer $messageConsumerEntryBeanId) with values: $valuesTable and with headers: $headersTable 
+When messages based on template file $templateFilePath are sent to $topicName topic with values: $valuesTable and with headers: $headersTable 
+When messages based on template file $templateFilePath with the following values are sent to $queueName queue: $valuesTable 
+When messages based on template file $templateFilePath with the following values are sent to $queueName virtual queue (sending errors to MessageConsumer $messageConsumerEntryBeanId): $valuesTable 
+When messages based on template file $templateFilePath with the following values are sent to $topicName topic: $valuesTable 
+When table $tableName in $connectionProviderBeanId is cleared 
+When the following HTTP request is sent: $requestSetup 
+

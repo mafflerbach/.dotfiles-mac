@@ -13,7 +13,7 @@ class=${class//\-/_}
 
 class=${class//src.jbehave.stories./}
 echo "gradle jbehave --tests $class 2>&1 | tee /tmp/gradlebuild" > /tmp/foo 
-gradle jbehave --tests "$class" 2>&1 |tee /tmp/gradlebuild
+gradle jbehave --offline --tests "$class" 2>&1 |tee /tmp/gradlebuild
 
 
 url="file://$basepath/build/reports/tests/jbehave/classes/$class.html"

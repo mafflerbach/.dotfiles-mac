@@ -493,8 +493,6 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             awful.widget.watch('bash -c "/home/maren/.local/bin/collection/sysInfo.sh -watson"', 15),
-            wibox.widget.textbox("||"),
-            awful.widget.watch('bash -c "cat /home/maren/development/binance-bot/data/output"', 5),
 
             wibox.widget.imagebox("/home/maren/.config/awesome/icons/display/1-l.png"),
             clock_widget,

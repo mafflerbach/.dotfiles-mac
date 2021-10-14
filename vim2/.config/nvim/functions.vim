@@ -55,7 +55,7 @@ function! RunMvnTest()
     normal! ggdG
     setlocal buftype=nofile
     if filereadable(expand("build.gradle"))
-        :execute "silent !{ gradle jbehave 2>&1 |tee /tmp/build }"
+        :execute "silent !{ gradle jbehave 2>&1 |tee /tmp/gradlebuild }"
         :r /tmp/gradlebuild
     else
         :execute "silent !{export JAVA_HOME=/usr/lib/jvm/java-8-openjdk; mvn test --offline > /tmp/build}"
@@ -68,7 +68,7 @@ endfunction
 
 function! DecryptMessage() 
     let selection = Selection()
-    :execute "!{bash ~/.local/bin/collection/decryptMessageStage.sh '".selection. "'}"
+    :execute "!{bash ~/.local/bin/collection/decryptMessage.sh '".selection. "'}"
     let output = system("cat /tmp/decryptMessage")
     "bd! __Potion_Message__
     "split __Potion_Message__

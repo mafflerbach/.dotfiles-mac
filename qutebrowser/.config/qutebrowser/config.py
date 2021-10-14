@@ -56,7 +56,9 @@ config.bind('<Ctrl-Shift-l>', 'hint links spawn --verbose --detach  youtube-dl {
 config.bind('<Ctrl-Shift-f>', 'hint links spawn --verbose --detach  /opt/nzb-monkey/nzbmonkey.py "{hint-url}" ')
 
 
-config.bind('<Ctrl-Shift-d>', 'hint links spawn --verbose --detach mpv {hint-url} --input-ipc-server=/tmp/mpvsocket')
+config.bind('<Ctrl-Shift-d>', 'hint links spawn --verbose --detach youtube-viewer --resolution=1080p --player=mpv --no-interactive {hint-url} ')
+
+#config.bind('<Ctrl-Shift-d>', 'hint links spawn --verbose --detach vlc {hint-url} ---demuxer-max-bytes=500M --input-ipc-server=/tmp/mpvsocket')
 
 config.set('content.headers.user_agent', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36')
 

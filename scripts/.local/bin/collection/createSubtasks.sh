@@ -11,6 +11,6 @@ jira subtask $parentTicket -t /tmp/SubtaskDeployStage.yml --noedit
 jira subtask $parentTicket -t /tmp/SubtaskDeployDev.yml --noedit
 jira subtask $parentTicket -t /tmp/SubtaskPeer_Review.yml --noedit
 jira subtask $parentTicket -t /tmp/SubtaskReviseDocs.yml --noedit
-jira subtask $parentTicket -t /tmp/SubtaskImplement.yml --noedit
-# jira subtask $parentTicket -t /tmp/SubtaskMigration.yml --noedit
+# jira subtask $parentTicket -t /tmp/SubtaskImplement.yml --noedit
+jira subtask $parentTicket -t /tmp/SubtaskMigration.yml --noedit
 

@@ -2,7 +2,7 @@
 
 if [ $1 == "play" ]; then
 echo "play mpv"
-    mpv --playlist=/tmp/playlist --input-ipc-server=/tmp/mpvsocket
+    mpv --playlist=/tmp/playlist --input-ipc-server=/tmp/mpvsocket --demuxer-max-bytes=1G
     rm -f /tmp/playlist
 fi 
 

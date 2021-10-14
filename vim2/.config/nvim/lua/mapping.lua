@@ -35,7 +35,7 @@ vim.api.nvim_set_keymap('i', '<c-l><c-l>', 'fzf#vim#complete({\'left\': \'40%\',
 
 vim.api.nvim_set_keymap('n', '<leader>ge',':Gblame<CR>', { noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>gs',':Git<CR>', { noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>gc',':Gcommit<CR>', { noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>gc',':Git commit<CR>', { noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>gl',':Git pull<CR>', { noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>gh',':Git push<CR>', { noremap = true})
 

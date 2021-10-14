@@ -2,7 +2,7 @@
 
 if [ !"$(find 'data/topicList' -ctime +7)" ]; then
     echo "fetch topicList"
-curl 'https://kafka-manager-dev.goorange.sixt.com/clusters/kafka-dev/topics' --compressed > /tmp/out.html
+    curl 'https://kafka-manager-dev.goorange.sixt.com/clusters/kafka-dev/topics' --compressed > /tmp/out.html
 fi
 
 echo "cat //table/tbody/tr/td//a" |  xmllint --html --shell /tmp/out.html | sed '/^\/ >/d' | sed '/-------/d'|sed 's/<[^>]*.//g' > data/topicList
@@ -30,22 +30,31 @@ fileName=$pattern$(echo "$pathList" | rofi -dmenu -theme $HOME/.config/rofi/rofi
 tmpC=$(cat $(echo $fileName) | tr '\n' ' ')
 content="["$tmpC"]"
 
-env=$(echo -e "dev\r\nstage" | fzf)
+environment="$(echo -e "dev\nstage" | fzf)"
 
-echo "Play message $fileName on $topic via support api"
+echo "Play message $fileName on $topic via support api against $environment"
 
 # TODO env testing
-auth="Authorization: Basic "$(pass show Sixt/supportapi/$env | head -n1)
-curl --location --request POST 'http://localhost:9090/api/support/'$topic'/replay' \
---header "$(echo $auth)" \
---header 'Content-Type: application/json' \
--d "$(echo $content)"
 
-if [ "$env" == "stage" ]; then
-    curl --location --request POST 'http://localhost:9091/api/support/'$topic'/replay' \
-    --header "$(echo $auth)" \
-    --header 'Content-Type: application/json' \
-    -d "$(echo $content)"
+if [ "dev" == "$environment" ]; then
+    passw=$(pass show Sixt/supportapi/dev | head -n1)
+    auth="Authorization: Basic "$passw
+echo     curl --location --request POST 'http://localhost:9090/api/support/'$topic'/replay' \
+        --header "$(echo $auth)" \
+        --header 'Content-Type: application/json' \
+        -d "$(echo $content)"
 fi
 
+
+
+
+
+if [ "$environment" == "stage" ]; then
+    passw=$(pass show Sixt/supportapi/stage | head -n1)
+    auth="Authorization: Basic "$passw
+    curl --location --request POST 'http://localhost:9091/api/support/'$topic'/replay' \
+        --header "$(echo $auth)" \
+        --header 'Content-Type: application/json' \
+        -d "$(echo $content)"
+fi
 

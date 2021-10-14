@@ -23,7 +23,7 @@ return require('packer').startup(function()
         }
     }
 
-
+use 'mogelbrod/vim-jsonpath'
     use 'tyru/open-browser.vim'
 
     use {
@@ -48,8 +48,12 @@ return require('packer').startup(function()
     use 'nvim-treesitter/playground'
     use 'rafamadriz/friendly-snippets'
     use 'tpope/vim-fugitive'
-    use 'kyazdani42/nvim-tree.lua'
 
+use {
+    'kyazdani42/nvim-tree.lua',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function() require'nvim-tree'.setup {} end
+}
 
     use {
         'neovim/nvim-lspconfig',
@@ -85,6 +89,9 @@ return require('packer').startup(function()
     }
 
 use "ellisonleao/glow.nvim"
+
+use 'psliwka/vim-smoothie'
+use 'camspiers/animate.vim'
 
 end)
 

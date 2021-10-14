@@ -148,7 +148,8 @@ alias c='clipcopy'
 alias v='clippaste'
 
 alias fqsn="zsh ~/.local/bin/fqsnExporter.sh"
-alias pro="zsh ~/.local/bin/openProject.sh"
+alias pro="zsh  ~/.local/bin/collection/selectproject.sh"
+
 
 alias vpnaddress="hostname -i | cut -f5 -d' ' | c"
 alias tag="git branch | grep \* | cut -d ' ' -f2"
@@ -226,7 +227,6 @@ function podLogs {
 function podLog {
 pod=$(kubectl get pods | fzf); kubectl logs $(echo $pod | cut -f1 -d' ') > output.logs
 }
-
 alias listPods='kubectl -n it-integration get pods' 
 
 source /home/maren/.config/broot/launcher/bash/br
