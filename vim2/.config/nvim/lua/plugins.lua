@@ -15,7 +15,10 @@ return require('packer').startup(function()
 
     use 'preservim/nerdcommenter'
 
-    use  'dylanaraps/wal.vim'
+    use  {
+'kaicataldo/material.vim'
+    }
+    use 'dylanaraps/wal.vim'
     use {
         'lewis6991/gitsigns.nvim',
         requires = {
