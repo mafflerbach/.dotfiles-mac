@@ -152,7 +152,7 @@ alias pro="zsh  ~/.local/bin/collection/selectproject.sh"
 
 
 alias vpnaddress="hostname -i | cut -f5 -d' ' | c"
-alias tag="git branch | grep \* | cut -d ' ' -f2"
+alias branches="git branch | grep \* | cut -d ' ' -f2"
 alias gitremote="git remote -v | head -n1 | cut -f2 | sed s/\(fetch\)//g | c"
 ipaddrtemp=$(ip -j addr | jq '.[]  | select (.ifname == "ppp0").addr_info[].local')
 alias ipaddr="echo $(echo "maren@$ipaddrtemp\:support")"
@@ -248,3 +248,6 @@ PERL_MM_OPT="INSTALL_BASE=/home/maren/perl5"; export PERL_MM_OPT;
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.dotfiles/zsh/.p10k.zsh.
+[[ ! -f ~/.dotfiles/zsh/.p10k.zsh ]] || source ~/.dotfiles/zsh/.p10k.zsh

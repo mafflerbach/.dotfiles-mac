@@ -182,6 +182,7 @@ map <leader>3 "qyiW
 map <leader>pri :!lp "%" -o print-quality=3
 map <leader>rp :cfdo %s/<C-R>a/<C-R>s/g
 
+nmap gx :silent execute "!xdg-open " . shellescape("<cWORD>")<CR>
 
 
 map <leader>date :put =strftime('# %a %d %b %Y #')

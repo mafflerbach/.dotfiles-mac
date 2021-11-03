@@ -2,7 +2,9 @@
 
 
 cd /home/maren/.dotfiles
+rm ~/.config/awesome
 stow awesome
+
 stow compton
 stow goJira
 stow kitty

@@ -8,6 +8,7 @@ yay -S --needed - < pacman.lst
 
 yay -Suy go-yq-bin
 yay -Suy ttf-material-design-icons-git
+pacman -S exa
 pip3 install requests tldextract pywal youtube-dl  pywal
 
 go get github.com/go-jira/jira/cmd/jira
