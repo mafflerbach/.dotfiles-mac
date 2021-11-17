@@ -8,9 +8,10 @@ function M.setup()
     local on_attach = function()
         require("jdtls").setup_dap({ hotcodereplace = 'auto' })
     end
+    local workspace_dir = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
     require('jdtls').start_or_attach({
         on_attach = on_attach,
-        cmd = {'java-lsp.sh'},  
+        cmd = {'java-lsp.sh', workspace_dir},  
         init_options = { bundles = bundles },
     })
     -- Utility servers
@@ -51,6 +52,7 @@ function M.setup()
         },
         prompt = {}
     }
+
 
 end
 

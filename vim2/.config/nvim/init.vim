@@ -200,3 +200,10 @@ map <leader>date :put =strftime('# %a %d %b %Y #')
 
     colorscheme wal
 
+
+let &l:errorformat =
+    \ '%E%\m:%\%%(compileJava%\|compileTarget%\)%f:%l: error: %m,' .
+    \ '%E%f:%l: error: %m,' .
+    \ '%Z%p^,' .
+    \ '%-G%.%#'
+

@@ -25,7 +25,7 @@ return require('packer').startup(function()
             'nvim-lua/plenary.nvim'
         }
     }
-
+use 'aloussase/gradle.vim'
 use 'mogelbrod/vim-jsonpath'
     use 'tyru/open-browser.vim'
 
