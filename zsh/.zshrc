@@ -229,8 +229,6 @@ pod=$(kubectl get pods | fzf); kubectl logs $(echo $pod | cut -f1 -d' ') > outpu
 }
 alias listPods='kubectl -n it-integration get pods' 
 
-source /home/maren/.config/broot/launcher/bash/br
-
 function lastCommit {
 repoUrl=$(git config --get remote.origin.url |sed -e 's/:/\//' -e 's/git@/https:\/\//' -e 's/\.git//'); commit=$(git log | head -n1 | sed -e 's/commit //') ; echo $repoUrl/commit/#$commit
 

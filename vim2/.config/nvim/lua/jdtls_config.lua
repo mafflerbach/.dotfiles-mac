@@ -2,7 +2,7 @@ local M = {}
 function M.setup()
     vim.cmd[[set noexpandtab]]
     local bundles = {
-        vim.fn.glob("/home/maren/Downloads/java-debugger/com.microsoft.java.debug.plugin-0.32.0.jar"),
+        vim.fn.glob("/home/maren/Download/java-debugger/com.microsoft.java.debug.plugin-0.32.0.jar"),
     }
 
     local on_attach = function()

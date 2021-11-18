@@ -207,3 +207,4 @@ let &l:errorformat =
     \ '%Z%p^,' .
     \ '%-G%.%#'
 
+set rtp+=~/.fzf
