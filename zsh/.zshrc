@@ -207,6 +207,7 @@ alias bigFiles="du -a . | sort -n -r | head -n 20"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export BROWSER=/usr/bin/qutebrowser
+export DISPLAY=:0.0
 
 alias mpv="devour mpv --input-ipc-server=/tmp/mpvsocket "
 alias qutebrowser="devour qutebrowser"
@@ -249,3 +250,5 @@ PERL_MM_OPT="INSTALL_BASE=/home/maren/perl5"; export PERL_MM_OPT;
 
 # To customize prompt, run `p10k configure` or edit ~/.dotfiles/zsh/.p10k.zsh.
 [[ ! -f ~/.dotfiles/zsh/.p10k.zsh ]] || source ~/.dotfiles/zsh/.p10k.zsh
+
+source /home/maren/.config/broot/launcher/bash/br

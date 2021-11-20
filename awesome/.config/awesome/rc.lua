@@ -308,7 +308,7 @@ local mynetup3 = lain.widget.net {
     wifi_state = "on",
     eth_state = "on",
     settings = function()
-        local eth0 = net_now.devices.enp0s31f6
+        local eth0 = net_now.devices.enp0s13f0u1u4
         if eth0 then
             if eth0.ethernet then
                 eth_icon:set_image( "/home/maren/.config/awesome/icons/bar/ethernet-icon.png")
@@ -317,7 +317,7 @@ local mynetup3 = lain.widget.net {
             end
         end
 
-        local wlan0 = net_now.devices.wlp3s0
+        local wlan0 = net_now.devices.wlp0s20f3
         if wlan0 then
             if wlan0.wifi then
                 local signal = wlan0.signal
