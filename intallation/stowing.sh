@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 cd /home/maren/.dotfiles
 rm ~/.config/awesome
 stow awesome
