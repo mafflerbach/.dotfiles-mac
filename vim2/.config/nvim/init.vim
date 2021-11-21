@@ -15,13 +15,11 @@ require('plugins')
 EOF
 
 
-if has('nvim-0.5')
-    augroup lsp
-        au!
-        au FileType java lua require'jdtls_config'.setup()
-    augroup end
-endif
 
+augroup jdtls_lsp
+    autocmd!
+    autocmd FileType java lua require'jdtls_config'.setup()
+augroup end
 
 lua << EOF
 
