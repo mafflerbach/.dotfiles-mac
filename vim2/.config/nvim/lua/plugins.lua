@@ -25,7 +25,6 @@ return require('packer').startup(function()
             'nvim-lua/plenary.nvim'
         }
     }
-use 'aloussase/gradle.vim'
 use 'mogelbrod/vim-jsonpath'
     use 'tyru/open-browser.vim'
 
@@ -55,7 +54,7 @@ use 'mogelbrod/vim-jsonpath'
 use {
     'kyazdani42/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons',
-    config = function() require'nvim-tree'.setup {} end
+  config = function() require'nvim-tree'.setup { diagnostics = { enable = true } } end
 }
 
     use {

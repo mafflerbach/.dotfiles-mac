@@ -215,7 +215,8 @@ alias zathura="devour zathura"
 alias sabnzbd="devour /usr/lib/sabnzbd/SABnzbd.py"
 alias get_idf='. $HOME/development/esp-idf/export.sh'
 alias vim='/usr/sbin/nvim'
-alias ls='exa'
+alias ls='exa --icons --git'
+
 function restartPod {
     pod=$(kubectl get pods | fzf); kubectl delete pod $(echo $pod | cut -f1 -d' ')
 }

@@ -62,7 +62,6 @@ lua require('completion_config')
 lua require('mapping')
 
 :so /home/maren/.dotfiles/vim2/.config/nvim/functions.vim
-let g:nvim_tree_ignore = [ '.git', 'node_modules' ]
 
 lua <<EOF
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
@@ -105,8 +104,6 @@ require'nvim-tree'.setup {
   hijack_cursor       = false,
   -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually) 
   update_cwd          = false,
-  -- show lsp diagnostics in the signcolumn
-  lsp_diagnostics     = false,
   -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
   update_focused_file = {
     -- enables the feature
@@ -185,8 +182,6 @@ nmap gx :silent execute "!xdg-open " . shellescape("<cWORD>")<CR>
 
 map <leader>date :put =strftime('# %a %d %b %Y #')
 
-    let g:nvim_tree_disable_netrw = 0
-    let g:nvim_tree_hijack_netrw = 0
     let g:ActualTicket = "INTS-5335"
     " https://google.com
 

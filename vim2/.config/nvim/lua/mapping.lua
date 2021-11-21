@@ -128,12 +128,12 @@ vim.api.nvim_set_keymap('v', 'gx','<Plug>(openbrowser-smart-search)', {noremap =
       vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
       vim.api.nvim_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
       -- Java specific
-      vim.api.nvim_set_keyma("n", "<leader>di", "<Cmd>lua require'jdtls'.organize_imports()<CR>", opts)
-      vim.api.nvim_set_keyma("n", "<leader>dt", "<Cmd>lua require'jdtls'.test_class()<CR>", opts)
-      vim.api.nvim_set_keyma("n", "<leader>dn", "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", opts)
-      vim.api.nvim_set_keyma("v", "<leader>de", "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", opts)
-      vim.api.nvim_set_keyma("n", "<leader>de", "<Cmd>lua require('jdtls').extract_variable()<CR>", opts)
-      vim.api.nvim_set_keyma("v", "<leader>dm", "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", opts)
+      vim.api.nvim_set_keymap("n", "<leader>di", "<Cmd>lua require'jdtls'.organize_imports()<CR>", opts)
+      vim.api.nvim_set_keymap("n", "<leader>dt", "<Cmd>lua require'jdtls'.test_class()<CR>", opts)
+      vim.api.nvim_set_keymap("n", "<leader>dn", "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", opts)
+      vim.api.nvim_set_keymap("v", "<leader>de", "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", opts)
+      vim.api.nvim_set_keymap("n", "<leader>de", "<Cmd>lua require('jdtls').extract_variable()<CR>", opts)
+      vim.api.nvim_set_keymap("v", "<leader>dm", "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", opts)
 
-      vim.api.nvim_set_keyma("n", "<leader>cf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+      vim.api.nvim_set_keymap("n", "<leader>cf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
