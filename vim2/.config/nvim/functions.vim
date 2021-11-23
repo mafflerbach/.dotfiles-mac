@@ -142,6 +142,19 @@ function! SubtaskJira(word)
     :execute "read ! jira listSubtasks " . substitute(a:word, ":", "", "")
 endfunction
 
+function! GetGithubLink(file)
+    let output = system("~/.local/bin/collection/getGithubLink.sh '". a:file."'")
+endfunction
+
+function! GetAlternateSplit(file)
+    let output = system("~/.local/bin/collection/getAlternateFile.sh '". a:file."'")
+    :execute ':vsplit ' . output
+endfunction
+
+function! GetAlternate(file)
+    let output = system("~/.local/bin/collection/getAlternateFile.sh '". a:file."'")
+    :execute ':edit ' . output
+endfunction
 
 function! EditJira(word)
     :call VimuxRunCommand("jira edit " . a:word)<CR>
@@ -281,3 +294,10 @@ function! ActivateWindowByName(name)
 endfunction
 
 command! PrettyXML call DoPrettyXML()
+
+
+command! A call GetAlternate(expand("%:."))
+command! AS call GetAlternateSplit(expand("%:."))
+
+
+

@@ -74,12 +74,12 @@ parser_config.jbehave = {
     }
 
 
-    require'nvim-treesitter.configs'.setup {highlight = {enable = true}}
-    require("dap_configuration")
-    require("dapui").setup()
-    require("bubbles")
-    require('gitsigns').setup()
-    require('rust-tools').setup({})
+require'nvim-treesitter.configs'.setup {highlight = {enable = true}}
+require("dap_configuration")
+require("dapui").setup()
+require("bubbles")
+require('gitsigns').setup()
+require('rust-tools').setup({})
 
 -- these are all the default values
 
@@ -88,25 +88,25 @@ EOF
 lua <<EOF
 -- following options are the default
 require'nvim-tree'.setup {
-  -- disables netrw completely
-  disable_netrw       = true,
-  -- hijack netrw window on startup
-  hijack_netrw        = true,
-  -- open the tree when running this setup function
-  open_on_setup       = false,
-  -- will not open on setup if the filetype is in this list
-  ignore_ft_on_setup  = {},
-  -- closes neovim automatically when the tree is the last **WINDOW** in the view
-  auto_close          = false,
-  -- opens the tree when changing/opening a new tab if the tree wasn't previously opened
-  open_on_tab         = false,
-  -- hijack the cursor in the tree to put it at the start of the filename
-  hijack_cursor       = false,
-  -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually) 
-  update_cwd          = false,
-  -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
-  update_focused_file = {
-    -- enables the feature
+    -- disables netrw completely
+    disable_netrw       = true,
+    -- hijack netrw window on startup
+    hijack_netrw        = true,
+    -- open the tree when running this setup function
+    open_on_setup       = false,
+    -- will not open on setup if the filetype is in this list
+    ignore_ft_on_setup  = {},
+    -- closes neovim automatically when the tree is the last **WINDOW** in the view
+    auto_close          = false,
+    -- opens the tree when changing/opening a new tab if the tree wasn't previously opened
+    open_on_tab         = false,
+    -- hijack the cursor in the tree to put it at the start of the filename
+    hijack_cursor       = false,
+    -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually) 
+    update_cwd          = false,
+    -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
+    update_focused_file = {
+        -- enables the feature
     enable      = false,
     -- update the root directory of the tree to the one of the folder containing the file if the file is not under the current root directory
     -- only relevant when `update_focused_file.enable` is true
@@ -114,16 +114,16 @@ require'nvim-tree'.setup {
     -- list of buffer names / filetypes that will not update the cwd if the file isn't found under the current root directory
     -- only relevant when `update_focused_file.update_cwd` is true and `update_focused_file.enable` is true
     ignore_list = {}
-  },
-  -- configuration options for the system open command (`s` in the tree by default)
-  system_open = {
+    },
+-- configuration options for the system open command (`s` in the tree by default)
+system_open = {
     -- the command to run this, leaving nil should work in most cases
     cmd  = nil,
     -- the command arguments as a list
     args = {}
-  },
+    },
 
-  view = {
+view = {
     -- width of the window, can be either a number (columns) or a string in `%`
     width = 30,
     -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
@@ -131,13 +131,13 @@ require'nvim-tree'.setup {
     -- if true the tree will resize itself after opening a file
     auto_resize = false,
     mappings = {
-      -- custom only false will merge the list with the default mappings
-      -- if true, it will only use your list to set the mappings
-      custom_only = false,
-      -- list of mappings to set on the tree manually
-      list = {}
+        -- custom only false will merge the list with the default mappings
+        -- if true, it will only use your list to set the mappings
+        custom_only = false,
+        -- list of mappings to set on the tree manually
+        list = {}
+        }
     }
-  }
 }
 
 EOF
@@ -146,18 +146,18 @@ EOF
 
 
 
-    nnoremap <silent> <leader>co :lua require'dap'.continue()<CR>
-    nnoremap <silent> <leader>so :lua require'dap'.step_over()<CR>
-    nnoremap <silent> <leader>si :lua require'dap'.step_into()<CR>
-    nnoremap <silent> <leader>soo :lua require'dap'.step_out()<CR>
-    nnoremap <silent> <leader>tb :lua require'dap'.toggle_breakpoint()<CR>
-    nnoremap <silent> <leader>rc :lua require'dap'.run_to_cursor()<CR>
+nnoremap <silent> <leader>co :lua require'dap'.continue()<CR>
+nnoremap <silent> <leader>so :lua require'dap'.step_over()<CR>
+nnoremap <silent> <leader>si :lua require'dap'.step_into()<CR>
+nnoremap <silent> <leader>soo :lua require'dap'.step_out()<CR>
+nnoremap <silent> <leader>tb :lua require'dap'.toggle_breakpoint()<CR>
+nnoremap <silent> <leader>rc :lua require'dap'.run_to_cursor()<CR>
 
-    nnoremap <silent> <leader> :call GotoWindow("DAP Breakpoints") <CR>
-    nnoremap <silent> <leader> :call GotoWindow("DAP Watches") <CR>
-    nnoremap <silent> <leader> :call GotoWindow("DAP Scopes") <CR>
+nnoremap <silent> <leader> :call GotoWindow("DAP Breakpoints") <CR>
+nnoremap <silent> <leader> :call GotoWindow("DAP Watches") <CR>
+nnoremap <silent> <leader> :call GotoWindow("DAP Scopes") <CR>
 
-    nnoremap <silent> <leader>m :MaximizerToggle<CR>
+nnoremap <silent> <leader>m :MaximizerToggle<CR>
 
 nmap <leader>fj :%!python -m json.tool<CR>
 " format visual selected json
@@ -182,22 +182,33 @@ nmap gx :silent execute "!xdg-open " . shellescape("<cWORD>")<CR>
 
 map <leader>date :put =strftime('# %a %d %b %Y #')
 
-    let g:ActualTicket = "INTS-5335"
-    " https://google.com
+let g:ActualTicket = "INTS-5335"
+" https://google.com
 
 
-    " let g:compe.source.vim_dadbod_completion = v:true
+" let g:compe.source.vim_dadbod_completion = v:true
 
-    let g:netrw_nogx = 1 " disable netrw's gx mapping.
-    let g:notoire_folders = ['~/.notes']
+let g:netrw_nogx = 1 " disable netrw's gx mapping.
+let g:notoire_folders = ['~/.notes']
 
-    colorscheme wal
+colorscheme wal
 
 
 let &l:errorformat =
-    \ '%E%\m:%\%%(compileJava%\|compileTarget%\)%f:%l: error: %m,' .
-    \ '%E%f:%l: error: %m,' .
-    \ '%Z%p^,' .
-    \ '%-G%.%#'
+            \ '%E%\m:%\%%(compileJava%\|compileTarget%\)%f:%l: error: %m,' .
+            \ '%E%f:%l: error: %m,' .
+            \ '%Z%p^,' .
+            \ '%-G%.%#'
+
+
+let test#strategy = "vimux"
+
+
+if filereadable(expand("build.gradle"))
+    let test#java#runner = 'gradletest'
+endif
+
+
+
 
 set rtp+=~/.fzf

@@ -932,6 +932,7 @@ awful.tag.history.restore = function() end
 awful.spawn.with_shell(  "killall compton; sleep 2; compton --config /home/maren/.config/compton/compton.conf &")
 awful.spawn.with_shell(  "killall xidelhook; sh /home/maren/.local/bin/collection/xidelhook.sh &")
 awful.spawn.with_shell(  "killall udiskie ;  udiskie -t")
+awful.spawn.with_shell(  "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &")
 -- awful.spawn.with_shell(  "wal --theme /home/maren/.cache/wal/colors.json")
 -- awful.spawn.with_shell( "killall redshift; sleep 4 ; redshift -l 48.024395:11.598893 &")
 -- awful.spawn.with_shell( "pulseaudio -k; sleep 2; pulseaudio & killall pasystray ; pasystray &")

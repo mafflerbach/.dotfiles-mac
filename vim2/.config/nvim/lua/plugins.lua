@@ -50,6 +50,7 @@ use 'mogelbrod/vim-jsonpath'
     use 'nvim-treesitter/playground'
     use 'rafamadriz/friendly-snippets'
     use 'tpope/vim-fugitive'
+    use 'tpope/vim-projectionist'
 
 use {
     'kyazdani42/nvim-tree.lua',
@@ -94,6 +95,10 @@ use "ellisonleao/glow.nvim"
 
 use 'psliwka/vim-smoothie'
 use 'camspiers/animate.vim'
+
+
+use 'vim-test/vim-test'
+
 
 end)
 

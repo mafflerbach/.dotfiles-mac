@@ -88,6 +88,7 @@ vim.api.nvim_set_keymap('n', '<leader>je',':call EditJira(expand("<cWORD>"))<CR>
 vim.api.nvim_set_keymap('n', '<leader>ju',':call JiraUnassign(expand("<cWORD>"))<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>ja',':call JiraAssign(expand("<cWORD>"))<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>jr',':call JiraReview(expand("<cWORD>"))<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>gf',':call GetGithubLink(expand("%:."))<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>jro',':call JiraOpenReview()<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>jd',':call JiraDone(expand("<cWORD>"))<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>jp',':call JiraProgress(expand("<cWORD>"))<CR>', {noremap = true, silent = true})
