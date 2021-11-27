@@ -68,6 +68,7 @@ use {
             'nvim-lua/popup.nvim',
             'nvim-lua/plenary.nvim',
             'nvim-telescope/telescope.nvim',
+            'nvim-telescope/telescope-fzy-native.nvim',
             'hrsh7th/vim-vsnip',
             'hrsh7th/vim-vsnip-integ',
             'RishabhRD/popfix',
@@ -98,7 +99,7 @@ use 'camspiers/animate.vim'
 
 
 use 'vim-test/vim-test'
-
-
+use 'vim-pandoc/vim-pandoc'
+use 'vim-pandoc/vim-pandoc-syntax'
 end)
 

@@ -1,5 +1,4 @@
 syntax on
-
 lua << EOF
 local execute = vim.api.nvim_command
 local fn = vim.fn
@@ -38,7 +37,6 @@ require'lspinstall'.setup()
 local servers = require'lspinstall'.installed_servers()
 for _, server in pairs(servers) do
     require'lspconfig'[server].setup{
-
     capabilities = capabilities,
     }
   end
@@ -74,7 +72,28 @@ parser_config.jbehave = {
     }
 
 
-require'nvim-treesitter.configs'.setup {highlight = {enable = true}}
+require'nvim-treesitter.configs'.setup {
+    highlight = {enable = true},
+  playground = {
+    enable = true,
+    disable = {},
+    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    persist_queries = false, -- Whether the query persists across vim sessions
+    keybindings = {
+      toggle_query_editor = 'o',
+      toggle_hl_groups = 'i',
+      toggle_injected_languages = 't',
+      toggle_anonymous_nodes = 'a',
+      toggle_language_display = 'I',
+      focus_language = 'f',
+      unfocus_language = 'F',
+      update = 'R',
+      goto_node = '<cr>',
+      show_help = '?',
+    },
+  }
+
+}
 require("dap_configuration")
 require("dapui").setup()
 require("bubbles")
@@ -208,7 +227,9 @@ if filereadable(expand("build.gradle"))
     let test#java#runner = 'gradletest'
 endif
 
-
+augroup pandoc_syntax
+    au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
+augroup END
 
 
 set rtp+=~/.fzf
