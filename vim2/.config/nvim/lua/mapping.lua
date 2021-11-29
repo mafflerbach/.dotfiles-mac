@@ -77,7 +77,7 @@ vim.api.nvim_set_keymap('i', '<C-Space>',[[compe#complete()]],  {noremap = true,
 vim.api.nvim_set_keymap('i', '<CR>',[[compe#confirm('<CR>')]],  {noremap = true, silent = true, expr = true})
 
 vim.api.nvim_set_keymap('n', '<leader>rS',':call RunMvnTest()<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>rs',':call RunMvnThisTest(expand("%"))<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>rs',':call RunMvnThisTest(expand("%:."))<CR>', {noremap = true, silent = true})
 
 vim.api.nvim_set_keymap('n', '<leader>jS',':call ViewSprint() <CR>', {noremap = true, silent = true}) 
 vim.api.nvim_set_keymap('n', '<leader>jru',':call ViewRun() <CR> ', {noremap = true, silent = true})

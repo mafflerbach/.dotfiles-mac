@@ -1,4 +1,5 @@
 syntax on
+set title
 lua << EOF
 local execute = vim.api.nvim_command
 local fn = vim.fn
@@ -230,6 +231,10 @@ endif
 augroup pandoc_syntax
     au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
 augroup END
+
+
+
+au BufRead,BufNewFile *.logs set filetype=logs
 
 
 set rtp+=~/.fzf

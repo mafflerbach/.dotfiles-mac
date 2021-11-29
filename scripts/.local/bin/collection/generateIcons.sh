@@ -1,5 +1,5 @@
 #!/bin/bash
-path=/home/maren/.dotfiles/awesome/.config/awesome/icons/bar
+path=/home/maren/.config/awesome/icons/bar
 # generate gradient
 
 magick -size 100x100 -define gradient:angle=45 gradient:$1-$2 $path/../linear_gradient.png  

@@ -5,7 +5,7 @@ alpha=99
 colors=$(yq e '.colors' ~/.cache/wal/colors.yml)
 i=0
 
-cp /home/maren/.dotfiles/awesome/.config/awesome/theme.template.lua /tmp/theme.lua
+cp /home/maren/.config/awesome/theme.template.lua /tmp/theme.lua
 
 while IFS= read -r line ; do 
 
@@ -18,12 +18,12 @@ while IFS= read -r line ; do
 sed -i "s/$color/$hex$alpha/g" /tmp/theme.lua
 echo "replace $color $hex$alpha"
 
-magick convert /home/maren/.dotfiles/awesome/.config/awesome/icons/display/mask-right.png  -alpha set  -channel RGBA \
+magick convert /home/maren/.config/awesome/icons/display/mask-right.png  -alpha set  -channel RGBA \
   -fuzz 50%  -fill "$hex$alpha" -opaque black /home/maren/.dotfiles/awesome/.config/awesome/icons/display/$i-l.png 
 
 echo "generate $i-l.png"
-magick convert /home/maren/.dotfiles/awesome/.config/awesome/icons/display/mask-left.png  -alpha set  -channel RGBA \
- -fuzz 50% -fill "$hex$alpha" -opaque white   /home/maren/.dotfiles/awesome/.config/awesome/icons/display/$i-r.png
+magick convert /home/maren/.config/awesome/icons/display/mask-left.png  -alpha set  -channel RGBA \
+ -fuzz 50% -fill "$hex$alpha" -opaque white   /home/maren/.config/awesome/icons/display/$i-r.png
 echo "generate $i-r.png"
 
 ((i++))

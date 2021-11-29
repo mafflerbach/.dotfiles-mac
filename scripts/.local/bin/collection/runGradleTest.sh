@@ -1,5 +1,6 @@
 #!/bin/bash
-JAVA_HOME=/usr/lib/jvm/java-8-openjdk;
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk;
+
 filename=$1
 
 
@@ -9,6 +10,7 @@ echo $path
 class=${filename//$path\//}
 class=${class//\//.}
 class=${class//.story/}
+class=${class//.java/}
 class=${class//\-/_}
 
 class=${class//src.jbehave.stories./}

@@ -1,0 +1,1 @@
+rofi.modi: window,run,ssh,tmuxopen:~/.config/rofi/tmuxopen.sh

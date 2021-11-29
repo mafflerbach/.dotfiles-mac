@@ -18,23 +18,23 @@ configuration {
 }
 
 * {
-    background-color:             	#120919ff;
-    text-color: 					#eae3ca;
+    background-color:             	#180c1eff;
+    text-color: 					#e3c7e9;
 }
 
 window {
     border: 						1;
-    border-color: 					#120919ff;
+    border-color: 					#180c1eff;
     padding: 						10;
     width: 							50%;
     height: 						100%;
-    background-color:             	#120919ff;
+    background-color:             	#180c1eff;
 }
 
 prompt {
     spacing: 						0;
     border: 						0;
-    text-color: 					#eae3ca;
+    text-color: 					#e3c7e9;
 }
 
 textbox-prompt-colon {
@@ -46,17 +46,17 @@ textbox-prompt-colon {
 
 entry {
     spacing:    					0;
-    text-color: 					#eae3ca;
+    text-color: 					#e3c7e9;
 }
 
 case-indicator {
     spacing:    					0;
-    text-color: 					#eae3ca;
+    text-color: 					#e3c7e9;
 }
 
 inputbar {
     spacing:    					0px;
-    text-color: 					#eae3ca;
+    text-color: 					#e3c7e9;
     padding:    					1px;
     children: 						[ prompt,textbox-prompt-colon,entry,case-indicator ];
 }
@@ -79,40 +79,40 @@ element {
     padding: 						5px;
 }
 element normal.normal {
-    background-color: 				#120919ff;
-    text-color:       				#eae3ca;
+    background-color: 				#180c1eff;
+    text-color:       				#e3c7e9;
 }
 element normal.urgent {
-    background-color: 				#120919ff;
-    text-color:       				#eae3ca;
+    background-color: 				#180c1eff;
+    text-color:       				#e3c7e9;
 }
 element normal.active {
-    background-color: 				#120919ff;
-    text-color:       				#eae3ca;
+    background-color: 				#180c1eff;
+    text-color:       				#e3c7e9;
 }
 element selected.normal {
-    background-color: 				#987092ff;
-    text-color:       				#eae3ca;
+    background-color: 				#634BCAff;
+    text-color:       				#e3c7e9;
 }
 element selected.urgent {
-    background-color: 				#987092ff;
-    text-color:       				#eae3ca;
+    background-color: 				#634BCAff;
+    text-color:       				#e3c7e9;
 }
 element selected.active {
-    background-color: 				#987092ff;
-    text-color:       				#eae3ca;
+    background-color: 				#634BCAff;
+    text-color:       				#e3c7e9;
 }
 element alternate.normal {
-    background-color: 				#120919ff;
-    text-color:       				#eae3ca;
+    background-color: 				#180c1eff;
+    text-color:       				#e3c7e9;
 }
 element alternate.urgent {
-    background-color: 				#120919ff;
-    text-color:       				#eae3ca;
+    background-color: 				#180c1eff;
+    text-color:       				#e3c7e9;
 }
 element alternate.active {
-    background-color: 				#120919ff;
-    text-color:       				#eae3ca;
+    background-color: 				#180c1eff;
+    text-color:       				#e3c7e9;
 }
 
 sidebar {
@@ -121,25 +121,25 @@ sidebar {
 }
 
 button {
-    background-color:             	#120919ff;
+    background-color:             	#180c1eff;
     margin: 						5px;
     padding: 						5px;
-    text-color: 					#eae3ca;
+    text-color: 					#e3c7e9;
     border: 						0px;
-    border-color: 					#eae3ca;
+    border-color: 					#e3c7e9;
 }
 
 button selected {
-    background-color:             	#120919ff;
-    text-color: 					#eae3ca;
+    background-color:             	#180c1eff;
+    text-color: 					#e3c7e9;
     border: 						0px;
-    border-color: 					#eae3ca;
+    border-color: 					#e3c7e9;
 }
 
 scrollbar {
     width:        					4px;
     border:       					0px;
-    handle-color: 					#eae3ca;
+    handle-color: 					#e3c7e9;
     handle-width: 					8px;
     padding:      					0;
 }
@@ -151,6 +151,6 @@ message {
 }
 
 textbox {
-    text-color: 					#eae3ca;
+    text-color: 					#e3c7e9;
 }
 
