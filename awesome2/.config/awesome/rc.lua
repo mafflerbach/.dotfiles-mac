@@ -68,8 +68,8 @@ modkey = "Mod4"
 awful.layout.layouts = {
     --awful.layout.suit.floating,
     awful.layout.suit.tile,
-    awful.layout.suit.fair.horizontal
-    -- awful.layout.suit.floating
+    awful.layout.suit.fair.horizontal,
+     awful.layout.suit.floating
     --awful.layout.suit.tile.left,
     --awful.layout.suit.tile.bottom,
     --awful.layout.suit.tile.top,
@@ -173,6 +173,9 @@ screen.connect_signal("property::geometry", set_wallpaper)
 
 awful.screen.connect_for_each_screen(function(s)
 
+    -- Wallpaper
+    set_wallpaper(s)
+
     local network_speed = require("networkspeed")
     local network_icon = require("networkicon")
     local battery_icon = require("batteryicon")
@@ -181,11 +184,8 @@ awful.screen.connect_for_each_screen(function(s)
     local cpustatus = require("cpustatus")
     local memstatus = require("memorystatus")
 
-    awful.tag({})
     require("tagssettings").setup_tags(s);
 
-    -- Wallpaper
-    set_wallpaper(s)
 
     -- Each screen has its own tag table.
 
@@ -296,6 +296,10 @@ globalkeys = gears.table.join(
               {description = "show main menu", group = "awesome"}),
 
     -- Layout manipulation
+    awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
+              {description = "swap with next client by index", group = "client"}),
+    awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
+              {description = "swap with previous client by index", group = "client"}),
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end,
               {description = "focus the next screen", group = "screen"}),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
@@ -348,9 +352,50 @@ globalkeys = gears.table.join(
               end,
               {description = "restore minimized", group = "client"}),
 
-    -- Prompt
-    awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
+
+        awful.key({ modkey }, "d",
+            function ()
+        awful.spawn.with_shell("rofi -show combi -modi combi -window-thumbnail -theme /home/maren/.config/rofi/rofi.rasi &>> /tmp/rofi.logs")
+        end,
               {description = "run prompt", group = "launcher"}),
+
+awful.key({ modkey}, "b",
+    function ()
+        awful.spawn("rofi -show drun -show-icons -match fuzzy")
+    end,
+{description = "Rofi drun", group = "rofi"}),
+
+
+
+  awful.key({ modkey }, "0",
+    function ()
+      awful.util.spawn("bash /home/maren/.local/bin/collection/shutDown.sh")
+  end,
+
+              {description = "Shutdown, Suspend, Reboot", group = "launcher"}),
+
+  awful.key({ modkey }, "p",
+    function ()
+      awful.util.spawn("bash /home/maren/.local/bin/collection/launcher.sh")
+  end, {description = "custom launcher", group = "launcher"}),
+
+
+  awful.key({ modkey }, "i",
+    function ()
+      awful.util.spawn("bash /home/maren/.local/bin/collection/dmenuUnicode.sh")
+  end, {description = "Unicode menu", group = "launcher"}),
+
+    awful.key({ }, "XF86MonBrightnessUp", function () os.execute("xbacklight -inc 10") end,
+              {description = "+10%", group = "hotkeys"}),
+    awful.key({ }, "XF86MonBrightnessDown", function () os.execute("xbacklight -dec 10") end,
+              {description = "-10%", group = "hotkeys"}),
+            
+    awful.key({ }, "XF86AudioRaiseVolume", function () os.execute("pamixer -i5") end,
+              {description = "-10%", group = "hotkeys"}),
+    awful.key({ }, "XF86AudioLowerVolume", function () os.execute("pamixer -d5") end,
+              {description = "-10%", group = "hotkeys"}),
+    awful.key({ }, "XF86AudioMute", function () os.execute("pamixer -t") end,
+              {description = "-10%", group = "hotkeys"}),
 
     awful.key({ modkey }, "x",
               function ()
@@ -405,52 +450,7 @@ clientkeys = gears.table.join(
             c.maximized_horizontal = not c.maximized_horizontal
             c:raise()
         end ,
-        {description = "(un)maximize horizontally", group = "client"}),
-
-
-        awful.key({ modkey }, "d",
-            function ()
-        awful.spawn.with_shell("rofi -show combi -modi combi -window-thumbnail -theme /home/maren/.config/rofi/rofi.rasi &>> /tmp/rofi.logs")
-        end,
-              {description = "run prompt", group = "launcher"}),
-
-awful.key({ modkey}, "b",
-    function ()
-        awful.spawn("rofi -show drun -show-icons -match fuzzy")
-    end,
-{description = "Rofi drun", group = "rofi"}),
-
-
-
-  awful.key({ modkey }, "0",
-    function ()
-      awful.util.spawn("bash /home/maren/.local/bin/collection/shutDown.sh")
-  end,
-
-              {description = "Shutdown, Suspend, Reboot", group = "launcher"}),
-
-  awful.key({ modkey }, "p",
-    function ()
-      awful.util.spawn("bash /home/maren/.local/bin/collection/launcher.sh")
-  end, {description = "custom launcher", group = "launcher"}),
-
-
-  awful.key({ modkey }, "i",
-    function ()
-      awful.util.spawn("bash /home/maren/.local/bin/collection/dmenuUnicode.sh")
-  end, {description = "Unicode menu", group = "launcher"}),
-
-    awful.key({ }, "XF86MonBrightnessUp", function () os.execute("xbacklight -inc 10") end,
-              {description = "+10%", group = "hotkeys"}),
-    awful.key({ }, "XF86MonBrightnessDown", function () os.execute("xbacklight -dec 10") end,
-              {description = "-10%", group = "hotkeys"}),
-            
-    awful.key({ }, "XF86AudioRaiseVolume", function () os.execute("pamixer -i5") end,
-              {description = "-10%", group = "hotkeys"}),
-    awful.key({ }, "XF86AudioLowerVolume", function () os.execute("pamixer -d5") end,
-              {description = "-10%", group = "hotkeys"}),
-    awful.key({ }, "XF86AudioMute", function () os.execute("pamixer -t") end,
-              {description = "-10%", group = "hotkeys"})
+        {description = "(un)maximize horizontally", group = "client"})
 
 
 )

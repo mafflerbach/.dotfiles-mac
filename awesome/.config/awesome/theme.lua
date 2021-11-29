@@ -16,43 +16,43 @@ theme.font          = "JetBrains Mono Medium Nerd Font 10"
 theme.material          = "Material Design Icons 15"
 theme.wibar          = "Ubuntu 11"
 
-theme.bg_normal     = "#180c1e"
-theme.bg_focus      = "#180c1e"
-theme.bg_urgent     = "#634BCA99"
-theme.bg_minimize   = "#634BCA99"
+theme.bg_normal     = "#061130"
+theme.bg_focus      = "#061130"
+theme.bg_urgent     = "#6F6EB099"
+theme.bg_minimize   = "#6F6EB099"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#e3c7e9"
-theme.fg_focus      = "#e3c7e9"
-theme.fg_urgent     = "#e3c7e9"
-theme.fg_minimize   = "#e3c7e9"
+theme.fg_normal     = "#dcc4d6"
+theme.fg_focus      = "#dcc4d6"
+theme.fg_urgent     = "#dcc4d6"
+theme.fg_minimize   = "#dcc4d6"
 
 theme.useless_gap   = dpi(3)
 theme.border_width  = dpi(1)
 theme.border_normal = "#000000"
-theme.border_focus  = "#e3c7e9"
-theme.border_marked = "#BB3EBA99"
+theme.border_focus  = "#dcc4d6"
+theme.border_marked = "#97679299"
 
 
-theme.bg_widget1="#634BCA99"
-theme.bg_widget2="#A12AA299"
-theme.bg_widget3="#BB3EBA99"
-theme.bg_widget4="#9E62D599"
-theme.bg_widget5="#DB5ED499"
-theme.bg_widget6="#689FF399"
-theme.bg_widget7="#E3C7E999"
-theme.bg_widget8="#9E8BA399"
+theme.bg_widget1="#6F6EB099"
+theme.bg_widget2="#7279C399"
+theme.bg_widget3="#97679299"
+theme.bg_widget4="#8F77AF99"
+theme.bg_widget5="#9E77AE99"
+theme.bg_widget6="#A386B999"
+theme.bg_widget7="#DCC4D699"
+theme.bg_widget8="#9A899599"
 
-theme.fg_widget1="#634BCA99"
-theme.fg_widget2="#A12AA299"
-theme.fg_widget3="#BB3EBA99"
-theme.fg_widget4="#9E62D599"
-theme.fg_widget5="#DB5ED499"
-theme.fg_widget6="#689FF399"
-theme.fg_widget7="#E3C7E999"
-theme.fg_widget8="#9E8BA399"
+theme.fg_widget1="#6F6EB099"
+theme.fg_widget2="#7279C399"
+theme.fg_widget3="#97679299"
+theme.fg_widget4="#8F77AF99"
+theme.fg_widget5="#9E77AE99"
+theme.fg_widget6="#A386B999"
+theme.fg_widget7="#DCC4D699"
+theme.fg_widget8="#9A899599"
 
-theme.titlebar_bg= "#e3c7e9"
+theme.titlebar_bg= "#dcc4d6"
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:
@@ -120,7 +120,7 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = "/home/maren/.dotfiles/wallpaper/91g28yeoz1a61.jpg"
+theme.wallpaper = "/home/maren/.dotfiles/wallpaper/Fuji-dawn.png"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."default/layouts/fairhw.png"

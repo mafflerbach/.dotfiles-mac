@@ -19,7 +19,7 @@ sed -i "s/$color/$hex$alpha/g" /tmp/theme.lua
 echo "replace $color $hex$alpha"
 
 magick convert /home/maren/.config/awesome/icons/display/mask-right.png  -alpha set  -channel RGBA \
-  -fuzz 50%  -fill "$hex$alpha" -opaque black /home/maren/.dotfiles/awesome/.config/awesome/icons/display/$i-l.png 
+  -fuzz 50%  -fill "$hex$alpha" -opaque black /home/maren/.config/awesome/icons/display/$i-l.png 
 
 echo "generate $i-l.png"
 magick convert /home/maren/.config/awesome/icons/display/mask-left.png  -alpha set  -channel RGBA \
@@ -30,9 +30,11 @@ echo "generate $i-r.png"
 echo ""
 done <<< "$colors"
 
+
 background=$(yq e '.special.background' ~/.cache/wal/colors.yml )
 foreground=$(yq e '.special.foreground' ~/.cache/wal/colors.yml )
 wallpaper=$(cat ~/.cache/wal/wal)
+
 
 sed -i "s#WALLPAPER#$wallpaper#g" /tmp/theme.lua
 sed -i "s/BGCOLOR/$background/g" /tmp/theme.lua

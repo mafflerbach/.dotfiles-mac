@@ -20,7 +20,6 @@ local lain = require("lain")
 local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
-local charitable = require("charitable")
 
 require("awful.hotkeys_popup.keys")
 
@@ -351,9 +350,6 @@ local mynetup3 = lain.widget.net {
 
 
 
- spacer_widget =  wibox.container.background(wibox.container.margin(wibox.widget { wibox.widget.textbox(markup.font(beautiful.wibar, markup.fg.color(beautiful.fg_normal, "  " ))), layout = wibox.layout.align.horizontal }, 0, 0), beautiful.bg_widget6)
-
-
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
                     awful.button({ }, 1, function(t) t:view_only() end),
@@ -408,48 +404,31 @@ end
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
-local tags = charitable.create_tags(
-
-   { "","","","", "", "", "", "", "" },
-   {
-      awful.layout.layouts[1],
-      awful.layout.layouts[1],
-      awful.layout.layouts[1],
-      awful.layout.layouts[1],
-      awful.layout.layouts[1],
-      awful.layout.layouts[1],
-      awful.layout.layouts[1],
-      awful.layout.layouts[1],
-      awful.layout.layouts[1],
-   },
-   {
-        "/home/maren/.config/awesome/icons/bar/console-icon.png",
-        "/home/maren/.config/awesome/icons/bar/application-icon.png",
-        "/home/maren/.config/awesome/icons/bar/message-reply-text-icon.png",
-        "/home/maren/.config/awesome/icons/bar/email-open-icon.png",
-        "/home/maren/.config/awesome/icons/bar/circle-outline-5-icon.png",
-        "/home/maren/.config/awesome/icons/bar/circle-outline-6-icon.png",
-        "/home/maren/.config/awesome/icons/bar/circle-outline-7-icon.png",
-        "/home/maren/.config/awesome/icons/bar/circle-outline-8-icon.png",
-        "/home/maren/.config/awesome/icons/bar/circle-outline-9-icon.png",
-    })
 
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
     -- Each screen has its own tag table.
-    for i = 1, #tags do
-         if not tags[i].selected then
-             tags[i].screen = s
-             tags[i]:view_only()
-             break
-         end
-    end
-    s.scratch = awful.tag.add('scratch-' .. s.index, {})
-    s.mytaglist = awful.widget.taglist({
-       screen = s,
-       buttons = taglist_buttons,
-       source = function(screen, args) return tags end,
+    awful.tag.add("", {
+        icon = "/home/maren/.config/awesome/icons/bar/circle-outline-1-icon.png",
+        screen = s,
+        layout             = awful.layout.suit.tile,
+    selected           = true
+    })
+    awful.tag.add("", {
+        icon = "/home/maren/.config/awesome/icons/bar/circle-outline-2-icon.png",
+        screen = s,
+        layout             = awful.layout.suit.tile,
+    })
+    awful.tag.add("", {
+        icon = "/home/maren/.config/awesome/icons/bar/circle-outline-3-icon.png",
+        screen = s,
+        layout             = awful.layout.suit.tile,
+    })
+    awful.tag.add("", {
+        icon = "/home/maren/.config/awesome/icons/bar/circle-outline-4-icon.png",
+        screen = s,
+        layout             = awful.layout.suit.tile,
     })
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -732,17 +711,29 @@ for i = 1, 9 do
     globalkeys = gears.table.join(globalkeys,
         -- View tag only.
         awful.key({ modkey }, "#" .. i + 9,
-                  function () charitable.select_tag(tags[i], awful.screen.focused()) end,
+                  function ()
+                        local screen = awful.screen.focused()
+                        local tag = screen.tags[i]
+                        if tag then
+                           tag:view_only()
+                        end
+                  end,
                   {description = "view tag #"..i, group = "tag"}),
         -- Toggle tag display.
         awful.key({ modkey, "Control" }, "#" .. i + 9,
-                  function () charitable.toggle_tag(tags[i], awful.screen.focused()) end,
+                  function ()
+                      local screen = awful.screen.focused()
+                      local tag = screen.tags[i]
+                      if tag then
+                         awful.tag.viewtoggle(tag)
+                      end
+                  end,
                   {description = "toggle tag #" .. i, group = "tag"}),
         -- Move client to tag.
         awful.key({ modkey, "Shift" }, "#" .. i + 9,
                   function ()
                       if client.focus then
-                          local tag = tags[i]
+                          local tag = client.focus.screen.tags[i]
                           if tag then
                               client.focus:move_to_tag(tag)
                           end
@@ -753,7 +744,7 @@ for i = 1, 9 do
         awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
                   function ()
                       if client.focus then
-                          local tag = tags[i]
+                          local tag = client.focus.screen.tags[i]
                           if tag then
                               client.focus:toggle_tag(tag)
                           end
