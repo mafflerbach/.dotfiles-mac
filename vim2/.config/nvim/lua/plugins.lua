@@ -16,7 +16,7 @@ return require('packer').startup(function()
     use 'preservim/nerdcommenter'
 
     use  {
-'kaicataldo/material.vim'
+        'kaicataldo/material.vim'
     }
     use 'dylanaraps/wal.vim'
     use {
@@ -25,7 +25,7 @@ return require('packer').startup(function()
             'nvim-lua/plenary.nvim'
         }
     }
-use 'mogelbrod/vim-jsonpath'
+    use 'mogelbrod/vim-jsonpath'
     use 'tyru/open-browser.vim'
 
     use {
@@ -52,16 +52,17 @@ use 'mogelbrod/vim-jsonpath'
     use 'tpope/vim-fugitive'
     use 'tpope/vim-projectionist'
 
-use {
-    'kyazdani42/nvim-tree.lua',
-    requires = 'kyazdani42/nvim-web-devicons',
-  config = function() require'nvim-tree'.setup { diagnostics = { enable = true } } end
-}
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = function() require'nvim-tree'.setup { diagnostics = { enable = true } } end
+    }
 
     use {
         'neovim/nvim-lspconfig',
         requires = {
-            'kabouzeid/nvim-lspinstall',
+            'neovim/nvim-lspconfig',
+            'williamboman/nvim-lsp-installer',
             'mfussenegger/nvim-jdtls',
             'hrsh7th/nvim-compe',
             'simrat39/rust-tools.nvim',
@@ -92,14 +93,14 @@ use {
         branch = 'main',
     }
 
-use "ellisonleao/glow.nvim"
+    use "ellisonleao/glow.nvim"
 
-use 'psliwka/vim-smoothie'
-use 'camspiers/animate.vim'
+    use 'psliwka/vim-smoothie'
+    use 'camspiers/animate.vim'
 
 
-use 'vim-test/vim-test'
-use 'vim-pandoc/vim-pandoc'
-use 'vim-pandoc/vim-pandoc-syntax'
+    use 'vim-test/vim-test'
+    use 'vim-pandoc/vim-pandoc'
+    use 'vim-pandoc/vim-pandoc-syntax'
 end)
 
