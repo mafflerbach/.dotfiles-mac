@@ -27,26 +27,16 @@ parser_config.jbehave = {
 
 
 require'nvim-treesitter.configs'.setup {
-    highlight = {enable = true},
-  playground = {
-    enable = true,
-    disable = {},
-    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-    persist_queries = false, -- Whether the query persists across vim sessions
-    keybindings = {
-      toggle_query_editor = 'o',
-      toggle_hl_groups = 'i',
-      toggle_injected_languages = 't',
-      toggle_anonymous_nodes = 'a',
-      toggle_language_display = 'I',
-      focus_language = 'f',
-      unfocus_language = 'F',
-      update = 'R',
-      goto_node = '<cr>',
-      show_help = '?',
-    },
-  }
-
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
 }
 require("dap_configuration")
 require("dapui").setup()
@@ -171,12 +161,17 @@ map <leader>3 "qyiW
 map <leader>pri :!lp "%" -o print-quality=3
 map <leader>rp :cfdo %s/<C-R>a/<C-R>s/g
 
+map <F2> :lua require('rest-nvim').run()<CR>
+
+
 nmap gx :silent execute "!xdg-open " . shellescape("<cWORD>")<CR>
 
 
 map <leader>date :put =strftime('# %a %d %b %Y #')
 
-let g:ActualTicket = "INTS-5335"
+let g:ActualTicket = "INTS-5866"
+
+"
 " https://google.com
 
 
@@ -211,5 +206,27 @@ augroup END
 
 au BufRead,BufNewFile *.logs set filetype=logs
 
+au BufNewFile,BufRead *.pre call SetVimPresentationMode()
+function SetVimPresentationMode()
+set filetype=pre
+    nnoremap <buffer> <Right> :n <CR>
+    nnoremap <buffer> <Left> :N <CR>
+
+    nnoremap <buffer> <Left> :N <CR>
+
+nmap <leader>h :.!toilet -w 200 -f emboss<CR>
+nmap <leader>H :.!toilet -w 200 -f smblock<CR>
+nmap <leader>b :.!toilet -w 200 -f term -F border<CR>
+
+nmap <leader>5 :Goyo 70%x100%<CR>
+nmap <leader>0 :Goyo 100%x100%<CR>
+
+
+endfunction
+
+
+
+
 
 set rtp+=~/.fzf
+

@@ -184,6 +184,51 @@ awful.screen.connect_for_each_screen(function(s)
     local cpustatus = require("cpustatus")
     local memstatus = require("memorystatus")
 
+
+	s:connect_signal("swapped", function(self, other_s, was_op_on_self)
+
+        naughty.notify({ 
+            preset = naughty.config.presets.critical,
+            title = "Debug",
+            text = "SWAPP EVENT",
+            screen=focused_screen}
+        )
+		-- swapped is called twice for each screen as 'self'. If
+		-- 'was_op_on_self' is true that 'self' was the screen on the left
+		-- side of the expression s1:swap(s2)
+		if not was_op_on_self then
+			return
+		end
+
+		for _, t in ipairs(self.tags) do
+			local fallback_tag = awful.tag.find_by_name(other_s, t.name)
+			local self_clients = t:clients()
+			local other_clients
+
+			-- If we don't have a tag by the same name, we'll just "throw" the
+			-- client to the first tag on the other screen
+			if not fallback_tag then
+				fallback_tag = other_s.tags[1]
+				other_clients = {}
+			else
+				other_clients = fallback_tag:clients()
+			end
+
+
+			for _, c in ipairs(self_clients) do
+				c:move_to_tag(fallback_tag)
+			end
+
+			for _, c in ipairs(other_clients) do
+				c:move_to_tag(t)
+			end
+		end
+	end)
+
+
+
+
+
     require("tagssettings").setup_tags(s);
 
 
@@ -258,6 +303,13 @@ awful.screen.connect_for_each_screen(function(s)
             wibox.widget.systray(),
         },
     }
+
+
+
+
+
+
+
 end)
 -- }}}
 
@@ -340,6 +392,29 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
 
+
+    awful.key({ modkey, "Shift", "Control"   }, "j", 
+function (c) 
+
+
+    local focused_screen = awful.screen.focused()
+    local s = focused_screen.get_next_in_direction(focused_screen, "right")
+    if s then
+        naughty.notify({ 
+            preset = naughty.config.presets.critical,
+            title = "Debug",
+            text = "Target screen: " .. tostring(s.index) .. "\n" .. "Focused screen: " .. focused_screen.index,
+            screen=focused_screen}
+        )
+focused_screen:swap(s)
+
+    end
+
+end,
+              {description = "select previous", group = "layout"}),
+
+
+
     awful.key({ modkey, "Control" }, "n",
               function ()
                   local c = awful.client.restore()
@@ -390,12 +465,12 @@ awful.key({ modkey}, "b",
     awful.key({ }, "XF86MonBrightnessDown", function () os.execute("xbacklight -dec 10") end,
               {description = "-10%", group = "hotkeys"}),
             
-    awful.key({ }, "XF86AudioRaiseVolume", function () os.execute("pamixer -i5") end,
+    awful.key({ }, "XF86AudioRaiseVolume", function () os.execute("pamixer -i2") end,
               {description = "-10%", group = "hotkeys"}),
-    awful.key({ }, "XF86AudioLowerVolume", function () os.execute("pamixer -d5") end,
-              {description = "-10%", group = "hotkeys"}),
+    awful.key({ }, "XF86AudioLowerVolume", function () os.execute("pamixer -d2") end,
+              {description = "-5%", group = "hotkeys"}),
     awful.key({ }, "XF86AudioMute", function () os.execute("pamixer -t") end,
-              {description = "-10%", group = "hotkeys"}),
+              {description = "-5%", group = "hotkeys"}),
 
     awful.key({ modkey }, "x",
               function ()
@@ -650,7 +725,6 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --
 --
 --
-
 
 awful.tag.history.restore = function() end
 
