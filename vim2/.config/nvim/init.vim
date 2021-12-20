@@ -38,6 +38,7 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
+
 require("dap_configuration")
 require("dapui").setup()
 require("bubbles")

@@ -206,6 +206,7 @@ function M.setup()
       extendedClientCapabilities = extendedClientCapabilities;
     }
 
+
     -- UI
     local finders = require'telescope.finders'
     local sorters = require'telescope.sorters'

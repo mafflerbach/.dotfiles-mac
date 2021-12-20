@@ -1,4 +1,4 @@
 # config file for openfortivpn, see man openfortivpn(1)
 host = 185.97.227.16
 port = 443
-trusted-cert=8858c9ec766f9a8d631e74b2e144eeb5ca6fca4b20f7d389901b25fe116efeae
+trusted-cert=c8d98b00921baf62144dc5c4b93f3cd7ff204d0adfa7e12cf6ae2f8c864bbf87

@@ -13,6 +13,7 @@ function! Show_logs(file)
     setlocal buftype=nofile
     :execute "silent !{bash ~/.local/bin/collection/transformTestOutput.sh ".a:file. "}"
     :r /tmp/testOutput.md
+    :set ft=logs
     normal! G
 endfunction
 
@@ -21,9 +22,10 @@ function! RunGradleTest(file)
     bd! __Potion_Bytecode__
     split __Potion_Bytecode__
     normal! ggdG
-    setlocal buftype=nofile
+    setlocal buftype=logs
     :execute "silent !{bash ~/.local/bin/collection/runGradleTest.sh ".a:file. "}"
     :r /tmp/gradlebuild
+    :set ft=logs
     normal! G
 endfunction
 
@@ -41,9 +43,10 @@ function! RunAllGradleTest()
     bd! __Potion_Bytecode__
     split __Potion_Bytecode__
     normal! ggdG
-    setlocal buftype=nofile
+    setlocal buftype=logs
     :execute "silent !{ gradle jbehave 2>&1 /tmp/build }"
     :r /tmp/build
+    :set ft=logs
     normal! G
 endfunction
 
@@ -53,7 +56,7 @@ function! RunMvnTest()
     bd! __Potion_Bytecode__
     vsplit __Potion_Bytecode__
     normal! ggdG
-    setlocal buftype=nofile
+    setlocal buftype=logs
     if filereadable(expand("build.gradle"))
         :execute "silent !{ gradle jbehave 2>&1 |tee /tmp/gradlebuild }"
         :r /tmp/gradlebuild
@@ -62,6 +65,7 @@ function! RunMvnTest()
         :r /tmp/build
     endif
 
+    :set ft=logs
     normal! G
 endfunction
 
@@ -96,7 +100,7 @@ function! RunMvnThisTest(file)
     bd! __Potion_Bytecode__
     vsplit __Potion_Bytecode__
     normal! ggdG
-    setlocal buftype=nofile
+    setlocal buftype=logs
 
     if filereadable(expand("build.gradle"))
         :execute "silent !{bash ~/.local/bin/collection/runGradleTest.sh ".a:file. "}"
@@ -105,6 +109,7 @@ function! RunMvnThisTest(file)
         :execute "silent !{bash ~/.local/bin/collection/runTests.sh ".a:file. "}"
         :r /tmp/build
     endif
+    :set ft=logs
     normal! G
 endfunction
 

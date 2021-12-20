@@ -6,21 +6,16 @@ username=$(pass show Sixt/jenkinsToken | tail -n1)
 token=$(pass show Sixt/jenkinsToken | head -n1)
 export JENKINS_AUTH="$username:$token"
 
-export JENKINS_JAR="$HOME/.local/bin/jenkins-cli.jar"
+export JENKINS_JAR="$HOME/.dotfiles/scripts/.local/bin/jenkins-cli.jar"
 
 export JENKINS_EXEC="java -jar $JENKINS_JAR"
 export JENKINS_CLI="$JENKINS_EXEC -auth @$JENKINS_AUTH -s $JENKINS_URL"
 
 alias jenkins-cli="$JENKINS_CLI"
 
-if [ "$(find $HOME'/dotfiles/scripts/data/jeninsJobList' -ctime +7)" ]; then
-    echo "fetch joblist"
-    $JENKINS_EXEC -auth $JENKINS_AUTH -s $JENKINS_URL list-jobs > $HOME/dotfiles/scripts/data/jeninsJobList
-fi
-
 option=$(echo -e "show\nbuild" | rofi -dmenu -theme $HOME/.config/rofi/rofi.rasi)
 
-job=$(cat "$HOME/dotfiles/scripts/data/empty" "$HOME/dotfiles/scripts/data/jeninsJobList" | rofi -dmenu -theme $HOME/.config/rofi/rofi.rasi)
+job=$(cat "$HOME/.dotfiles/scripts/.local/bin/collection/date/empty" "$HOME/.dotfiles/scripts/.local/bin/collection/data/jeninsJobList" | rofi -dmenu -theme $HOME/.config/rofi/rofi.rasi)
 
 echo $job
 if [ "$job" != "" ]; then
@@ -38,4 +33,9 @@ if [ "$job" != "" ]; then
 
     qutebrowser "$link"
 fi
+
+
+
+
+
 

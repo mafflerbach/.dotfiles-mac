@@ -204,7 +204,7 @@ alias bigFiles="du -a . | sort -n -r | head -n 20"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export BROWSER=/usr/bin/qutebrowser
-export DISPLAY=:0.0
+export DISPLAY=:0
 
 alias mpv="devour mpv --input-ipc-server=/tmp/mpvsocket "
 alias qutebrowser="devour qutebrowser"

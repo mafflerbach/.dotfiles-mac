@@ -1,5 +1,4 @@
-DEEN|/home/maren/.local/bin/collection/translate.sh -e
-ENDE|/home/maren/.local/bin/collection/translate.sh -d
+
 Pause MPV|/home/maren/.local/bin/collection/mpv.sh -s
 Resume MPV|/home/maren/.local/bin/collection/mpv.sh -r
 dark|/home/maren/.local/bin/collection/themeswitcher.sh -d
@@ -22,8 +21,8 @@ workplace wfh|autorandr wfh
 screen Area|maim -s /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png
 screen window|maim -i $(xdotool getactivewindow) /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png
 screen all|sleep 2; maim /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png
-connect vpn|/home/maren/.local/bin/collection/vpn.sh -c
-disconnect vpn|/home/maren/.local/bin/collection/vpn.sh -k
+connect vpn|/home/maren/.local/bin/collection/vpn2.sh -c
+disconnect vpn|/home/maren/.local/bin/collection/vpn2.sh -k
 play | /home/maren/.local/bin/collection/playUrl.sh
 
 

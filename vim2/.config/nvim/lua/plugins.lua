@@ -14,6 +14,8 @@ return require('packer').startup(function()
     use 'junegunn/vim-easy-align'
 
     use 'preservim/nerdcommenter'
+    use 'elkowar/yuck.vim'
+
 
     use  {
         'kaicataldo/material.vim'

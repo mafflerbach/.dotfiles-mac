@@ -26,7 +26,7 @@ while :; do
 
             # create new tmux session named VPN and establish vpn connection
             sleep 2
-            tmux new-session -d -s "VPN"  sudo /usr/bin/openfortivpn -c /home/maren/.dotfiles/scripts/.local/bin/collection/data/config           -u "$user"  -p "$pass"
+            tmux new-session -d -s "VPN"  sudo /usr/bin/openfortivpn -c /home/maren/.dotfiles/scripts/.local/bin/collection/data/config -u "$user"  -p "$pass"
             sleep 1
             # send root password to system auth
             tmux send-keys -t "VPN:0" $sysPass Enter
