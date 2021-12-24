@@ -1,0 +1,36 @@
+[colors]
+background = #0C0C15
+background-alt = #0C0C15
+foreground = #a0c3e9
+foreground-alt = #a0c3e9
+primary = #2E4674
+secondary = #2E5B98
+alert = #BE4976
+
+line-color = #2E4674
+
+border-color = #0C0C15
+
+cpu-format-underline = #4C5E9D
+mem-format-underline = #406BC6
+date-format-underline = #7088a3
+
+filesystem-mounted = #BE4976
+wifi-format-connected-underline = #2E5B98
+eth-format-connected-underline = #BE4976
+format-volume-underline = #2E4674
+
+label-muted-foreground = #666
+
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+
+format-charging-underline = #42A5D9
+
+
+temperature-format-underline = #a0c3e9

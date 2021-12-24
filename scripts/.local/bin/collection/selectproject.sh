@@ -5,7 +5,7 @@ echo "export FQSN=$FQSN" > /home/maren/exportedVars
 echo $FQSN | xsel --clipboard --input
 
 devDir=$(ls -1t /home/maren/development)
-solutionsDir=$(ls -1t /home/maren/development/solutions.common.configuration/src)
+solutionsDir=$(ls -1t /home/maren/development/solutions.common.configuration.dev/src)
 
 FQSN=$(echo -e $devDir"\n"$solutionsDir |  rofi -dmenu -theme ~/.config/rofi/rofi.rasi)
 clean_name=$(echo $FQSN | tr "./" "__")

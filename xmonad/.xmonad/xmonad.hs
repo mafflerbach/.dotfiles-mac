@@ -19,7 +19,7 @@ import qualified Data.Map        as M
 import XMonad.Layout.Spacing
 import XMonad.Layout.MagicFocus
 import XMonad.Actions.CycleWS (moveTo, shiftTo, shiftNextScreen, WSType(..), nextScreen, prevScreen)
-
+import System.IO
 import qualified DBus as D
 import qualified DBus.Client as D
 import qualified Codec.Binary.UTF8.String as UTF8
@@ -83,8 +83,8 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
-myNormalBorderColor  = "#dddddd"
-myFocusedBorderColor = "#ff0000"
+myNormalBorderColor  = "#0c0c1a"
+myFocusedBorderColor = "#E0693A"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -196,7 +196,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
     --
     [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_r, xK_e, xK_w] [0..]
+        | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 
@@ -299,28 +299,66 @@ myStartupHook = do
         spawnOnce  "sh /home/maren/.local/bin/collection/xidelhook.sh &"
         spawnOnce  "killall udiskie ;  udiskie -t"
         spawnOnce  "wal --theme /home/maren/.cache/wal/colors.json"
-        spawnOnce "killall trayer; trayer --edge top --align right --widthtype request --padding 6  --expand true --monitor 1 --transparent true --alpha 255 --tint 0x282c34  --height 22 &"
+        --spawnOnce "killall trayer; trayer --edge top --align right --widthtype request --padding 6  --expand true --monitor 1 --transparent true --alpha 255 --tint 0x282c34  --height 22 &"
         spawnOnce "pulseaudio -k; sleep 2; pulseaudio & killall pasystray ; pasystray &"
         spawnOnce "nm-applet &"
         spawnOnce "blueman-applet"
+        spawnOnce "bash /home/maren/.config/polybar/launch.sh &"
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
 
 -- Run xmonad with the settings you specify. No need to modify this.
 --
+gray      = "#E0693A"
+gray2     = "#8C484E"
+red       = "#8d7776"
+blue      = "#6B3B54"
+white     = "#caaba9"
 
 
 
+    -- Override the PP values as you would like (see XMonad.Hooks.DynamicLog documentation)
+
+main :: IO ()
 mySort = getSortByXineramaRule
-
 main = do 
+        --xmproc0 <- spawnPipe "xmobar -x0 /home/maren/.config/xmobar/xmobarrc0 -A 4"
+        --xmproc1 <- spawnPipe "xmobar -x1 /home/maren/.config/xmobar/xmobarrc0 -A 4"
+        --xmproc2 <- spawnPipe "xmobar -x2 /home/maren/.config/xmobar/xmobarrc0 -A 4"
 
-        xmproc0 <- spawnPipe "xmobar -x0 /home/maren/.config/xmobar/xmobarrc0 -A 4"
-        xmproc1 <- spawnPipe "xmobar -x1 /home/maren/.config/xmobar/xmobarrc0 -A 4"
-        xmproc2 <- spawnPipe "xmobar -x2 /home/maren/.config/xmobar/xmobarrc0 -A 4"
+        dbus <- D.connectSession
+        -- Request access to the DBus name
+        D.requestName dbus (D.busName_ "org.xmonad.Log")
+            [D.nameAllowReplacement, D.nameReplaceExisting, D.nameDoNotQueue]
 
-        xmonad $ ewmh  $ docks $ def {
-      -- simple stuff
+        xmonad $ewmh  $ docks $ defaults { logHook = dynamicLogWithPP (myLogHook2 dbus)} `additionalKeysP` myAddKeys
+
+
+myLogHook2 :: D.Client -> PP
+myLogHook2 dbus = def
+    { ppOutput = dbusOutput dbus
+    , ppCurrent = wrap ("*%{F" ++ blue ++ "} ") " %{F-}"
+    , ppVisible = wrap ("-%{F" ++ gray ++ "} ") " %{F-}"
+    , ppUrgent = wrap ("%{F" ++ red ++ "} ") " %{F-}"
+    , ppHidden = wrap ("%{F" ++ gray2 ++ "} ") " %{F-}"
+  --  , ppTitle = wrap ("%{F" ++ gray2 ++ "} ") " %{F-}"
+    , ppOrder  = \(ws:l:t) -> [ws]
+, ppSort = getSortByXineramaRule
+    }
+-- Emit a DBus signal on log updates
+dbusOutput :: D.Client -> String -> IO ()
+dbusOutput dbus str = do
+    let signal = (D.signal objectPath interfaceName memberName) {
+            D.signalBody = [D.toVariant $ UTF8.decodeString str]
+        }
+    D.emit dbus signal
+  where
+    objectPath = D.objectPath_ "/org/xmonad/Log"
+    interfaceName = D.interfaceName_ "org.xmonad.Log"
+    memberName = D.memberName_ "Update"
+
+defaults = def {
+
         terminal           = myTerminal,
         focusFollowsMouse  = myFocusFollowsMouse,
         clickJustFocuses   = myClickJustFocuses,
@@ -334,27 +372,13 @@ main = do
         keys               = myKeys,
         mouseBindings      = myMouseBindings,
 
-
-
-
-      -- hooks, layouts
         layoutHook         = myLayout,
         manageHook = ( isFullscreen --> doFullFloat ) <+> myManageHook <+> manageDocks ,
         handleEventHook    = myEventHook,
-        logHook = myLogHook <+> dynamicLogWithPP xmobarPP
-                        { 
-                        ppOutput = \x -> hPutStrLn xmproc0 x  >> hPutStrLn xmproc1 x  >> hPutStrLn xmproc2 x
-                        , ppCurrent = xmobarColor "#ffffff" "" . wrap "[" "]" -- Current workspace in xmobar
-                        , ppVisible = xmobarColor "#ffffff" ""  . wrap "-" "-"               -- Visible but not current workspace
-                        , ppHidden = xmobarColor "#ffffff" "" . wrap "*" ""   -- Hidden workspaces in xmobar
-                        , ppSep =  "|"          -- Separators in xmobar
-                        , ppUrgent = xmobarColor "#ffffff" "" . wrap "!" "!"  -- Urgent workspace
-                        , ppExtras  = [windowCount]                           -- # of windows current workspace
-                        , ppOrder  = \(ws:l:t) -> [ws]
-                        , ppSort = getSortByXineramaRule
-                        },
         startupHook        = myStartupHook
-    } `additionalKeysP` myAddKeys
+}
+
+
 
 -- | Finally, a copy of the default bindings in simple textual tabular format.
 help :: String

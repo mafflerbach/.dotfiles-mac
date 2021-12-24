@@ -24,10 +24,11 @@ configuration {
 
 window {
     border: 						1;
-    border-color: 					BGCOLOR;
+    border-color: 					COLOR8;
     padding: 						10;
-    width: 							50%;
-    height: 						100%;
+    width: 							70%;
+    height: 						50%;
+    location:                       center;
     background-color:             	BGCOLOR;
 }
 

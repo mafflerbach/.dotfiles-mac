@@ -1,6 +1,7 @@
 #!/bin/bash
 
-alpha=ff
+alpha=00
+alpha2=99
 
 colors=$(yq e '.colors' ~/.cache/wal/colors.yml)
 
@@ -14,8 +15,8 @@ while IFS= read -r line ; do
     color=$(echo $line | cut -f1 -d" ")
     hex=$(echo $line | cut -f2 -d" ")
 
-sed -i "s/$color/$hex$alpha/g" /tmp/rofi.rasi
-
+sed -i "s/$color/$hex$alpha2/g" /tmp/rofi.rasi
+sensord
 
 done <<< "$colors"
 

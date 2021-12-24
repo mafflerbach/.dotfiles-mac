@@ -22,11 +22,10 @@ esac
 done
 
       /home/maren/.local/bin/collection/rofiThemeGenerator.sh
-      /home/maren/.local/bin/collection/awesomeThemeGenerator.sh
+      #/home/maren/.local/bin/collection/awesomeThemeGenerator.sh
       /home/maren/.local/bin/collection/tmuxThemeGenerator.sh
 qutebrowser :config-source
+      /home/maren/.local/bin/collection/polybarThemegenerator.sh
       /home/maren/.local/bin/collection/xmobarThemeGenerator.sh
-#      /home/maren/.dotfiles/scripts/xmobarThemeGenerator.sh
-
 
 feh --bg-center /home/maren/.dotfiles/wallpaper/$wallpaper
