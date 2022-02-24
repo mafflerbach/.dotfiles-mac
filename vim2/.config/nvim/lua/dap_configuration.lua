@@ -1,47 +1,41 @@
-local config = {}
-
-
-config['init_options'] = {
-  bundles = {
-    vim.fn.glob("/home/maren/Download/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar")
-  };
-}
-
-config['on_attach'] = function(client, bufnr)
-  -- With `hotcodereplace = 'auto' the debug adapter will try to apply code changes
-  -- you make during a debug session immediately.
-  -- Remove the option if you do not want that.
-  require('jdtls').setup_dap({ hotcodereplace = 'auto' })
-end
-
-
 local dap = require('dap')
-dap.configurations.java = {
-    {
-        type = 'java';
-        request = 'attach';
-        name = "Debug (Attach) - Remote";
-        hostName = "127.0.0.1";
-        port = 5005;
-    },
-}
+local sidebar = require('sidebar')
 
-dap.configurations.jbehave = {
-    {
-        type = 'jbehave';
-        request = 'attach';
-        name = "Debug (Attach) - Remote";
-        hostName = "127.0.0.1";
-        port = 5005;
-    },
-}
-dap.adapters.lldb = {
-    type = 'executable',
-    command = '/bin/lldb-vscode', -- adjust as needed
-    name = "lldb"
-}
+dap.defaults.fallback.terminal_win_cmd = ':belowright new | resize 10 | setlocal bt=nofile bh=wipe nobl noswapfile nu'
 
-require('dap')
-vim.fn.sign_define('DapBreakpoint', {text='🔴', texthl='', linehl='', numhl=''})
-vim.fn.sign_define('DapLogPoint', {text='⭐️', texthl='DAPLogPointSign', linehl='', numhl='DAPLogPointSign'})
-vim.fn.sign_define('DapStopped', {text='➡️l', texthl='', linehl='debugPC', numhl=''})
+vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'DapBreakpoint', linehl = '', numhl = '' })
+vim.fn.sign_define('DapStopped', { text = '', texthl = 'DapStopped', linehl = '', numhl = '' })
+
+require('dapui').setup({
+    icons = { expanded = '▾', collapsed = '▸' },
+
+    mappings = {
+        expand = { '<CR>', '<2-LeftMouse>' },
+        open = 'o',
+        remove = 'd',
+        edit = 'e',
+        repl = 'r',
+    },
+
+    sidebar = {
+        elements = {
+            { id = 'scopes', size = 0.5 },
+            { id = 'stacks', size = 0.5 },
+        },
+        size = sidebar.sidebar_width,
+        position = sidebar.sidebar_position,
+    },
+
+    floating = {
+        max_height = nil,
+        max_width = nil,
+        border = 'single',
+        mappings = {
+            close = { 'q', '<Esc>' },
+        },
+    },
+
+    windows = { indent = 1 },
+})
+
+require('nvim-dap-virtual-text').setup()

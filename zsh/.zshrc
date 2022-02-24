@@ -99,6 +99,7 @@ plugins=(
   )
 
 source $ZSH/oh-my-zsh.sh
+source ~/.oh-my-zsh/plugins/arduino-cli.zsh
 source ~/.dotfiles/misc/zsh/ghCompletion.sh
 # User configuration
 
@@ -214,6 +215,10 @@ alias get_idf='. $HOME/development/esp-idf/export.sh'
 alias vim='/usr/sbin/nvim'
 alias ls='exa --icons --git -a'
 
+function config {
+    cd ~/.dotfiles; vim
+}
+
 function restartPod {
     pod=$(kubectl get pods | fzf); kubectl delete pod $(echo $pod | cut -f1 -d' ')
 }
@@ -231,6 +236,7 @@ function context {
 function podLog {
 pod=$(kubectl get pods | fzf); kubectl logs $(echo $pod | cut -f1 -d' ') > output.logs
 }
+
 
 alias listPods='kubectl -n it-integration get pods' 
 

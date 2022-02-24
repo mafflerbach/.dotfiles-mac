@@ -1,6 +1,3 @@
-
-
-
 -- Only required if you have packer configured as `opt`
 
 vim.cmd [[packadd packer.nvim]]
@@ -63,7 +60,6 @@ return require('packer').startup(function()
     use {
         'neovim/nvim-lspconfig',
         requires = {
-            'neovim/nvim-lspconfig',
             'williamboman/nvim-lsp-installer',
             'mfussenegger/nvim-jdtls',
             'hrsh7th/nvim-compe',
@@ -84,15 +80,19 @@ return require('packer').startup(function()
 
     use 'szw/vim-maximizer'
     use 'jremmen/vim-ripgrep'
+    use 'prabirshrestha/async.vim'
+    use 'prabirshrestha/asyncomplete.vim'
+    use 'prabirshrestha/asyncomplete-lsp.vim'
 
     use {
         'yamatsum/nvim-nonicons',
         requires = {'kyazdani42/nvim-web-devicons'}
     }
     use 'rcarriga/nvim-notify'
+
     use {
-        'glepnir/galaxyline.nvim',
-        branch = 'main',
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 
     use "ellisonleao/glow.nvim"
@@ -104,35 +104,41 @@ return require('packer').startup(function()
     use 'vim-test/vim-test'
     use 'vim-pandoc/vim-pandoc'
     use 'vim-pandoc/vim-pandoc-syntax'
+    use 'stevearc/vim-arduino'
+    use 'mfussenegger/nvim-dap'
+    use 'mfussenegger/nvim-jdtls'
+    use 'neovim/nvim-lspconfig'
+    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
 
-use 'junegunn/goyo.vim'
-use {
-  "NTBBloodbath/rest.nvim",
-  requires = { "nvim-lua/plenary.nvim" },
-  config = function()
-    require("rest-nvim").setup({
-      -- Open request results in a horizontal split
-      result_split_horizontal = true,
-      -- Skip SSL verification, useful for unknown certificates
-      skip_ssl_verification = false,
-      -- Highlight request on run
-      highlight = {
-        enabled = true,
-        timeout = 150,
-      },
-      result = {
-        -- toggle showing URL, HTTP info, headers at top the of result window
-        show_url = true,
-        show_http_info = true,
-        show_headers = true,
-      },
-      -- Jump to request line on run
-      jump_to_request = false,
-      env_file = '.env',
-      custom_dynamic_variables = {},
-    })
-  end
-}
+    use 'theHamsta/nvim-dap-virtual-text'
+    use 'junegunn/goyo.vim'
+    use {
+        "NTBBloodbath/rest.nvim",
+        requires = { "nvim-lua/plenary.nvim" },
+        config = function()
+            require("rest-nvim").setup({
+                -- Open request results in a horizontal split
+                result_split_horizontal = true,
+                -- Skip SSL verification, useful for unknown certificates
+                skip_ssl_verification = false,
+                -- Highlight request on run
+                highlight = {
+                    enabled = true,
+                    timeout = 150,
+                },
+                result = {
+                    -- toggle showing URL, HTTP info, headers at top the of result window
+                    show_url = true,
+                    show_http_info = true,
+                    show_headers = true,
+                },
+                -- Jump to request line on run
+                jump_to_request = false,
+                env_file = '.env',
+                custom_dynamic_variables = {},
+            })
+        end
+    }
 
 
 end)

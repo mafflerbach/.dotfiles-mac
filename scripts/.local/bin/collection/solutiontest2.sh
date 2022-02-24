@@ -2,7 +2,7 @@
 
 if [ !"$(find 'data/topicList' -ctime +7)" ]; then
     echo "fetch topicList"
-    curl 'https://kafka-manager-dev.goorange.sixt.com/clusters/kafka-dev/topics' --compressed > /tmp/out.html
+    curl 'https://kafka-manager-dev.goorange.sixt.com/clusters/dev/topics' --compressed > /tmp/out.html
 fi
 
 echo "cat //table/tbody/tr/td//a" |  xmllint --html --shell /tmp/out.html | sed '/^\/ >/d' | sed '/-------/d'|sed 's/<[^>]*.//g' > data/topicList
@@ -39,13 +39,11 @@ echo "Play message $fileName on $topic via support api against $environment"
 if [ "dev" == "$environment" ]; then
     passw=$(pass show Sixt/supportapi/dev | head -n1)
     auth="Authorization: Basic "$passw
-echo     curl --location --request POST 'http://localhost:9090/api/support/'$topic'/replay' \
+curl --location --request POST 'http://localhost:9091/api/support/'$topic'/replay' \
         --header "$(echo $auth)" \
         --header 'Content-Type: application/json' \
         -d "$(echo $content)"
 fi
-
-
 
 
 

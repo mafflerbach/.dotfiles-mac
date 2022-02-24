@@ -5,6 +5,7 @@ export DISPLAY=:0
 export XAUTHORITY=/home/maren/.Xauthority
 ARR=()
 ARR+=("Lock")
+ARR+=("Monitor")
 ARR+=("Suspend")
 ARR+=("Reboot")
 ARR+=("Exit")
@@ -17,6 +18,11 @@ then
     shutdown now
 fi
 
+
+if [ "$CHOICE" == "Monitor" ]
+then
+    xset dpms force off
+fi
 
 if [ "$CHOICE" == "Suspend" ]
 then

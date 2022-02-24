@@ -13,11 +13,11 @@ queue|/home/maren/.local/bin/collection/copyErrorQueue.sh
 tpass|/home/maren/.local/bin/collection/passScript.sh --type
 megatron|/home/maren/.local/bin/collection/megatron.sh
 jenkins|/home/maren/.local/bin/collection/jenkins.sh
+goorange|/home/maren/.local/bin/collection/goorangJenkins.sh
 watson restart|watson restart
 watson stop|watson stop
-workplace Home|autorandr home
-workplace Work|autorandr work
-workplace wfh|autorandr wfh
+monitors|/home/maren/.local/bin/collection/monitors.sh
+audio|/home/maren/.local/bin/collection/switchAudioOut.sh
 screen Area|maim -s /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png
 screen window|maim -i $(xdotool getactivewindow) /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png
 screen all|sleep 2; maim /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png

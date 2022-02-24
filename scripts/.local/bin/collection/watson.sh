@@ -14,6 +14,12 @@ yesterday=0
 calcDate=$(date +"%Y-%m-%d")
 while :; do
     case "$1" in
+        -a) 
+
+            current=$(watson status | sed -e "s/Project //g" -e "s/(.*)//g")
+            head=$(watson log | head -n1)
+            echo $current / $head
+            ;;
         -s) 
             echo $(watson status) | sed -e "s/Project //g" -e "s/(.*)//g"
             ;;

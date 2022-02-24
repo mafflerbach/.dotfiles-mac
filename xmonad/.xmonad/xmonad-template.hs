@@ -26,6 +26,8 @@ import qualified Codec.Binary.UTF8.String as UTF8
 
 import XMonad.Layout.IndependentScreens
 import XMonad.Actions.Minimize
+import XMonad.Hooks.Minimize
+import XMonad.Layout.Minimize
 import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, shorten, PP(..))
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.FadeInactive
@@ -111,6 +113,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     , ((modm,               xK_p     ), spawn "bash /home/maren/.local/bin/collection/launcher.sh")
     , ((modm,               xK_0     ), spawn "bash /home/maren/.local/bin/collection/shutDown.sh")
+    , ((modm,               xK_i     ), spawn "bash /home/maren/.local/bin/collection/dmenuUnicode.sh")
     , ((modm,               xK_o     ), nextScreen)
 
     , ((modm .|. shiftMask,               xK_o     ), shiftNextScreen >> nextScreen )
@@ -196,7 +199,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
     --
     [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
+        | (key, sc) <- zip [xK_w, xK_r, xK_e] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 
@@ -230,7 +233,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = smartBorders . avoidStruts $ magicFocus (tiled ||| Mirror tiled ||| noBorders Full)
+myLayout = smartBorders . avoidStruts $ minimize $ magicFocus (tiled ||| Mirror tiled ||| noBorders Full)
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = spacing 5 $ Tall nmaster delta ratio
@@ -261,7 +264,13 @@ myLayout = smartBorders . avoidStruts $ magicFocus (tiled ||| Mirror tiled ||| n
 --
 myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
+    , className =? "sun-awt-X11-XFramePeer"           --> doFloat
+    , className =? "processing-app-Base"           --> doFloat
     , className =? "Gimp"           --> doFloat
+    , className =? "Pavucontrol"           --> doFloat
+    , className =? "mpv"           --> doShift "8"
+    , className =? "Shadow"           --> doShift "9"
+    , className =? "qutebrowser"           --> doShift "2"
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
@@ -296,14 +305,13 @@ myLogHook = fadeInactiveLogHook fadeAmount
 -- By default, do nothing.
 myStartupHook = do
         spawnOnce  "killall picom; sleep 2; picom --config /home/maren/.config/compton/compton.conf &"
-        spawnOnce  "sh /home/maren/.local/bin/collection/xidelhook.sh &"
         spawnOnce  "killall udiskie ;  udiskie -t"
         spawnOnce  "wal --theme /home/maren/.cache/wal/colors.json"
         --spawnOnce "killall trayer; trayer --edge top --align right --widthtype request --padding 6  --expand true --monitor 1 --transparent true --alpha 255 --tint 0x282c34  --height 22 &"
         spawnOnce "pulseaudio -k; sleep 2; pulseaudio & killall pasystray ; pasystray &"
         spawnOnce "nm-applet &"
         spawnOnce "blueman-applet"
-        spawnOnce "bash /home/maren/.config/polybar/launch.sh &"
+        spawn "bash /home/maren/.config/polybar/launch.sh &"
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
 

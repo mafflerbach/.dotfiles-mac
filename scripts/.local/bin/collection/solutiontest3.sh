@@ -39,7 +39,7 @@ function getFiles() {
     tmpC=$(cat $(echo $fileName) | tr '\n' ' ')
     foo=${tmpC//\"/\\\"}
     content="[{\"headers\": {},\"payload\": \"$foo\" } ]"
-    echo $content
+    echo $content > /tmp/foo.json
 }
 
 function getService() {
@@ -59,7 +59,7 @@ content=$(getFiles)
 #fi
 
 serviceurl="https://api-dev.goorange.sixt.com/v1/$service/support/rest/error-topics/$topic/kafka-topic-consumer/messages?ignoreHeaders=true"
-if [ "$ENV"=="stage" ]; then 
+if [ "$ENV" == "stage" ]; then 
     serviceurl="https://api-stage.goorange.sixt.com/v1/$service/support/rest/error-topics/$topic/kafka-topic-consumer/messages?ignoreHeaders=true"
 fi
 
@@ -68,8 +68,5 @@ pass=$(pass Sixt/supportapi/$ENV)
 curl --location --request POST "$serviceurl" \
     --header "Authorization: Basic $pass" \
     --header 'Content-Type: application/json' \
-    -d "$(echo $content)"
-
-
-
+    --data-raw  "$(cat /tmp/foo.json)"
 

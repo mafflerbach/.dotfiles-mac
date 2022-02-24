@@ -49,7 +49,7 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 
 config.bind('<Ctrl-Shift-p>', 'hint links spawn --verbose --detach /home/maren/.local/bin/collection/fillplaylist.sh push {hint-url}')
 
-config.bind('<Ctrl-Shift-o>', 'spawn --verbose --detach /home/maren/.local/bin/collection/fillplaylist.sh play')
+config.bind('<Ctrl-Shift-o>', 'spawn --verbose --detach /home/maren/.local/bin/collection/fillplaylist.sh playloop')
 
 config.bind('<Ctrl-Shift-l>', 'hint links spawn --verbose --detach  youtube-dl {hint-url} --output /home/maren/Downloads/ytFiles/%(title)s.%(ext)s')
 

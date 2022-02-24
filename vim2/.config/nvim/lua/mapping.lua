@@ -88,6 +88,8 @@ vim.api.nvim_set_keymap('n', '<leader>ju',':call JiraUnassign(expand("<cWORD>"))
 vim.api.nvim_set_keymap('n', '<leader>ja',':call JiraAssign(expand("<cWORD>"))<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>jr',':call JiraReview(expand("<cWORD>"))<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>gf',':call GetGithubLink(expand("%:."))<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>ga',':call GetAlternate(expand("%:."))<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>gA',':call GetAlternateSplit(expand("%:."))<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>jro',':call JiraOpenReview()<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>jd',':call JiraDone(expand("<cWORD>"))<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>jp',':call JiraProgress(expand("<cWORD>"))<CR>', {noremap = true, silent = true})
@@ -132,8 +134,7 @@ vim.api.nvim_set_keymap("n", "<leader>oi", "<Cmd>lua require'jdtls'.organize_imp
 vim.api.nvim_set_keymap("v", "<leader>xv", "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>xv", "<Cmd>lua require('jdtls').extract_variable()<CR>", opts)
 vim.api.nvim_set_keymap("v", "<leader>xm", "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>qf", "<Esc><Cmd>lua require('jdtls').code_action()<CR>", opts)
-vim.api.nvim_set_keymap('n','<leader>aR', "<Cmd>lua require('jdtls').code_action(false, 'refactor')<CR>", {})
+vim.api.nvim_set_keymap("n", "<leader>qf", "<Esc><Cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>cf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
 
