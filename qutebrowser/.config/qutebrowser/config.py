@@ -51,7 +51,7 @@ config.bind('<Ctrl-Shift-p>', 'hint links spawn --verbose --detach /home/maren/.
 
 config.bind('<Ctrl-Shift-o>', 'spawn --verbose --detach /home/maren/.local/bin/collection/fillplaylist.sh playloop')
 
-config.bind('<Ctrl-Shift-l>', 'hint links spawn --verbose --detach  youtube-dl {hint-url} --output /home/maren/Downloads/ytFiles/%(title)s.%(ext)s')
+config.bind('<Ctrl-Shift-l>', 'hint links spawn --verbose --detach  youtube-dlc {hint-url} --output /home/maren/Downloads/ytFiles/%(title)s.%(ext)s')
 
 config.bind('<Ctrl-Shift-f>', 'hint links spawn --verbose --detach  /opt/nzb-monkey/nzbmonkey.py "{hint-url}" ')
 

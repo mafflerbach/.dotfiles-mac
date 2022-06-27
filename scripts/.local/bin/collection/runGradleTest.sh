@@ -1,5 +1,4 @@
 #!/bin/bash
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk;
 
 filename=$1
 
@@ -14,7 +13,7 @@ class=${class//.java/}
 class=${class//\-/_}
 
 class=${class//src.jbehave.stories./}
-echo "gradle jbehave --tests $class 2>&1 | tee /tmp/gradlebuild" > /tmp/foo 
+echo "./gradlew jbehave --tests $class 2>&1 | tee /tmp/gradlebuild" > /tmp/foo 
 gradle jbehave --offline --tests "$class" 2>&1 |tee /tmp/gradlebuild
 
 

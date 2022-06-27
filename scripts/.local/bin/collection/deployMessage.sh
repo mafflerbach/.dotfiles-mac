@@ -2,7 +2,6 @@
 
 service=$(ls -1 /home/maren/development  | grep service | fzf)
 env=$(echo -e "dev\r\nstage\r\nprod" | fzf)
-cd /home/maren/development/$service
 
 git_dir="/home/maren/development/$service/.git"
 work_tree="/home/maren/development/$service"

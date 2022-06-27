@@ -16,7 +16,6 @@ while IFS= read -r line ; do
     hex=$(echo $line | cut -f2 -d" ")
 
 sed -i "s/$color/$hex$alpha2/g" /tmp/rofi.rasi
-sensord
 
 done <<< "$colors"
 

@@ -32,7 +32,8 @@ fi
 
 if [ "$CHOICE" == "Lock" ]
 then
-    bash /home/maren/.dotfiles/scripts/.local/bin/collection/lock.sh 
+    dm-tool switch-to-greeter
+    #bash /home/maren/.dotfiles/scripts/.local/bin/collection/lock.sh 
 fi
 if [ "$CHOICE" == "Exit" ]
 then

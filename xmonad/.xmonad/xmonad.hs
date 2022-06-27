@@ -24,6 +24,7 @@ import qualified DBus as D
 import qualified DBus.Client as D
 import qualified Codec.Binary.UTF8.String as UTF8
 
+import XMonad.Hooks.SetWMName
 import XMonad.Layout.IndependentScreens
 import XMonad.Actions.Minimize
 import XMonad.Hooks.Minimize
@@ -85,8 +86,8 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
-myNormalBorderColor  = "#0C0C15"
-myFocusedBorderColor = "#4C5E9D"
+myNormalBorderColor  = "#0e0d2d"
+myFocusedBorderColor = "#5091CB"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -303,7 +304,9 @@ myLogHook = fadeInactiveLogHook fadeAmount
 -- per-workspace layout choices.
 --
 -- By default, do nothing.
+
 myStartupHook = do
+        setWMName "LG3D"
         spawnOnce  "killall picom; sleep 2; picom --config /home/maren/.config/compton/compton.conf &"
         spawnOnce  "killall udiskie ;  udiskie -t"
         spawnOnce  "wal --theme /home/maren/.cache/wal/colors.json"
@@ -317,11 +320,11 @@ myStartupHook = do
 
 -- Run xmonad with the settings you specify. No need to modify this.
 --
-gray      = "#4C5E9D"
-gray2     = "#406BC6"
-red       = "#7088a3"
-blue      = "#2E4674"
-white     = "#a0c3e9"
+gray      = "#5091CB"
+gray2     = "#F290A4"
+red       = "#aa9b93"
+blue      = "#B06AA5"
+white     = "#f3ded2"
 
 
 

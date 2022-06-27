@@ -30,6 +30,7 @@ fileName=$pattern$(echo "$pathList" | rofi -dmenu -theme $HOME/.config/rofi/rofi
 tmpC=$(cat $(echo $fileName) | tr '\n' ' ')
 content="["$tmpC"]"
 
+echo $content
 environment="$(echo -e "dev\nstage" | fzf)"
 
 echo "Play message $fileName on $topic via support api against $environment"
@@ -55,4 +56,7 @@ if [ "$environment" == "stage" ]; then
         --header 'Content-Type: application/json' \
         -d "$(echo $content)"
 fi
+
+
+
 

@@ -24,6 +24,7 @@ import qualified DBus as D
 import qualified DBus.Client as D
 import qualified Codec.Binary.UTF8.String as UTF8
 
+import XMonad.Hooks.SetWMName
 import XMonad.Layout.IndependentScreens
 import XMonad.Actions.Minimize
 import XMonad.Hooks.Minimize
@@ -303,7 +304,9 @@ myLogHook = fadeInactiveLogHook fadeAmount
 -- per-workspace layout choices.
 --
 -- By default, do nothing.
+
 myStartupHook = do
+        setWMName "LG3D"
         spawnOnce  "killall picom; sleep 2; picom --config /home/maren/.config/compton/compton.conf &"
         spawnOnce  "killall udiskie ;  udiskie -t"
         spawnOnce  "wal --theme /home/maren/.cache/wal/colors.json"

@@ -1,9 +1,9 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 # If you come from bash you might have to change your $PATH.
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -24,7 +24,7 @@ export VISUAL=/usr/sbin/nvim
 # Path to your oh-my-zsh installation.
 # stty -ixon
   export ZSH="/home/maren/.oh-my-zsh"
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
   ZSH_TMUX_AUTOSTART=true
   ZSH_TMUX_FIXTERM=true
 
@@ -151,8 +151,19 @@ alias pro="zsh  ~/.local/bin/collection/selectproject.sh"
 alias vpnaddress="hostname -i | cut -f5 -d' ' | c"
 alias branches="git branch | grep \* | cut -d ' ' -f2"
 alias gitremote="git remote -v | head -n1 | cut -f2 | sed s/\(fetch\)//g | c"
-ipaddrtemp=$(ip -j addr | jq '.[]  | select (.ifname == "ppp0").addr_info[].local')
+ipaddrtemp=$(ip -j addr | jq '.[]  | select (.ifname == "tun0").addr_info[0].local')
 alias ipaddr="echo $(echo "maren@$ipaddrtemp\:support")"
+
+alias urldecode='sed "s@+@ @g;s@%@\\\\x@g" | xargs -0 printf "%b"'
+
+
+alias b64decode="echo -n '$1' | base64 --decode"
+
+
+alias b64encode="echo -n '$1' | base64"
+
+
+
 source ~/exportedVars
 export FZF_DEFAULT_OPTS="--ansi"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
@@ -235,6 +246,7 @@ function context {
 
 function podLog {
 pod=$(kubectl get pods | fzf); kubectl logs $(echo $pod | cut -f1 -d' ') > output.logs
+vim output.log
 }
 
 
@@ -256,13 +268,16 @@ PERL_MM_OPT="INSTALL_BASE=/home/maren/perl5"; export PERL_MM_OPT;
 #source ~/dotfiles/.credencials
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.dotfiles/zsh/.p10k.zsh.
-[[ ! -f ~/.dotfiles/zsh/.p10k.zsh ]] || source ~/.dotfiles/zsh/.p10k.zsh
+# [[ ! -f ~/.dotfiles/zsh/.p10k.zsh ]] || source ~/.dotfiles/zsh/.p10k.zsh
 
-source /home/maren/.config/broot/launcher/bash/br
+# source /home/maren/.config/broot/launcher/bash/br
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+
+eval "$(starship init zsh)"

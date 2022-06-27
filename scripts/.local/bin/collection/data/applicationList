@@ -17,13 +17,15 @@ goorange|/home/maren/.local/bin/collection/goorangJenkins.sh
 watson restart|watson restart
 watson stop|watson stop
 monitors|/home/maren/.local/bin/collection/monitors.sh
-audio|/home/maren/.local/bin/collection/switchAudioOut.sh
+audio|/home/maren/.local/bin/collection/switchAudioOut.sh -o
+mic|/home/maren/.local/bin/collection/switchAudioOut.sh -m
 screen Area|maim -s /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png
 screen window|maim -i $(xdotool getactivewindow) /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png
 screen all|sleep 2; maim /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png
 connect vpn|/home/maren/.local/bin/collection/vpn2.sh -c
 disconnect vpn|/home/maren/.local/bin/collection/vpn2.sh -k
 play | /home/maren/.local/bin/collection/playUrl.sh
+led | /home/maren/.local/bin/collection/led.sh
 
 
 

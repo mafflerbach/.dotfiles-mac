@@ -2,7 +2,7 @@
 cableInterface="enp0s13f0u1u4"
 wifiInterface="wlp0s20f3"
 
-wireConnecton=$(nmcli device status | grep "$cableInterface" | cut -d' ' -)
+wireConnecton=$(nmcli device status | grep "$cableInterface" | cut -d' ' -f14 | head -n1)
 wifiConnecton=$(nmcli device status | grep "$wifiInterface" | cut -d' ' -f17 | head -n1)
 
 while :; do

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-input=$(rofi -dmenu -theme $HOME/.config/rofi/rofi.rasi | xargs) 
+input=$(echo -e "off\r\non\r\nrainbow\r\n"| rofi -dmenu -theme $HOME/.config/rofi/rofi.rasi ) 
 
 if [ "$input" != "" ]; then 
 

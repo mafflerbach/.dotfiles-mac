@@ -2,11 +2,10 @@
 
 
 function getTopic() {
-    url="https://kafka-manager-dev.goorange.sixt.com/clusters/kafka-dev/topics"
-    if [ "$ENV"=="stage" ]; then 
+    url="https://kafka-manager-dev.goorange.sixt.com/clusters/dev/topics"
+    if [ "$ENV" == "stage" ]; then 
         url="https://kafka-manager-stage.goorange.sixt.com/clusters/stage/topics"
     fi
-
 
     curl "$url" --compressed > /tmp/out.html
     echo "cat //table/tbody/tr/td//a" |  xmllint --html --shell /tmp/out.html | sed '/^\/ >/d' | sed '/-------/d'|sed 's/<[^>]*.//g' > data/topicList
@@ -62,6 +61,9 @@ serviceurl="https://api-dev.goorange.sixt.com/v1/$service/support/rest/error-top
 if [ "$ENV" == "stage" ]; then 
     serviceurl="https://api-stage.goorange.sixt.com/v1/$service/support/rest/error-topics/$topic/kafka-topic-consumer/messages?ignoreHeaders=true"
 fi
+
+echo $serviceurl
+
 
 pass=$(pass Sixt/supportapi/$ENV)
 
