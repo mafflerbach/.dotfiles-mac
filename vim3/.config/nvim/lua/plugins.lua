@@ -65,7 +65,8 @@ return require('packer').startup(function()
     use  {
         'kaicataldo/material.vim'
     }
-    use 'tpope/vim-fugitive'
+  --  use 'tpope/vim-fugitive'
+    use 'kdheepak/lazygit.nvim'
     use {
         'lewis6991/gitsigns.nvim',
         requires = {
@@ -78,6 +79,10 @@ return require('packer').startup(function()
     }
 
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+
+use 'nvim-telescope/telescope-dap.nvim'
+
+
 
     use 'mogelbrod/vim-jsonpath'
 

@@ -34,11 +34,13 @@ vim.api.nvim_set_keymap('n', '<leader>f','<cmd>lua require(\'telescope.builtin\'
 vim.api.nvim_set_keymap('n', '<leader>fg','<cmd>lua require(\'telescope.builtin\').live_grep()<cr>', { noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>b','<cmd>lua require(\'telescope.builtin\').buffers()<cr>', { noremap = true})
 
-vim.api.nvim_set_keymap('n', '<leader>ge',':Gblame<CR>', { noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>gs',':Git<CR>', { noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>gc',':Git commit<CR>', { noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>gl',':Git pull<CR>', { noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>gh',':Git push<CR>', { noremap = true})
+-- vim.api.nvim_set_keymap('n', '<leader>ge',':Gblame<CR>', { noremap = true})
+-- vim.api.nvim_set_keymap('n', '<leader>gs',':Git<CR>', { noremap = true})
+-- vim.api.nvim_set_keymap('n', '<leader>gc',':Git commit<CR>', { noremap = true})
+ vim.api.nvim_set_keymap('n', '<leader>gl',':!git pull<CR>', { noremap = true})
+ vim.api.nvim_set_keymap('n', '<leader>gh',':!git push<CR>', { noremap = true})
+
+vim.api.nvim_set_keymap('n', '<leader>gs',':LazyGit<CR>', {noremap = true, silent = true})
 
 vim.api.nvim_set_keymap('n', '<c-h>',':TmuxNavigateLeft<cr>', opts)
 vim.api.nvim_set_keymap('n', '<c-j>',':TmuxNavigateDown<cr>', opts)
@@ -109,6 +111,7 @@ vim.api.nvim_set_keymap('n', '<leader>A',':Rg <C-r>=expand(\'<CWORD>\') <CR>', o
  -- :Rg LATER -g'*.md' -g'!bak'
 
 vim.api.nvim_set_keymap('n', '<leader>ds',':VimuxRunCommand "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk; mvn -Dmaven.surefire.debug  -Dtest=".expand("%:t:r")." test --offline"<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>dt',':VimuxRunCommand "./gradlew clean test --tests DigipoortClientTest --debug-jvm"<CR>', {noremap = true})
 
 
 vim.api.nvim_set_keymap('n', 'gx','<Plug>(openbrowser-smart-search)', opts)
@@ -139,12 +142,12 @@ vim.api.nvim_set_keymap("n", "<leader>qf", "<Esc><Cmd>lua vim.lsp.buf.code_actio
 vim.api.nvim_set_keymap("n", "<leader>cf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
 
-vim.api.nvim_set_keymap("n", "<leader>tb", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>tc", "<cmd>lua require'dap'.continue()<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>si", "<cmd>lua require'dap'.step_into()<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>so", "<cmd>lua require'dap'.step_over()<CR>", opts)
+vim.api.nvim_set_keymap("n", "tb", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", opts)
+vim.api.nvim_set_keymap("n", "co", "<cmd>lua require'dap'.continue()<CR>", opts)
+vim.api.nvim_set_keymap("n", "si", "<cmd>lua require'dap'.step_into()<CR>", opts)
+vim.api.nvim_set_keymap("n", "so", "<cmd>lua require'dap'.step_over()<CR>", opts)
 
-vim.api.nvim_set_keymap("n", "<leader>od", "<cmd>lua require'dapui'.toggle()<CR>", opts)
+vim.api.nvim_set_keymap("n", "od", "<cmd>lua require'dapui'.toggle()<CR>", opts)
 -- If using nvim-dap
 -- This requires java-debug and vscode-java-test bundles, see install steps in this README further below.
 

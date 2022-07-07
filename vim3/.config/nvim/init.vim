@@ -11,7 +11,6 @@ end
 
 require('plugins')
 require("nvim-lsp-installer").setup {}
-
 require("cfg-cmp")
 require("cfg-lsp")
 require("cfg-lualine")
@@ -28,7 +27,7 @@ EOF
 :so /home/maren/.dotfiles/vim3/.config/nvim/viml/mappings.vim
 
 let test#java#runner = 'gradletest'
-
+let test#strategy = "vimux"
 let g:actualticket = "ints-6068"
 colorscheme wal
 

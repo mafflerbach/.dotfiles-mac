@@ -141,7 +141,8 @@ function! ViewSprint()
     let tmpWord=expand('<cWORD>')
     split a:tmpWord
     :normal ggdG
-    :read ! jira listStories 
+    #:read ! jira listStories 
+    :execute "read !  jira issue list --plain -q  \"sprint in openSprints() and type !=  Epic and project=INTS and type = story\" --order-by status " 
 endfunction
 
 function! ViewRun() 
@@ -154,7 +155,12 @@ endfunction
 function! SubtaskJira(word)
     :normal ggdG
     :execute ':normal! i Parent Story ' . a:word
-    :execute "read ! jira listSubtasks " . substitute(a:word, ":", "", "")
+    #:execute "read ! jira listSubtasks " . substitute(a:word, ":", "", "")
+    
+    :execute "read !  jira issue list  --plain --columns assignee,summary,status -q  \"project = INTS  AND Sprint in openSprints() AND type = Sub-task and parent = a:word \" " 
+
+# jira issue list  --plain --columns assignee,summary,status -q  \"project = INTS  AND Sprint in openSprints() AND type = Sub-task and parent = a:word \"
+
 endfunction
 
 function! GetGithubLink(file)
