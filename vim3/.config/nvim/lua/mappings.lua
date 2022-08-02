@@ -9,21 +9,12 @@ vim.cmd(":set directory=~/.vim/swap//")
 vim.cmd(":set undodir=~/.vim/undo//")
 vim.cmd(":set path+=**")
 vim.cmd(":set clipboard=unnamedplus")
-vim.cmd(":set nu")
-vim.cmd(":set number relativenumber")
-vim.cmd(":set hlsearch")
-vim.cmd(":set incsearch")
-vim.cmd(":set ignorecase")
-vim.cmd(":set smartcase")
 vim.cmd(":set hidden")
 vim.cmd(":set nobackup")
 vim.cmd(":set nowritebackup")
 vim.cmd(":set updatetime=300")
 vim.cmd(":set shortmess+=c")
-vim.cmd(":set numberwidth=4 ")
 vim.cmd(":set autowrite")
-vim.cmd(":set tabstop=4 softtabstop=4 expandtab shiftwidth=4 shiftround smarttab")
-vim.cmd(":set cmdheight=2 ")
 
 
 vim.g.mapleader = ","
@@ -81,6 +72,10 @@ vim.api.nvim_set_keymap('n', '<leader>rS',':call RunMvnTest()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>rs',':call RunMvnThisTest(expand("%:."))<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>oq',':call OpenGradleTest(expand("%:."))<CR>', opts)
 
+-- :TestFile --debug-jvm
+
+
+
 vim.api.nvim_set_keymap('n', '<leader>jS',':call ViewSprint() <CR>', opts) 
 vim.api.nvim_set_keymap('n', '<leader>jru',':call ViewRun() <CR> ', opts)
 vim.api.nvim_set_keymap('n', '<leader>js',':call SubtaskJira(expand("<cWORD>"))<CR>', opts)
@@ -111,7 +106,8 @@ vim.api.nvim_set_keymap('n', '<leader>A',':Rg <C-r>=expand(\'<CWORD>\') <CR>', o
  -- :Rg LATER -g'*.md' -g'!bak'
 
 vim.api.nvim_set_keymap('n', '<leader>ds',':VimuxRunCommand "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk; mvn -Dmaven.surefire.debug  -Dtest=".expand("%:t:r")." test --offline"<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>dt',':VimuxRunCommand "./gradlew clean test --tests DigipoortClientTest --debug-jvm"<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>dt',':TestFile --debug-jvm<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>dnm,',':TestNearest --debug-jvm<CR>', {noremap = true})
 
 
 vim.api.nvim_set_keymap('n', 'gx','<Plug>(openbrowser-smart-search)', opts)
@@ -151,8 +147,18 @@ vim.api.nvim_set_keymap("n", "od", "<cmd>lua require'dapui'.toggle()<CR>", opts)
 -- If using nvim-dap
 -- This requires java-debug and vscode-java-test bundles, see install steps in this README further below.
 
-vim.api.nvim_set_keymap("n", "<leader>rt", "<cmd>lua require'jdtls'.test_class()<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>rnm", "<cmd>lua require'jdtls'.test_nearest_method()<CR>", opts)
+-- vim.api.nvim_set_keymap("n", "<leader>rt", "<cmd>lua require'jdtls'.test_class()<CR>", opts)
+-- vim.api.nvim_set_keymap("n", "<leader>rnm", "<cmd>lua require'jdtls'.test_nearest_method()<CR>", opts)
 
+vim.api.nvim_set_keymap("n", "<leader>ctl", "<cmd>:lua require('vscode').change_style(\"light\")<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>ctd", "<cmd>:lua require('vscode').change_style(\"dark\")<CR>", opts)
+
+vim.api.nvim_set_keymap("n", "<silent> <Up>", "<cmd>:call animate#window_delta_height(10)", opts)
+vim.api.nvim_set_keymap("n", "<silent> <Down>", "<cmd>:call animate#window_delta_height(-10)", opts)
+vim.api.nvim_set_keymap("n", "<silent> <Left>", "<cmd>:call animate#window_delta_width(10)", opts)
+vim.api.nvim_set_keymap("n", "<silent> <Right>", "<cmd>:call animate#window_delta_width(-10)", opts)
+
+
+vim.api.nvim_set_keymap("n", "gx", '<cmd>:silent execute "!xdg-open " . shellescape("<cWORD>")<cr>', opts)
 
 

@@ -19,5 +19,5 @@ require "lspconfig".rls.setup {}
     require "lspconfig".vimls.setup {}
     require "lspconfig".yamlls.setup {}
     require "lspconfig".intelephense.setup {}
-    --require "lspconfig".lualsp.setup {}
+    require "lspconfig".sumneko_lua.setup {}
 

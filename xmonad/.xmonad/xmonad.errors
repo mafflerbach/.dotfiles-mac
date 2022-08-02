@@ -1,7 +1,1 @@
-
-xmonad.hs:240:16: warning: [-Wdeprecations]
-    In the use of ‘spacing’ (imported from XMonad.Layout.Spacing):
-    Deprecated: "Use spacingRaw instead."
-    |
-240 |      tiled   = spacing 5 $ Tall nmaster delta ratio
-    |                ^^^^^^^
+$ ghc --make xmonad.hs -i -ilib -fforce-recomp -main-is main -dynamic -v0 -outputdir /home/maren/.xmonad/build-x86_64-linux -o /home/maren/.xmonad/xmonad-x86_64-linux

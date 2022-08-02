@@ -6,6 +6,7 @@ return require('packer').startup(function()
     use "williamboman/nvim-lsp-installer"
     use "neovim/nvim-lspconfig"
     use "mfussenegger/nvim-jdtls" -- java
+    use 'folke/tokyonight.nvim'
     use { 
         "rcarriga/nvim-dap-ui", 
         requires = {
@@ -42,7 +43,6 @@ return require('packer').startup(function()
         config = function() require'nvim-tree'.setup { diagnostics = { enable = true } } end
     }
 
-
     use 'jremmen/vim-ripgrep'
 
     use {
@@ -65,7 +65,6 @@ return require('packer').startup(function()
     use  {
         'kaicataldo/material.vim'
     }
-  --  use 'tpope/vim-fugitive'
     use 'kdheepak/lazygit.nvim'
     use {
         'lewis6991/gitsigns.nvim',
@@ -80,9 +79,7 @@ return require('packer').startup(function()
 
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
-use 'nvim-telescope/telescope-dap.nvim'
-
-
+--    use 'nvim-telescope/telescope-dap.nvim'
 
     use 'mogelbrod/vim-jsonpath'
 
@@ -104,11 +101,27 @@ use 'nvim-telescope/telescope-dap.nvim'
         }
     }
 
-use 'vim-test/vim-test'
-use 'NLKNguyen/papercolor-theme'
+    use 'vim-test/vim-test'
+ --   use 'NLKNguyen/papercolor-theme'
 
-use 'rakr/vim-one'
+    use 'rakr/vim-one'
     use 'dylanaraps/wal.vim'
+
+    use {
+        "NTBBloodbath/rest.nvim",
+        requires = { "nvim-lua/plenary.nvim" },
+    }
+  --  use 'Mofiqul/vscode.nvim'
+
+    use 'nvim-treesitter/nvim-treesitter'
+    -- use { "beauwilliams/focus.nvim", config = function() require("focus").setup() end }
+
+  -- Plugins can also depend on rocks from luarocks.org:
+  use {
+    '~/.dotfiles/vim3/.config/nvim/lua/jira',
+    rocks= {'http', 'lunajson'}
+
+  }
 end)
 
 

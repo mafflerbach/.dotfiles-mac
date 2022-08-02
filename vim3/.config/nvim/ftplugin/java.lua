@@ -84,10 +84,6 @@ config['init_options'] = {
 }
 
 
-
-
-
-
 config['on_attach'] = function(client, bufnr)
   -- With `hotcodereplace = 'auto' the debug adapter will try to apply code changes
   -- you make during a debug session immediately.
@@ -97,30 +93,6 @@ end
 
 local opts = { noremap=true, silent=true }
 
---vim.api.nvim_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
---vim.api.nvim_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
---vim.api.nvim_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
---vim.api.nvim_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-----vim.api.nvim_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
---vim.api.nvim_set_keymap('n', '<leader>E' '<cmd>lua vim.lsp.buf.signature_help()<CR>', { noremap=true, silent=true })
---vim.api.nvim_set_keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
---vim.api.nvim_set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
---vim.api.nvim_set_keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
---vim.api.nvim_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
---vim.api.nvim_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
---vim.api.nvim_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references(); vim.cmd("copen")<CR>', opts)
---vim.api.nvim_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
---vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
---vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
---vim.api.nvim_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_qflist()<CR>', opts)
----- Java specific
---vim.api.nvim_set_keymap("n", "<leader>oi", "<Cmd>lua require'jdtls'.organize_imports()<CR>", opts)
---vim.api.nvim_set_keymap("v", "<leader>xv", "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", opts)
---vim.api.nvim_set_keymap("n", "<leader>xv", "<Cmd>lua require('jdtls').extract_variable()<CR>", opts)
---vim.api.nvim_set_keymap("v", "<leader>xm", "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", opts)
---vim.api.nvim_set_keymap("n", "<leader>qf", "<Esc><Cmd>lua vim.lsp.buf.code_action()<CR>", opts)
---vim.api.nvim_set_keymap("n", "<leader>cf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-
-
 require('jdtls').start_or_attach(config)
 require('jdtls').setup_dap()
+

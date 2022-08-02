@@ -122,5 +122,3 @@ local opts = { noremap=true, silent=true }
 --vim.api.nvim_set_keymap("n", "<leader>cf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
 
-require('jdtls').start_or_attach(config)
-require('jdtls').setup_dap()

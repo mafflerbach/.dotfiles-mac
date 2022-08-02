@@ -95,15 +95,6 @@ function! DecryptMessage()
 
 endfunction
 
-function! OpenLogFile(classname)
-    bd! __Potion_Logs__
-    split __Potion_Logs__
-    normal! ggdG
-    :execute "silent !{bash ~/.local/bin/collection/openErrorLog.sh ".a:classname. "}"
-    :r /tmp/buildOut
-    normal! G
-endfunction
-
 
 function! RunMvnThisTest(file) 
 
@@ -123,11 +114,6 @@ function! RunMvnThisTest(file)
     normal! G
 endfunction
 
-function! SomeCheck()
-    if filereadable(expand("build.gradle"))
-        echo "SpecificFile exists"
-    endif
-endfunction 
 
 function! StopTime() 
     :execute "silent ! watson stop"
@@ -177,8 +163,11 @@ function! GetAlternate(file)
     :execute ':edit ' . output
 endfunction
 
+
+" jira issue move ITINFRA-16504 "Done"
+
 function! EditJira(word)
-    :call VimuxRunCommand("jira edit " . a:word)<CR>
+    :call VimuxRunCommand("jira issue edit " . a:word)<CR>
     :call VimuxZoomRunner()<CR>
 endfunction
 
@@ -188,7 +177,7 @@ function! CommentJira(word)
 endfunction
 
 function! JiraDone(word) 
-    :execute "silent !jira transition \"Done\" --noedit " . a:word 
+    :execute "silent !jira issue move " . a:word . " \"Done\"" 
     :execute     SubtaskJira(g:ActualTicket)    
 endfunction
 
@@ -199,8 +188,8 @@ function! JiraOpenReview()
 endfunction
 
 function! JiraReview(word) 
-    :execute 'silent !jira unassign ' . a:word 
-    :execute "silent !jira transition \"In Review\" --noedit " . a:word 
+    :execute 'silent !jira issue assign ' . a:word ." x"
+    :execute "silent !jira issue move " . a:word . " \"In Review\"" 
     :execute SubtaskJira(g:ActualTicket)    
 endfunction
 
@@ -211,19 +200,19 @@ function! JiraTodo(word)
 endfunction
 
 function! JiraProgress(word) 
-    :execute "silent !jira unassign " . a:word . " m9338"
+    :execute 'silent !jira issue assign ' . a:word ." x"
     :execute "silent !jira transition \"In Progress\" --noedit " . a:word 
     :execute    SubtaskJira(g:ActualTicket)    
 endfunction
 
 
 function! JiraUnassign(word) 
-    :execute 'silent !jira unassign ' . a:word 
+    :execute 'silent !jira issue assign ' . a:word ." x"
     :execute    SubtaskJira(g:ActualTicket)    
 endfunction
 
 function! JiraAssign(word) 
-    :execute "silent !jira unassign " . a:word . " m9338"
+    :execute 'silent !jira issue assign ' . a:word ." m9338"
     :execute    SubtaskJira(g:ActualTicket)    
 endfunction
 

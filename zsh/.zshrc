@@ -148,11 +148,13 @@ alias fqsn="zsh ~/.local/bin/fqsnExporter.sh"
 alias pro="zsh  ~/.local/bin/collection/selectproject.sh"
 
 
-alias vpnaddress="hostname -i | cut -f5 -d' ' | c"
 alias branches="git branch | grep \* | cut -d ' ' -f2"
 alias gitremote="git remote -v | head -n1 | cut -f2 | sed s/\(fetch\)//g | c"
 ipaddrtemp=$(ip -j addr | jq '.[]  | select (.ifname == "tun0").addr_info[0].local')
-alias ipaddr="echo $(echo "maren@$ipaddrtemp\:support")"
+alias vpnaddress="echo $(echo "maren@$ipaddrtemp\:support")"
+
+
+alias ipaddr="ip -j addr | jq '.[].addr_info[0] | select(.label==\"enp0s13f0u1u1i5\" or .label==\"enp0s31f6\" or .label==\"enp6s0u1\" or .label==\"wlp0s20f3\") | [.label,.local ]  | @sh' | sed -e \"s/'//g\" -e 's/\"//g'"
 
 alias urldecode='sed "s@+@ @g;s@%@\\\\x@g" | xargs -0 printf "%b"'
 
@@ -163,7 +165,6 @@ alias b64decode="echo -n '$1' | base64 --decode"
 alias b64encode="echo -n '$1' | base64"
 
 
-
 source ~/exportedVars
 export FZF_DEFAULT_OPTS="--ansi"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
@@ -172,6 +173,10 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 source "$HOME/.fzf/shell/key-bindings.zsh"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+export JIRA_API_TOKEN=$(pass show Sixt/jira)
+export JIRA_AUTH_TYPE="bearer"
+
 
 ZSH_TMUX_AUTOSTART=true
 
@@ -190,7 +195,7 @@ ZSH_TMUX_AUTOSTART=true
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
-eval "$(jira --completion-script-zsh)"
+#eval "$(jira --completion-script-zsh)"
 
 export LANG=en_US.UTF-9
 export LC_ALL=en_US.UTF-8
@@ -201,15 +206,15 @@ export PATH="${PATH}:${COREMAN_HOME}/bin"
 
 
 
-alias comment='f() { jira comment $1 };f' 
-alias subtaskUnassign='f() { jira unassign $1 };f' 
-alias subtaskAssign='f() { jira assign $1 m9338  };f' 
-alias subtaskReview='f() { jira transition "In Review" $1 };f' 
-alias subtaskProgress='f() { jira transition "In Progress" $1 };f' 
-alias subtaskDone='f() { jira transition "Done" $1 };f' 
-alias sprint='jira listStories' 
-alias subtask='f() { jira listSubtasks $1};f' 
-alias subtaskView='f() { jira view $1};f' 
+alias comment='f() { jira issue comment add $1 };f' 
+alias subtaskUnassign='f() { jira issue assign $1 x };f' 
+alias subtaskAssign='f() { jira issue assign $1 m9338  };f' 
+alias subtaskReview='f() { jira issue move $1 "In Review" };f' 
+alias subtaskProgress='f() { jira issue move $1 "In Progress" };f' 
+alias subtaskDone='f() { jira issue move $1 "Done" };f' 
+alias sprint='jira issue list --plain -q  "sprint in openSprints() and type !=  Epic and project=INTS and type = story" --order-by status' 
+alias subtask='f() { jira issue list  --plain --columns assignee,summary,status -q  "project = INTS  AND Sprint in openSprints() AND type = Sub-task and parent = $1 " };f' 
+alias subtaskView='f() { jira issue view $1};f' 
 alias tree=br
 alias gent="mkdir tags; ctags --tag-relative=yes -R -f tags/tags  --fields=+aimlS"
 alias bigFiles="du -a . | sort -n -r | head -n 20"
@@ -228,6 +233,10 @@ alias ls='exa --icons --git -a'
 
 function config {
     cd ~/.dotfiles; vim
+}
+
+function fkill {
+kill $(ps aux | fzf | cut -f5 -d' ')
 }
 
 function restartPod {

@@ -44,7 +44,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
 )
 
 require("cfg-lsp.providers")
-require("cfg-lsp.providers.java-cfg")
+-- require("cfg-lsp.providers.java-cfg")
 
 
 --

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-service=$(ls -1 /home/maren/development  | grep service | fzf)
+service=$(ls -1 /home/maren/development  | grep 'service\|job' | fzf)
 env=$(echo -e "dev\r\nstage\r\nprod" | fzf)
 
 git_dir="/home/maren/development/$service/.git"

@@ -18,16 +18,23 @@ require("cfg-nvimtree")
 require("cfg-telescope")
 require("cfg-dap")
 require("cfg-dap-ui")
-
+require("cfg-gitsigns")
+require("cfg-rest")
+require("cfg-vimtest")
+require("jira")
 require("mappings")
+
+
 EOF
 
 
 :so /home/maren/.dotfiles/vim3/.config/nvim/viml/functions.vim
 :so /home/maren/.dotfiles/vim3/.config/nvim/viml/mappings.vim
 
-let test#java#runner = 'gradletest'
+"let test#java#runner = 'gradletest'
 let test#strategy = "vimux"
-let g:actualticket = "ints-6068"
-colorscheme wal
 
+
+let g:actualticket = "ints-6068"
+
+" hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=dark guifg=white
