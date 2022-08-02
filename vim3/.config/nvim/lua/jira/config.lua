@@ -2,7 +2,7 @@ local _M = {}
 
 _M.url = "https://jira.sixt.com"
 _M.search = "/rest/api/2/search?jql="
-_M.auth =  "MjQ0MDQ5MTY0MjM5On2bnmjuThyuhGE/6Mr8QRM2bmuF"
+_M.auth =  ""
 
 _M.queries = {
   ["showCurrentRunBoard"] = "project+=+INTS+AND+type+=+Task+and+(status+=+Icebox+or+status+=+Backlog+or+status+=+%22In+Progress%22+or+status+=+%22Blocked%22+or+status+=+%22In+Review%22+or+status+=+%22On+Hold%22)+ORDER+BY+status+DESC&startAt=0&maxResults=100",
