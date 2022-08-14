@@ -76,10 +76,17 @@ vim.api.nvim_set_keymap('n', '<leader>oq',':call OpenGradleTest(expand("%:."))<C
 
 
 
-vim.api.nvim_set_keymap('n', '<leader>jS',':call ViewSprint() <CR>', opts) 
-vim.api.nvim_set_keymap('n', '<leader>jru',':call ViewRun() <CR> ', opts)
+vim.api.nvim_set_keymap('n', '<leader>jS',':lua Jira.showQuery("showCurrentSprint") <CR>', opts) 
+vim.api.nvim_set_keymap('n', '<leader>jru',':lua Jira.showQuery("showCurrentRunBoard") <CR> ', opts)
+vim.api.nvim_set_keymap('n', '<leader>jv',':lua Jira.showIssue(vim.fn.expand("<cWORD>"))', opts)
+
+
+
+
+
+
+
 vim.api.nvim_set_keymap('n', '<leader>js',':call SubtaskJira(expand("<cWORD>"))<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>jv',':call ViewJira(expand("<cWORD>"))<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>jco',':call CommentJira(expand("<cWORD>"))<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>je',':call EditJira(expand("<cWORD>"))<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>ju',':call JiraUnassign(expand("<cWORD>"))<CR>', opts)
@@ -139,6 +146,7 @@ vim.api.nvim_set_keymap("n", "<leader>cf", "<cmd>lua vim.lsp.buf.formatting()<CR
 
 
 vim.api.nvim_set_keymap("n", "tb", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", opts)
+-- for attaching use continue
 vim.api.nvim_set_keymap("n", "co", "<cmd>lua require'dap'.continue()<CR>", opts)
 vim.api.nvim_set_keymap("n", "si", "<cmd>lua require'dap'.step_into()<CR>", opts)
 vim.api.nvim_set_keymap("n", "so", "<cmd>lua require'dap'.step_over()<CR>", opts)
@@ -160,5 +168,12 @@ vim.api.nvim_set_keymap("n", "<silent> <Right>", "<cmd>:call animate#window_delt
 
 
 vim.api.nvim_set_keymap("n", "gx", '<cmd>:silent execute "!xdg-open " . shellescape("<cWORD>")<cr>', opts)
+
+
+vim.api.nvim_set_keymap("n", ",jb", ":lua jbehaveCompletion()<CR>", opts)
+vim.api.nvim_set_keymap("n", ",CM", ":lua commitMessageCompletion()<CR>", opts)
+
+vim.api.nvim_set_keymap("n", ",pri", "<cmd>:!lp \"%\" -o print-quality=3<cr>", opts)
+
 
 

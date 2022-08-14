@@ -1,14 +1,14 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 format = """
-[](#2E4C63)\
+[](#AE4F53)\
 $username\
-[](bg:#545669 fg:#2E4C63)\
+[](bg:#688B7F fg:#AE4F53)\
 $directory\
-[](fg:#545669 bg:#A56461)\
+[](fg:#688B7F bg:#8F7490)\
 $git_branch\
 $git_status\
-[](fg:#A56461 bg:#A1887F)\
+[](fg:#8F7490 bg:#BBA5B5)\
 $c\
 $elixir\
 $elm\
@@ -19,9 +19,9 @@ $julia\
 $nodejs\
 $nim\
 $rust\
-[](fg:#A1887F bg:#2A6997)\
+[](fg:#BBA5B5 bg:#D9B3B1)\
 $docker_context\
-[ ](fg:#2A6997)\
+[ ](fg:#D9B3B1)\
 """
 
 # Disable the blank line at the start of the prompt
@@ -30,12 +30,12 @@ $docker_context\
 # You can also replace your username with a neat symbol like  to save some space
 [username]
 show_always = true
-style_user = "bg:#2E4C63"
-style_root = "bg:#2E4C63"
+style_user = "bg:#AE4F53"
+style_root = "bg:#AE4F53"
 format = '[ $user ]($style)'
 
 [directory]
-style = "bg:#545669"
+style = "bg:#688B7F"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -57,67 +57,67 @@ truncation_symbol = "…/"
 
 [c]
 symbol = " "
-style = "bg:#A1887F"
-format = '[[ $symbol ($version) ](bg:#A1887F)]($style)'
+style = "bg:#BBA5B5"
+format = '[[ $symbol ($version) ](bg:#BBA5B5)]($style)'
 
 [docker_context]
 symbol = " "
-style = "bg:#2A6997"
-format = '[[ $symbol $context ](bg:#2A6997)]($style) $path'
+style = "bg:#D9B3B1"
+format = '[[ $symbol $context ](bg:#D9B3B1)]($style) $path'
 
 [elixir]
 symbol = " "
-style = "bg:#A1887F"
-format = '[[ $symbol ($version) ](bg:#A1887F)]($style)'
+style = "bg:#BBA5B5"
+format = '[[ $symbol ($version) ](bg:#BBA5B5)]($style)'
 
 [elm]
 symbol = " "
-style = "bg:#A1887F"
-format = '[[ $symbol ($version) ](bg:#A1887F)]($style)'
+style = "bg:#BBA5B5"
+format = '[[ $symbol ($version) ](bg:#BBA5B5)]($style)'
 
 [git_branch]
 symbol = ""
-style = "bg:#A56461"
-format = '[[ $symbol $branch ](bg:#A56461)]($style)'
+style = "bg:#8F7490"
+format = '[[ $symbol $branch ](bg:#8F7490)]($style)'
 
 [git_status]
-style = "bg:#A56461"
-format = '[[($all_status$ahead_behind )](bg:#A56461)]($style)'
+style = "bg:#8F7490"
+format = '[[($all_status$ahead_behind )](bg:#8F7490)]($style)'
 
 [golang]
 symbol = " "
-style = "bg:#A1887F"
-format = '[[ $symbol ($version) ](bg:#A1887F)]($style)'
+style = "bg:#BBA5B5"
+format = '[[ $symbol ($version) ](bg:#BBA5B5)]($style)'
 
 [haskell]
 symbol = " "
-style = "bg:#A1887F"
-format = '[[ $symbol ($version) ](bg:#A1887F)]($style)'
+style = "bg:#BBA5B5"
+format = '[[ $symbol ($version) ](bg:#BBA5B5)]($style)'
 
 [java]
 symbol = " "
-style = "bg:#A1887F"
-format = '[[ $symbol ($version) ](bg:#A1887F)]($style)'
+style = "bg:#BBA5B5"
+format = '[[ $symbol ($version) ](bg:#BBA5B5)]($style)'
 
 [julia]
 symbol = " "
-style = "bg:#A1887F"
-format = '[[ $symbol ($version) ](bg:#A1887F)]($style)'
+style = "bg:#BBA5B5"
+format = '[[ $symbol ($version) ](bg:#BBA5B5)]($style)'
 
 [nodejs]
 symbol = ""
-style = "bg:#A1887F"
-format = '[[ $symbol ($version) ](bg:#A1887F)]($style)'
+style = "bg:#BBA5B5"
+format = '[[ $symbol ($version) ](bg:#BBA5B5)]($style)'
 
 [nim]
 symbol = " "
-style = "bg:#A1887F"
-format = '[[ $symbol ($version) ](bg:#A1887F)]($style)'
+style = "bg:#BBA5B5"
+format = '[[ $symbol ($version) ](bg:#BBA5B5)]($style)'
 
 [rust]
 symbol = ""
-style = "bg:#A1887F"
-format = '[[ $symbol ($version) ](bg:#A1887F)]($style)'
+style = "bg:#BBA5B5"
+format = '[[ $symbol ($version) ](bg:#BBA5B5)]($style)'
 
 [time]
 disabled = false

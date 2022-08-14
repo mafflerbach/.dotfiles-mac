@@ -174,9 +174,6 @@ source "$HOME/.fzf/shell/key-bindings.zsh"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-export JIRA_API_TOKEN=$(pass show Sixt/jira)
-export JIRA_AUTH_TYPE="bearer"
-
 
 ZSH_TMUX_AUTOSTART=true
 
@@ -246,6 +243,26 @@ function restartPod {
 function podLogs {
     pod=$(kubectl get pods | fzf); kubectl logs $(echo $pod | cut -f1 -d' ') -f
 }
+function podDesc {
+    pod=$(kubectl get pods | fzf); kubectl describe pod  $(echo $pod | cut -f1 -d' ')
+}
+
+function podLogin {
+    pod=$(kubectl get pods | fzf); kubectl exec -it $(echo $pod | cut -f1 -d' ') -- sh
+}
+
+function undeploy {
+    #
+    pod=$(kubectl get pods | fzf);
+IN=$(echo $pod | cut -f1 -d' ' | rev)     
+arrIN=(${IN//\-/ })
+echo ${arrIN[1]}      
+# kubectl delete deployment solutions-java-com-sixt-fleet-eordering
+}
+
+
+
+# kubectl exec -it <pod name> -c logging -- sh
 
 function context {
     context="dev-it-integration\nstage-it-integration\nprod-it-integration"

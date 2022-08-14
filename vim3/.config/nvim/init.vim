@@ -29,7 +29,7 @@ EOF
 
 
 :so /home/maren/.dotfiles/vim3/.config/nvim/viml/functions.vim
-:so /home/maren/.dotfiles/vim3/.config/nvim/viml/mappings.vim
+" :so /home/maren/.dotfiles/vim3/.config/nvim/viml/mappings.vim
 
 "let test#java#runner = 'gradletest'
 let test#strategy = "vimux"

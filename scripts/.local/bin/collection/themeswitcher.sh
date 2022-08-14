@@ -31,4 +31,4 @@ done
 
 qutebrowser :config-source
 
-feh --bg-center /home/maren/.dotfiles/wallpaper/$wallpaper
+feh --bg-fill /home/maren/.dotfiles/wallpaper/$wallpaper

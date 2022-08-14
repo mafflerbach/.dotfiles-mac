@@ -79,7 +79,7 @@ return require('packer').startup(function()
 
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
---    use 'nvim-telescope/telescope-dap.nvim'
+    --    use 'nvim-telescope/telescope-dap.nvim'
 
     use 'mogelbrod/vim-jsonpath'
 
@@ -102,7 +102,7 @@ return require('packer').startup(function()
     }
 
     use 'vim-test/vim-test'
- --   use 'NLKNguyen/papercolor-theme'
+    --   use 'NLKNguyen/papercolor-theme'
 
     use 'rakr/vim-one'
     use 'dylanaraps/wal.vim'
@@ -111,17 +111,17 @@ return require('packer').startup(function()
         "NTBBloodbath/rest.nvim",
         requires = { "nvim-lua/plenary.nvim" },
     }
-  --  use 'Mofiqul/vscode.nvim'
+    --  use 'Mofiqul/vscode.nvim'
 
     use 'nvim-treesitter/nvim-treesitter'
     -- use { "beauwilliams/focus.nvim", config = function() require("focus").setup() end }
 
-  -- Plugins can also depend on rocks from luarocks.org:
-  use {
-    '~/.dotfiles/vim3/.config/nvim/lua/jira',
-    rocks= {'http', 'lunajson'}
+    -- Plugins can also depend on rocks from luarocks.org:
+    use {
+        '~/.dotfiles/vim3/.config/nvim/lua/jira',
+        rocks= {'http', 'lunajson'}
 
-  }
+    }
 end)
 
 

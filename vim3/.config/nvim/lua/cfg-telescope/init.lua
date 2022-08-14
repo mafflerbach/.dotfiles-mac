@@ -18,3 +18,5 @@ require('telescope').setup{
 
 -- require('telescope').load_extension('dap')
 require('telescope').load_extension('fzf')
+require('telescope').load_extension('telescope_jbehave')
+require('telescope').load_extension('conventional_commits')

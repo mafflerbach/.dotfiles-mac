@@ -1,0 +1,5 @@
+Implementing 
+Adapting current implementation
+Fixing tests
+Fixing configuration
+Cleanup and refactoring
