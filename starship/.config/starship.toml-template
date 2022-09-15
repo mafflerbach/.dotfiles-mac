@@ -15,6 +15,7 @@ $elm\
 $golang\
 $haskell\
 $java\
+$helm\
 $julia\
 $nodejs\
 $nim\
@@ -93,6 +94,11 @@ format = '[[ $symbol ($version) ](bg:COLOR4)]($style)'
 symbol = " "
 style = "bg:COLOR4"
 format = '[[ $symbol ($version) ](bg:COLOR4)]($style)'
+
+[helm]
+symbol = "⎈ "
+format = '[[ $symbol ($version) ](bg:COLOR4)]($style)'
+style = "bg:COLOR4"
 
 [java]
 symbol = " "

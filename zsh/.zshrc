@@ -29,7 +29,8 @@ export VISUAL=/usr/sbin/nvim
   ZSH_TMUX_FIXTERM=true
 
 
-
+export SOPS_KMS_ARN="arn:aws:kms:eu-west-1:787242137700:key/5b38d0d1-cd74-44b2-86ec-ec1dc621f0ee"
+export AWS_PROFILE=int_dev
 
 
 
@@ -250,6 +251,9 @@ function podDesc {
 function podLogin {
     pod=$(kubectl get pods | fzf); kubectl exec -it $(echo $pod | cut -f1 -d' ') -- sh
 }
+function descpod {
+    pod=$(kubectl get pods | fzf); kubectl describe pod $(echo $pod | cut -f1 -d' ')
+}
 
 function undeploy {
     #
@@ -265,7 +269,7 @@ echo ${arrIN[1]}
 # kubectl exec -it <pod name> -c logging -- sh
 
 function context {
-    context="dev-it-integration\nstage-it-integration\nprod-it-integration"
+    context="new-integration-dev\ndev-it-integration\nstage-it-integration\nprod-it-integration"
     context=$(echo $context | fzf); 
     kubectl config use-context $context
 }
@@ -274,6 +278,30 @@ function podLog {
 pod=$(kubectl get pods | fzf); kubectl logs $(echo $pod | cut -f1 -d' ') > output.logs
 vim output.log
 }
+
+function hsenc {
+
+    context="int_dev\nint_stage\nint_prod"
+    context=$(echo $context | fzf); 
+export AWS_PROFILE=$context
+
+
+    env="dev\nstage\nprod"
+    env=$(echo $env | fzf); 
+
+
+}
+
+
+function hsed {
+
+
+}
+function hconfup {
+
+
+}
+
 
 
 alias listPods='kubectl -n it-integration get pods' 
@@ -307,3 +335,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 
 eval "$(starship init zsh)"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/home/maren/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

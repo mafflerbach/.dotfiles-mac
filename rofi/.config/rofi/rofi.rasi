@@ -18,24 +18,24 @@ configuration {
 }
 
 * {
-    background-color:             	#18101f00;
-    text-color: 					#ede3e4;
+    background-color:             	#0e0d2d00;
+    text-color: 					#f3ded2;
 }
 
 window {
     border: 						1;
-    border-color: 					#A59E9F99;
+    border-color: 					#AA9B9399;
     padding: 						10;
     width: 							70%;
     height: 						50%;
     location:                       center;
-    background-color:             	#18101f00;
+    background-color:             	#0e0d2d00;
 }
 
 prompt {
     spacing: 						0;
     border: 						0;
-    text-color: 					#ede3e4;
+    text-color: 					#f3ded2;
 }
 
 textbox-prompt-colon {
@@ -47,30 +47,30 @@ textbox-prompt-colon {
 
 entry {
     spacing:    					0;
-    text-color: 					#ede3e4;
+    text-color: 					#f3ded2;
 }
 
 case-indicator {
     spacing:    					0;
-    text-color: 					#ede3e4;
+    text-color: 					#f3ded2;
 }
 
 inputbar {
     spacing:    					0px;
-    text-color: 					#ede3e4;
+    text-color: 					#f3ded2;
     padding:    					1px;
     children: 						[ prompt,textbox-prompt-colon,entry,case-indicator ];
 }
 
 mainbox {
     border: 						0px;
-    border-color: 					@ac;
+    border-color: 					#f3ded2;
 }
 
 listview {
     fixed-height: 					0;
     border: 						0px;
-    border-color: 					@ac;
+    border-color: 					#f3ded2;
     spacing: 						4px;
     scrollbar: 						false;
 }
@@ -80,78 +80,78 @@ element {
     padding: 						5px;
 }
 element normal.normal {
-    background-color: 				#18101f00;
-    text-color:       				#ede3e4;
+    background-color: 				#0e0d2d00;
+    text-color:       				#f3ded2;
 }
 element normal.urgent {
-    background-color: 				#18101f00;
-    text-color:       				#ede3e4;
+    background-color: 				#0e0d2d00;
+    text-color:       				#f3ded2;
 }
 element normal.active {
-    background-color: 				#18101f00;
-    text-color:       				#ede3e4;
+    background-color: 				#0e0d2d00;
+    text-color:       				#f3ded2;
 }
 element selected.normal {
-    background-color: 				#AE4F5399;
-    text-color:       				#ede3e4;
+    background-color: 				#B06AA599;
+    text-color:       				#f3ded2;
 }
 element selected.urgent {
-    background-color: 				#AE4F5399;
-    text-color:       				#ede3e4;
+    background-color: 				#B06AA599;
+    text-color:       				#f3ded2;
 }
 element selected.active {
-    background-color: 				#AE4F5399;
-    text-color:       				#ede3e4;
+    background-color: 				#B06AA599;
+    text-color:       				#f3ded2;
 }
 element alternate.normal {
-    background-color: 				#18101f00;
-    text-color:       				#ede3e4;
+    background-color: 				#0e0d2d00;
+    text-color:       				#f3ded2;
 }
 element alternate.urgent {
-    background-color: 				#18101f00;
-    text-color:       				#ede3e4;
+    background-color: 				#0e0d2d00;
+    text-color:       				#f3ded2;
 }
 element alternate.active {
-    background-color: 				#18101f00;
-    text-color:       				#ede3e4;
+    background-color: 				#0e0d2d00;
+    text-color:       				#f3ded2;
 }
 
 sidebar {
     border:       					0px;
-    border-color: 					@ac;
+    border-color: 					#f3ded2;
 }
 
 button {
-    background-color:             	#18101f00;
+    background-color:             	#0e0d2d00;
     margin: 						5px;
     padding: 						5px;
-    text-color: 					#ede3e4;
+    text-color: 					#f3ded2;
     border: 						0px;
-    border-color: 					#ede3e4;
+    border-color: 					#f3ded2;
 }
 
 button selected {
-    background-color:             	#18101f00;
-    text-color: 					#ede3e4;
+    background-color:             	#0e0d2d00;
+    text-color: 					#f3ded2;
     border: 						0px;
-    border-color: 					#ede3e4;
+    border-color: 					#f3ded2;
 }
 
 scrollbar {
     width:        					4px;
     border:       					0px;
-    handle-color: 					#ede3e4;
+    handle-color: 					#f3ded2;
     handle-width: 					8px;
     padding:      					0;
 }
 
 message {
     border: 						0px;
-    border-color: 					@ac;
+    border-color: 					#f3ded2;
     padding: 						1px;
 }
 
 textbox {
-    text-color: 					#ede3e4;
+    text-color: 					#f3ded2;
 }
 

@@ -64,13 +64,13 @@ inputbar {
 
 mainbox {
     border: 						0px;
-    border-color: 					@ac;
+    border-color: 					FGCOLOR;
 }
 
 listview {
     fixed-height: 					0;
     border: 						0px;
-    border-color: 					@ac;
+    border-color: 					FGCOLOR;
     spacing: 						4px;
     scrollbar: 						false;
 }
@@ -118,7 +118,7 @@ element alternate.active {
 
 sidebar {
     border:       					0px;
-    border-color: 					@ac;
+    border-color: 					FGCOLOR;
 }
 
 button {
@@ -147,7 +147,7 @@ scrollbar {
 
 message {
     border: 						0px;
-    border-color: 					@ac;
+    border-color: 					FGCOLOR;
     padding: 						1px;
 }
 

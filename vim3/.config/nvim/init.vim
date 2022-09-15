@@ -21,7 +21,10 @@ require("cfg-dap-ui")
 require("cfg-gitsigns")
 require("cfg-rest")
 require("cfg-vimtest")
+require("cfg-rusttools")
+require("cfg-telekasten")
 require("jira")
+require("jbehave")
 require("mappings")
 
 
@@ -29,7 +32,7 @@ EOF
 
 
 :so /home/maren/.dotfiles/vim3/.config/nvim/viml/functions.vim
-" :so /home/maren/.dotfiles/vim3/.config/nvim/viml/mappings.vim
+:so /home/maren/.dotfiles/vim3/.config/nvim/viml/mappings.vim
 
 "let test#java#runner = 'gradletest'
 let test#strategy = "vimux"

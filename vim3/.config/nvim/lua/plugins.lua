@@ -7,12 +7,13 @@ return require('packer').startup(function()
     use "neovim/nvim-lspconfig"
     use "mfussenegger/nvim-jdtls" -- java
     use 'folke/tokyonight.nvim'
-    use { 
-        "rcarriga/nvim-dap-ui", 
+    use {
+        "rcarriga/nvim-dap-ui",
         requires = {
+            'simrat39/rust-tools.nvim',
             "mfussenegger/nvim-dap",
             'theHamsta/nvim-dap-virtual-text'
-        } 
+        }
     }
     use 'psliwka/vim-smoothie'
     use 'camspiers/animate.vim'
@@ -42,7 +43,8 @@ return require('packer').startup(function()
         requires = 'kyazdani42/nvim-web-devicons',
         config = function() require'nvim-tree'.setup { diagnostics = { enable = true } } end
     }
-
+    use 'renerocksai/telekasten.nvim'
+    use 'renerocksai/calendar-vim'
     use 'jremmen/vim-ripgrep'
 
     use {
@@ -74,54 +76,63 @@ return require('packer').startup(function()
     }
     use {
         'nvim-telescope/telescope.nvim',
-        requires = { {'nvim-lua/plenary.nvim'} }
+        requires = { 'nvim-lua/plenary.nvim',
+        'nvim-lua/popup.nvim',
+        'nvim-telescope/telescope-media-files.nvim'
     }
+}
 
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
-    --    use 'nvim-telescope/telescope-dap.nvim'
+--    use 'nvim-telescope/telescope-dap.nvim'
 
-    use 'mogelbrod/vim-jsonpath'
+use 'mogelbrod/vim-jsonpath'
 
-    use {
-        'tpope/vim-dadbod',
-        requires = {
-            'kristijanhusak/vim-dadbod-ui',
-            'kristijanhusak/vim-dadbod-completion'
-        }
+use {
+    'tpope/vim-dadbod',
+    requires = {
+        'kristijanhusak/vim-dadbod-ui',
+        'kristijanhusak/vim-dadbod-completion'
     }
+}
 
-    use 'vim-pandoc/vim-pandoc'
-    use 'vim-pandoc/vim-pandoc-syntax'
+use 'vim-pandoc/vim-pandoc'
+use 'vim-pandoc/vim-pandoc-syntax'
 
-    use {
-        'benmills/vimux',
-        requires = {
-            'christoomey/vim-tmux-navigator'
-        }
+use {
+    'benmills/vimux',
+    requires = {
+        'christoomey/vim-tmux-navigator'
     }
+}
 
-    use 'vim-test/vim-test'
-    --   use 'NLKNguyen/papercolor-theme'
+use 'vim-test/vim-test'
+--   use 'NLKNguyen/papercolor-theme'
 
-    use 'rakr/vim-one'
-    use 'dylanaraps/wal.vim'
+use 'rakr/vim-one'
+use 'dylanaraps/wal.vim'
 
-    use {
-        "NTBBloodbath/rest.nvim",
-        requires = { "nvim-lua/plenary.nvim" },
-    }
-    --  use 'Mofiqul/vscode.nvim'
+use {
+    "NTBBloodbath/rest.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
+}
+--  use 'Mofiqul/vscode.nvim'
+use 'nvim-treesitter/nvim-treesitter'
+-- use { "beauwilliams/focus.nvim", config = function() require("focus").setup() end }
 
-    use 'nvim-treesitter/nvim-treesitter'
-    -- use { "beauwilliams/focus.nvim", config = function() require("focus").setup() end }
+use 'nvim-treesitter/nvim-treesitter-context'
+-- Plugins can also depend on rocks from luarocks.org:
+use {
+    '~/.dotfiles/vim3/.config/nvim/lua/jira',
+    rocks= {'http', 'lunajson', 'lua-resty-http'}
+}
 
-    -- Plugins can also depend on rocks from luarocks.org:
-    use {
-        '~/.dotfiles/vim3/.config/nvim/lua/jira',
-        rocks= {'http', 'lunajson'}
+use {
+    '~/.dotfiles/vim3/.config/nvim/lua/jbehave'
+}
 
-    }
+use 'f-person/git-blame.nvim'
+
 end)
 
 

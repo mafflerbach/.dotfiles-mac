@@ -1,7 +1,7 @@
 
 require('telescope').setup{
     defaults = {
-        layout_strategy = 'vertical',
+        layout_strategy = 'horizontal',
         layout_config = { height = 0.95 },
     },
     extensions = {
@@ -11,6 +11,12 @@ require('telescope').setup{
             override_file_sorter = true,     -- override the file sorter
             case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
             -- the default case_mode is "smart_case"
+        },
+        media_files = {
+            -- filetypes whitelist
+            -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
+            filetypes = {"png", "webp", "jpg", "jpeg"},
+            find_cmd = "rg" -- find command (defaults to `fd`)
         }
     }
 }
@@ -20,3 +26,4 @@ require('telescope').setup{
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('telescope_jbehave')
 require('telescope').load_extension('conventional_commits')
+require('telescope').load_extension('media_files')

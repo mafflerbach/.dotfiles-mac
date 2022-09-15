@@ -68,36 +68,29 @@ vim.api.nvim_set_keymap('i', '<c-s>','<Esc><c-s>', {})
 vim.api.nvim_set_keymap('i', '<C-Space>',[[compe#complete()]],  {noremap = true, silent = true, expr = true})
 vim.api.nvim_set_keymap('i', '<CR>',[[compe#confirm('<CR>')]],  {noremap = true, silent = true, expr = true})
 
-vim.api.nvim_set_keymap('n', '<leader>rS',':call RunMvnTest()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>rs',':call RunMvnThisTest(expand("%:."))<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>oq',':call OpenGradleTest(expand("%:."))<CR>', opts)
-
 -- :TestFile --debug-jvm
 
 
 
-vim.api.nvim_set_keymap('n', '<leader>jS',':lua Jira.showQuery("showCurrentSprint") <CR>', opts) 
+vim.api.nvim_set_keymap('n', '<leader>jS',':lua Jira.showQuery("showMigrationSprint") <CR>', opts) 
 vim.api.nvim_set_keymap('n', '<leader>jru',':lua Jira.showQuery("showCurrentRunBoard") <CR> ', opts)
 vim.api.nvim_set_keymap('n', '<leader>jv',':lua Jira.showIssue(vim.fn.expand("<cWORD>"))', opts)
+vim.api.nvim_set_keymap('n', '<leader>ju',':lua Jira.unassign(vim.fn.expand("<cWORD>"))<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>ja',':lua Jira.assign(vim.fn.expand("<cWORD>"))<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>jp',':lua Jira.progress(vim.fn.expand("<cWORD>"))<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>jr',':lua Jira.review(vim.fn.expand("<cWORD>"))<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>jr',':lua Jira.todo(vim.fn.expand("<cWORD>"))<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>jr',':lua Jira.done(vim.fn.expand("<cWORD>"))<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>jco',':lua Jira.comment(vim.fn.expand("<cWORD>"))<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>je',':lua Jira.edit(vim.fn.expand("<cWORD>"))<CR>', opts)
 
 
 
-
-
-
-
-vim.api.nvim_set_keymap('n', '<leader>js',':call SubtaskJira(expand("<cWORD>"))<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>jco',':call CommentJira(expand("<cWORD>"))<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>je',':call EditJira(expand("<cWORD>"))<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>ju',':call JiraUnassign(expand("<cWORD>"))<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>ja',':call JiraAssign(expand("<cWORD>"))<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>jr',':call JiraReview(expand("<cWORD>"))<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>gf',':call GetGithubLink(expand("%:."))<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>ga',':call GetAlternate(expand("%:."))<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>gA',':call GetAlternateSplit(expand("%:."))<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>jro',':call JiraOpenReview()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>jd',':call JiraDone(expand("<cWORD>"))<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>jp',':call JiraProgress(expand("<cWORD>"))<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>jt',':call JiraTodo(expand("<cWORD>"))<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>jl',':call SubtaskJira(g:ActualTicket)<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>jm',':call MineJira()<CR>', opts)
@@ -113,6 +106,13 @@ vim.api.nvim_set_keymap('n', '<leader>A',':Rg <C-r>=expand(\'<CWORD>\') <CR>', o
  -- :Rg LATER -g'*.md' -g'!bak'
 
 vim.api.nvim_set_keymap('n', '<leader>ds',':VimuxRunCommand "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk; mvn -Dmaven.surefire.debug  -Dtest=".expand("%:t:r")." test --offline"<CR>', {noremap = true})
+
+--vim.api.nvim_set_keymap('n', '<leader>rS',':call RunMvnTest()<CR>', opts)
+--vim.api.nvim_set_keymap('n', '<leader>rs',':call RunMvnThisTest(expand("%:."))<CR>', opts)
+--vim.api.nvim_set_keymap('n', '<leader>oq',':call OpenGradleTest(expand("%:."))<CR>', opts)
+
+
+vim.api.nvim_set_keymap('n', '<leader>rs',':TestFile<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>dt',':TestFile --debug-jvm<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>dnm,',':TestNearest --debug-jvm<CR>', {noremap = true})
 
