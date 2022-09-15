@@ -21,4 +21,7 @@
     require "lspconfig".intelephense.setup {}
     require "lspconfig".sumneko_lua.setup {}
     require "lspconfig".rust_analyzer.setup {}
+--    require "lspconfig".jdtls.setup {}
+
+
 

@@ -4,16 +4,6 @@ local shared_commons = require("cfg-lsp.sharedcommons")
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { "tsserver", "sqlls", "bashls", "jsonls", "dockerls","sumneko_lua", "yamlls" }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-    on_attach = shared_commons.on_attach,
-    flags = {
-      debounce_text_changes = 150
-    },
-    capabilities = shared_commons.capabilities
-  }
-end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
   vim.lsp.with(
@@ -44,8 +34,8 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
 )
 
 require("cfg-lsp.providers")
--- require("cfg-lsp.providers.java-cfg")
 
+--require("cfg-lsp.providers.java-cfg")
 
 --
 -- Diagnostics Hover
