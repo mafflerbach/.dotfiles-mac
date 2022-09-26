@@ -11,8 +11,11 @@ end
 
 require('plugins')
 require("nvim-lsp-installer").setup {}
+
 require("cfg-cmp")
+require("cfg-luadev")
 require("cfg-lsp")
+require("cfg-gh")
 require("cfg-lualine")
 require("cfg-nvimtree")
 require("cfg-telescope")
@@ -23,7 +26,9 @@ require("cfg-rest")
 require("cfg-vimtest")
 require("cfg-rusttools")
 require("cfg-telekasten")
+require("cfg-tokyonight")
 require("jira")
+require("kube")
 require("jbehave")
 require("mappings")
 

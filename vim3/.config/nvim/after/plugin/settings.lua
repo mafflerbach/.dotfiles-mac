@@ -14,9 +14,8 @@ vim.opt.incsearch = true
 vim.opt.wrap = true
 vim.opt.ignorecase = true
 
-
 vim.g.tokyonight_transparent_sidebar = true
 vim.g.tokyonight_transparent = true
-vim.opt.background = "light"
+vim.opt.background = "dark"
 
-vim.cmd("colorscheme wal")
+vim.cmd("colorscheme tokyonight-night")

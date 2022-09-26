@@ -48,6 +48,7 @@ vim.api.nvim_set_keymap('n', 'tc',':tabclose', {})
 
 vim.api.nvim_set_keymap('n', '<leader>n',':NvimTreeToggle<CR>', {})
 vim.api.nvim_set_keymap('n', '<leader>r',':NvimTreeFindFile<CR>', {})
+
 vim.api.nvim_set_keymap('n', 'n','nzzzv', {noremap =true})
 vim.api.nvim_set_keymap('n', 'N','Nzzzv', {noremap =true})
 
@@ -72,17 +73,17 @@ vim.api.nvim_set_keymap('i', '<CR>',[[compe#confirm('<CR>')]],  {noremap = true,
 
 
 
-vim.api.nvim_set_keymap('n', '<leader>jS',':lua Jira.showQuery("showMigrationSprint") <CR>', opts) 
-vim.api.nvim_set_keymap('n', '<leader>jru',':lua Jira.showQuery("showCurrentRunBoard") <CR> ', opts)
-vim.api.nvim_set_keymap('n', '<leader>jv',':lua Jira.showIssue(vim.fn.expand("<cWORD>"))', opts)
-vim.api.nvim_set_keymap('n', '<leader>ju',':lua Jira.unassign(vim.fn.expand("<cWORD>"))<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>ja',':lua Jira.assign(vim.fn.expand("<cWORD>"))<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>jp',':lua Jira.progress(vim.fn.expand("<cWORD>"))<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>jr',':lua Jira.review(vim.fn.expand("<cWORD>"))<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>jr',':lua Jira.todo(vim.fn.expand("<cWORD>"))<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>jr',':lua Jira.done(vim.fn.expand("<cWORD>"))<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>jco',':lua Jira.comment(vim.fn.expand("<cWORD>"))<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>je',':lua Jira.edit(vim.fn.expand("<cWORD>"))<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>jS',':lua Jira().showQuery("showMigrationSprint") <CR>', opts) 
+vim.api.nvim_set_keymap('n', '<leader>jru',':lua Jira().showQuery("showCurrentRunBoard") <CR> ', opts)
+vim.api.nvim_set_keymap('n', '<leader>jv',':lua Jira().showIssue(vim.fn.expand("<cWORD>"))', opts)
+vim.api.nvim_set_keymap('n', '<leader>ju',':lua Jira().unassign(vim.fn.expand("<cWORD>"))<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>ja',':lua Jira().assign(vim.fn.expand("<cWORD>"))<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>jp',':lua Jira().progress(vim.fn.expand("<cWORD>"))<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>jr',':lua Jira().review(vim.fn.expand("<cWORD>"))<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>jt',':lua Jira().todo(vim.fn.expand("<cWORD>"))<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>jd',':lua Jira().done(vim.fn.expand("<cWORD>"))<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>jco',':lua Jira().comment(vim.fn.expand("<cWORD>"))<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>je',':lua Jira().edit(vim.fn.expand("<cWORD>"))<CR>', opts)
 
 
 
@@ -166,14 +167,22 @@ vim.api.nvim_set_keymap("n", "<silent> <Down>", "<cmd>:call animate#window_delta
 vim.api.nvim_set_keymap("n", "<silent> <Left>", "<cmd>:call animate#window_delta_width(10)", opts)
 vim.api.nvim_set_keymap("n", "<silent> <Right>", "<cmd>:call animate#window_delta_width(-10)", opts)
 
-
 vim.api.nvim_set_keymap("n", "gx", '<cmd>:silent execute "!xdg-open " . shellescape("<cWORD>")<cr>', opts)
-
 
 vim.api.nvim_set_keymap("n", ",jb", ":lua jbehaveCompletion()<CR>", opts)
 vim.api.nvim_set_keymap("n", ",CM", ":lua commitMessageCompletion()<CR>", opts)
 
 vim.api.nvim_set_keymap("n", ",pri", "<cmd>:!lp \"%\" -o print-quality=3<cr>", opts)
+
+
+
+vim.api.nvim_set_keymap("n", ",kr", ":lua Kube().restart()", opts)
+vim.api.nvim_set_keymap("n", ",ku", ":lua Kube().undeploy()", opts)
+vim.api.nvim_set_keymap("n", ",kc", ":lua Kube().context()", opts)
+vim.api.nvim_set_keymap("n", ",kd", ":lua Kube().describePod()", opts)
+vim.api.nvim_set_keymap("n", ",kl", ":lua Kube().logs()", opts)
+vim.api.nvim_set_keymap("n", ",kp", ":lua Kube().pods()", opts)
+
 
 
 

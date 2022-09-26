@@ -165,6 +165,12 @@ alias b64decode="echo -n '$1' | base64 --decode"
 
 alias b64encode="echo -n '$1' | base64"
 
+alias aws_profiles='export AWS_PROFILE=$(aws configure list-profiles | fzf )'
+
+
+
+
+
 
 source ~/exportedVars
 export FZF_DEFAULT_OPTS="--ansi"
@@ -238,44 +244,46 @@ kill $(ps aux | fzf | cut -f5 -d' ')
 }
 
 function restartPod {
-    pod=$(kubectl get pods | fzf); kubectl delete pod $(echo $pod | cut -f1 -d' ')
+    pod=$(kubectl get pods -n it-integration | fzf); kubectl delete pod $(echo $pod | cut -f1 -d' ') -n it-integration
 }
 
+
 function podLogs {
-    pod=$(kubectl get pods | fzf); kubectl logs $(echo $pod | cut -f1 -d' ') -f
-}
-function podDesc {
-    pod=$(kubectl get pods | fzf); kubectl describe pod  $(echo $pod | cut -f1 -d' ')
+    pod=$(kubectl get pods -n it-integration | fzf); kubectl logs $(echo $pod | cut -f1 -d' ') -f -n it-integration
 }
 
 function podLogin {
-    pod=$(kubectl get pods | fzf); kubectl exec -it $(echo $pod | cut -f1 -d' ') -- sh
+    pod=$(kubectl get pods  -n it-integration| fzf); kubectl exec -it $(echo $pod | cut -f1 -d' ')  -n it-integration -- sh
 }
 function descpod {
-    pod=$(kubectl get pods | fzf); kubectl describe pod $(echo $pod | cut -f1 -d' ')
+    pod=$(kubectl get pods  -n it-integration | fzf); kubectl describe pod $(echo $pod | cut -f1 -d' ') -n it-integration
 }
 
 function undeploy {
     #
-    pod=$(kubectl get pods | fzf);
+    pod=$(kubectl get pods   -n it-integration| fzf);
 IN=$(echo $pod | cut -f1 -d' ' | rev)     
-arrIN=(${IN//\-/ })
-echo ${arrIN[1]}      
-# kubectl delete deployment solutions-java-com-sixt-fleet-eordering
+foo=${IN//\-/ }
+parts=(${(@s: :)foo})
+parts=(${parts:2})
+
+mee=$(echo ${(j:-:)parts} | rev)
+kubectl delete deployment $mee  -n it-integration
 }
 
 
 
 # kubectl exec -it <pod name> -c logging -- sh
-
+          
 function context {
-    context="new-integration-dev\ndev-it-integration\nstage-it-integration\nprod-it-integration"
+
+    context="dev-it-integration\nnew-integration-dev\nnew-integration-stage\none-dev\none-prod\none-stage\nprod-it-integration\nrancher-desktop\nstage-it-integration"
     context=$(echo $context | fzf); 
     kubectl config use-context $context
 }
 
 function podLog {
-pod=$(kubectl get pods | fzf); kubectl logs $(echo $pod | cut -f1 -d' ') > output.logs
+pod=$(kubectl get pods  -n it-integration| fzf); kubectl logs $(echo $pod | cut -f1 -d' ') > output.logs
 vim output.log
 }
 
@@ -304,7 +312,7 @@ function hconfup {
 
 
 
-alias listPods='kubectl -n it-integration get pods' 
+alias listPods='kubectl  get pods -n it-integration' 
 
 function lastCommit {
 repoUrl=$(git config --get remote.origin.url |sed -e 's/:/\//' -e 's/git@/https:\/\//' -e 's/\.git//'); commit=$(git log | head -n1 | sed -e 's/commit //') ; echo $repoUrl/commit/#$commit

@@ -16,6 +16,8 @@ if ! tmux has-session -t $target 2> /dev/null; then
 tmux neww -n $clean_name 
 tmux send-keys -t $clean_name "openproject.sh $FQSN "
 fi
-
+tmux split-window -l 15
+tmux send-keys -t $clean_name "cd ~/development/$FQSN "
+tmux select-pane -t 0
 
 

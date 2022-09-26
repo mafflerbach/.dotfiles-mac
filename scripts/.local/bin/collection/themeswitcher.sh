@@ -3,6 +3,14 @@
 
 wallpaper=`ls -1 /home/maren/.dotfiles/wallpaper | rofi -dmenu -theme /home/maren/.config/rofi/rofi.rasi ` 
 
+echo $wallpaper
+
+
+if [ "$wallpaper" == "" ]; then 
+
+wallpaper="cyberpunk2.jpg"
+fi
+
 
 while getopts ld option
 do
