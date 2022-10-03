@@ -13,7 +13,6 @@ local config = {
     -- 💀
     'java', -- or '/path/to/java11_or_newer/bin/java'
             -- depends on if `java` is in your $PATH env variable and if it points to the right version.
-
     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
     '-Dosgi.bundles.defaultStartLevel=4',
     '-Declipse.product=org.eclipse.jdt.ls.core.product',
@@ -66,7 +65,7 @@ local config = {
   -- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
   init_options = {
     bundles = {
-        vim.fn.glob("/home/maren/.m2/repository/com/microsoft/java/com.microsoft.java.debug.repository/0.37.0/plugins/com.microsoft.java.debug.plugin_0.37.0.jar")
+        vim.fn.glob("/home/maren/Download/com.microsoft.java.debug.plugin-0.40.0.jar")
     }
   },
 }
@@ -74,7 +73,7 @@ local config = {
 -- or attaches to an existing client & server depending on the `root_dir`.
 
 local bundles = {
-  vim.fn.glob("/home/maren/.m2/repository/com/microsoft/java/com.microsoft.java.debug.repository/0.37.0/plugins/com.microsoft.java.debug.plugin_0.37.0.jar"),
+  vim.fn.glob("/home/maren/Download/com.microsoft.java.debug.plugin-0.40.0.jar"),
 };
 
 -- This is the new part

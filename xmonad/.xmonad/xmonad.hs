@@ -86,8 +86,8 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
-myNormalBorderColor  = "#0e0d2d"
-myFocusedBorderColor = "#5091CB"
+myNormalBorderColor  = "#100b10"
+myFocusedBorderColor = "#C253AD"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -200,7 +200,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
     --
     [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_w, xK_r, xK_e] [0..]
+        | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 
@@ -320,11 +320,11 @@ myStartupHook = do
 
 -- Run xmonad with the settings you specify. No need to modify this.
 --
-gray      = "#5091CB"
-gray2     = "#F290A4"
-red       = "#aa9b93"
-blue      = "#B06AA5"
-white     = "#f3ded2"
+gray      = "#C253AD"
+gray2     = "#AB5ECE"
+red       = "#9b8e98"
+blue      = "#6F54A0"
+white     = "#decbda"
 
 
 

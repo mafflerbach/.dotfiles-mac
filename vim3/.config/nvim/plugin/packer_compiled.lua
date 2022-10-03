@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/home/maren/.local/share/nvim/site/pack/packer/start/animate.vim",
     url = "https://github.com/camspiers/animate.vim"
   },
+  ["calendar-vim"] = {
+    loaded = true,
+    path = "/home/maren/.local/share/nvim/site/pack/packer/start/calendar-vim",
+    url = "https://github.com/renerocksai/calendar-vim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/maren/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -119,10 +124,25 @@ _G.packer_plugins = {
     path = "/home/maren/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
+  ["gh.nvim"] = {
+    loaded = true,
+    path = "/home/maren/.local/share/nvim/site/pack/packer/start/gh.nvim",
+    url = "https://github.com/ldelossa/gh.nvim"
+  },
+  ["git-blame.nvim"] = {
+    loaded = true,
+    path = "/home/maren/.local/share/nvim/site/pack/packer/start/git-blame.nvim",
+    url = "https://github.com/f-person/git-blame.nvim"
+  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/home/maren/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
+  jbehave = {
+    loaded = true,
+    path = "/home/maren/.local/share/nvim/site/pack/packer/start/jbehave",
+    url = "/home/maren/.dotfiles/vim3/.config/nvim/lua/jbehave"
   },
   jira = {
     loaded = true,
@@ -133,6 +153,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/maren/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
     url = "https://github.com/kdheepak/lazygit.nvim"
+  },
+  ["litee.nvim"] = {
+    loaded = true,
+    path = "/home/maren/.local/share/nvim/site/pack/packer/start/litee.nvim",
+    url = "https://github.com/ldelossa/litee.nvim"
   },
   ["lspkind-nvim"] = {
     loaded = true,
@@ -215,6 +240,11 @@ _G.packer_plugins = {
     path = "/home/maren/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
+  ["nvim-treesitter-context"] = {
+    loaded = true,
+    path = "/home/maren/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter-context"
+  },
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/home/maren/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
@@ -230,20 +260,40 @@ _G.packer_plugins = {
     path = "/home/maren/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["popup.nvim"] = {
+    loaded = true,
+    path = "/home/maren/.local/share/nvim/site/pack/packer/start/popup.nvim",
+    url = "https://github.com/nvim-lua/popup.nvim"
+  },
   ["rest.nvim"] = {
     loaded = true,
     path = "/home/maren/.local/share/nvim/site/pack/packer/start/rest.nvim",
     url = "https://github.com/NTBBloodbath/rest.nvim"
+  },
+  ["rust-tools.nvim"] = {
+    loaded = true,
+    path = "/home/maren/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
+    url = "https://github.com/simrat39/rust-tools.nvim"
   },
   ["symbols-outline.nvim"] = {
     loaded = true,
     path = "/home/maren/.local/share/nvim/site/pack/packer/start/symbols-outline.nvim",
     url = "https://github.com/simrat39/symbols-outline.nvim"
   },
+  ["telekasten.nvim"] = {
+    loaded = true,
+    path = "/home/maren/.local/share/nvim/site/pack/packer/start/telekasten.nvim",
+    url = "https://github.com/renerocksai/telekasten.nvim"
+  },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
     path = "/home/maren/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
     url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
+  },
+  ["telescope-media-files.nvim"] = {
+    loaded = true,
+    path = "/home/maren/.local/share/nvim/site/pack/packer/start/telescope-media-files.nvim",
+    url = "https://github.com/nvim-telescope/telescope-media-files.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,

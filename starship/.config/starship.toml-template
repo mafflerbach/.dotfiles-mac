@@ -8,7 +8,7 @@ $directory\
 [](fg:COLOR2 bg:COLOR3)\
 $git_branch\
 $git_status\
-[](fg:COLOR3 bg:COLOR4)\
+[](fg:COLOR3 bg:COLOR6)\
 $c\
 $elixir\
 $elm\
@@ -20,7 +20,7 @@ $julia\
 $nodejs\
 $nim\
 $rust\
-[](fg:COLOR4 bg:COLOR5)\
+[](fg:COLOR6 bg:COLOR5)\
 $docker_context\
 [ ](fg:COLOR5)\
 """
@@ -58,8 +58,8 @@ truncation_symbol = "…/"
 
 [c]
 symbol = " "
-style = "bg:COLOR4"
-format = '[[ $symbol ($version) ](bg:COLOR4)]($style)'
+style = "bg:COLOR6"
+format = '[[ $symbol ($version) ](bg:COLOR6)]($style)'
 
 [docker_context]
 symbol = " "
@@ -68,13 +68,13 @@ format = '[[ $symbol $context ](bg:COLOR5)]($style) $path'
 
 [elixir]
 symbol = " "
-style = "bg:COLOR4"
-format = '[[ $symbol ($version) ](bg:COLOR4)]($style)'
+style = "bg:COLOR6"
+format = '[[ $symbol ($version) ](bg:COLOR6)]($style)'
 
 [elm]
 symbol = " "
-style = "bg:COLOR4"
-format = '[[ $symbol ($version) ](bg:COLOR4)]($style)'
+style = "bg:COLOR6"
+format = '[[ $symbol ($version) ](bg:COLOR6)]($style)'
 
 [git_branch]
 symbol = ""
@@ -87,43 +87,43 @@ format = '[[($all_status$ahead_behind )](bg:COLOR3)]($style)'
 
 [golang]
 symbol = " "
-style = "bg:COLOR4"
-format = '[[ $symbol ($version) ](bg:COLOR4)]($style)'
+style = "bg:COLOR6"
+format = '[[ $symbol ($version) ](bg:COLOR6)]($style)'
 
 [haskell]
 symbol = " "
-style = "bg:COLOR4"
-format = '[[ $symbol ($version) ](bg:COLOR4)]($style)'
+style = "bg:COLOR6"
+format = '[[ $symbol ($version) ](bg:COLOR6)]($style)'
 
 [helm]
 symbol = "⎈ "
-format = '[[ $symbol ($version) ](bg:COLOR4)]($style)'
-style = "bg:COLOR4"
+format = '[[ $symbol ($version) ](bg:COLOR6)]($style)'
+style = "bg:COLOR6"
 
 [java]
 symbol = " "
-style = "bg:COLOR4"
-format = '[[ $symbol ($version) ](bg:COLOR4)]($style)'
+style = "bg:COLOR6"
+format = '[[ $symbol ($version) ](bg:COLOR6)]($style)'
 
 [julia]
 symbol = " "
-style = "bg:COLOR4"
-format = '[[ $symbol ($version) ](bg:COLOR4)]($style)'
+style = "bg:COLOR6"
+format = '[[ $symbol ($version) ](bg:COLOR6)]($style)'
 
 [nodejs]
 symbol = ""
-style = "bg:COLOR4"
-format = '[[ $symbol ($version) ](bg:COLOR4)]($style)'
+style = "bg:COLOR6"
+format = '[[ $symbol ($version) ](bg:COLOR6)]($style)'
 
 [nim]
 symbol = " "
-style = "bg:COLOR4"
-format = '[[ $symbol ($version) ](bg:COLOR4)]($style)'
+style = "bg:COLOR6"
+format = '[[ $symbol ($version) ](bg:COLOR6)]($style)'
 
 [rust]
 symbol = ""
-style = "bg:COLOR4"
-format = '[[ $symbol ($version) ](bg:COLOR4)]($style)'
+style = "bg:COLOR6"
+format = '[[ $symbol ($version) ](bg:COLOR6)]($style)'
 
 [time]
 disabled = false

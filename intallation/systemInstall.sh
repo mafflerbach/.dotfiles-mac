@@ -6,8 +6,6 @@ pacman -S pass
 
 pip3 install requests tldextract pywal youtube-dl  pywal
 
-go get github.com/go-jira/jira/cmd/jira
-
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 

@@ -80,6 +80,7 @@ return require('packer').startup(function()
     }
 }
 
+use 'norcalli/nvim-colorizer.lua'
 use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
 --    use 'nvim-telescope/telescope-dap.nvim'
@@ -114,6 +115,7 @@ use {
 }
 use 'nvim-treesitter/nvim-treesitter'
 
+use "icedman/nvim-textmate"
 use 'nvim-treesitter/nvim-treesitter-context'
 -- Plugins can also depend on rocks from luarocks.org:
 use {
@@ -124,6 +126,8 @@ use {
 use {
     '~/.dotfiles/vim3/.config/nvim/lua/jbehave',
     '~/.dotfiles/vim3/.config/nvim/lua/kube',
+    '~/.dotfiles/vim3/.config/nvim/lua/helm',
+    '~/.dotfiles/vim3/.config/nvim/lua/cyberpunk',
 }
 
 use 'f-person/git-blame.nvim'

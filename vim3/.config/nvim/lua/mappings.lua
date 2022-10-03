@@ -182,6 +182,8 @@ vim.api.nvim_set_keymap("n", ",kc", ":lua Kube().context()", opts)
 vim.api.nvim_set_keymap("n", ",kd", ":lua Kube().describePod()", opts)
 vim.api.nvim_set_keymap("n", ",kl", ":lua Kube().logs()", opts)
 vim.api.nvim_set_keymap("n", ",kp", ":lua Kube().pods()", opts)
+vim.api.nvim_set_keymap("n", ",kcp", ":lua Kube().cppod()", opts)
+vim.api.nvim_set_keymap("n", ",kc", ":lua Kube().config()", opts)
 
 
 

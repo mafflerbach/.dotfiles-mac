@@ -168,10 +168,6 @@ alias b64encode="echo -n '$1' | base64"
 alias aws_profiles='export AWS_PROFILE=$(aws configure list-profiles | fzf )'
 
 
-
-
-
-
 source ~/exportedVars
 export FZF_DEFAULT_OPTS="--ansi"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
@@ -184,22 +180,16 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 ZSH_TMUX_AUTOSTART=true
 
-(cat ~/.cache/wal/sequences &)
-
-
-# async apply to terminal emulator
- (cat ~/.cache/wal/sequences &)
 # # synchronous alternative 
  cat ~/.cache/wal/sequences
 #
 # # apply color scheme to TTY
- source ~/.cache/wal/colors-tty.sh
+source ~/.cache/wal/colors-tty.sh
 
 
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
-#eval "$(jira --completion-script-zsh)"
 
 export LANG=en_US.UTF-9
 export LC_ALL=en_US.UTF-8
@@ -252,6 +242,10 @@ function podLogs {
     pod=$(kubectl get pods -n it-integration | fzf); kubectl logs $(echo $pod | cut -f1 -d' ') -f -n it-integration
 }
 
+function podFor {
+    pod=$(kubectl get pods -n it-integration | fzf); kubectl port-forward $(echo $pod | cut -f1 -d' ') 9191:8080 -n it-integration
+}
+
 function podLogin {
     pod=$(kubectl get pods  -n it-integration| fzf); kubectl exec -it $(echo $pod | cut -f1 -d' ')  -n it-integration -- sh
 }
@@ -282,10 +276,6 @@ function context {
     kubectl config use-context $context
 }
 
-function podLog {
-pod=$(kubectl get pods  -n it-integration| fzf); kubectl logs $(echo $pod | cut -f1 -d' ') > output.logs
-vim output.log
-}
 
 function hsenc {
 

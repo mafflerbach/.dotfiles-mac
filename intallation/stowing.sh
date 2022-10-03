@@ -5,7 +5,7 @@ rm ~/.config/awesome
 stow awesome
 
 stow compton
-stow goJira
+# stow goJira
 stow kitty
 stow misc
 stow qutebrowser
@@ -16,7 +16,7 @@ stow vim2
 
 rm ~/.zshrc
 stow zsh
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+# git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 rm ~/.Xresources
 rm ~/.xinitrc

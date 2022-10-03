@@ -1,15 +1,44 @@
-local pickers = require "telescope.pickers"
-local finders = require "telescope.finders"
-local conf = require("telescope.config").values
+function Kube()
 
-local actions = require "telescope.actions"
-local action_state = require "telescope.actions.state"
-vim.notify = require("notify")
+    local pickers = require "telescope.pickers"
+    local finders = require "telescope.finders"
+    local conf = require("telescope.config").values
 
-local Popup = require("nui.popup")
-local event = require("nui.utils.autocmd").event
+    local actions = require "telescope.actions"
+    local action_state = require "telescope.actions.state"
+    vim.notify = require("notify")
 
-function Kube ()
+    local Popup = require("nui.popup")
+    local event = require("nui.utils.autocmd").event
+
+    local config = require("kube.config")
+    local self = {}
+
+    local namespaceParam = function()
+        local namespace = ""
+        if config.namespace ~= "" then
+            namespace ="-n " .. config.namespace
+        end
+
+        return namespace
+    end
+
+
+
+    function self.convertToTable(str)
+
+        local t={}
+        for str in string.gmatch(str, "([^\n]+)") do
+            table.insert(t, str)
+        end
+        return t
+    end
+
+
+    function test()
+        print(namespaceParam())
+
+    end
 
     selector = function (cmd , cmd2, buffer, cb)
         local bufferFlag = buffer or false
@@ -20,12 +49,7 @@ function Kube ()
         local result = handle:read("*a")
         handle:close()
 
-        --print(result)
-        local t={}
-        for str in string.gmatch(result, "([^\n]+)") do
-            table.insert(t, str)
-        end
-
+        local t =self.convertToTable(result)
 
         local contextSelect = function(opts)
             opts = opts or {}
@@ -46,6 +70,7 @@ function Kube ()
                             local handle = io.popen(cmd2 .. " " .. string.gsub(selection[1], "pod/", ""))
                             local result2 = handle:read("*a")
                             handle:close()
+
                             if bufferFlag then
 
                                 local win= vim.api.nvim_get_current_win()
@@ -77,7 +102,7 @@ function Kube ()
 
     end
     local pods = function ()
-        local cmd = 'kubectl get pods -n it-integration -o name'
+        local cmd = 'kubectl get pods '..namespaceParam()..' -o name'
         local handle = io.popen(cmd)
         local result = handle:read("*a")
         handle:close()
@@ -98,94 +123,138 @@ function Kube ()
                 top_align = "center",
                 top = "Pod list"
             },
-                position = "15%",
-                size = {
-                    width = "90%",
-                    height = "60%",
-                },
-            })
+            position = "15%",
+            size = {
+                width = "90%",
+                height = "60%",
+            },
+        })
 
-            -- mount/open the component
-            popup:mount()
+        -- mount/open the component
+        popup:mount()
 
-            -- unmount component when cursor leaves buffer
-            popup:on(event.BufLeave, function()
-                popup:unmount()
-            end)
+        -- unmount component when cursor leaves buffer
+        popup:on(event.BufLeave, function()
+            popup:unmount()
+        end)
 
-            -- set content
-            vim.api.nvim_buf_set_lines(popup.bufnr, 0, 1, false, t)
+        -- set content
+        vim.api.nvim_buf_set_lines(popup.bufnr, 0, 1, false, t)
 
-        end
+    end
 
-        local restart = function ()
-            local cmd = 'kubectl get pods -n it-integration -o name'
-            local cmd2 = "kubectl delete  pod -n it-integration "
-            selector(cmd, cmd2)
-        end
+    local restart = function ()
+        local cmd = 'kubectl get pods '..namespaceParam()..' -o name'
+        local cmd2 = "kubectl delete  pod "..namespaceParam().." "
+        selector(cmd, cmd2)
+    end
 
-        local describePod = function  ()
-            local cmd = 'kubectl get pods -n it-integration -o name'
-            local cmd2 = "kubectl describe pod  -n it-integration "
+    local describePod = function  ()
+        local cmd = 'kubectl get pods '..namespaceParam()..' -o name'
+        local cmd2 = "kubectl describe pod  "..namespaceParam().." "
 
-            selector(cmd, cmd2, true)
-        end
-        local context = function ()
-            local cmd = 'kubectl config get-contexts -o name'
-            local cmd2 = 'kubectl config use-context '
-            selector(cmd, cmd2)
-        end
-
-        local logs = function ()
-            local cmd = 'kubectl get pods -n it-integration -o name'
-            local cmd2 = 'kubectl logs -n it-integration '
-            selector(cmd, cmd2, true)
-        end
-
-        local undeploy = function ()
-            local cmd = 'kubectl get pods -n it-integration -o name'
-            local cmd2 = ''
-            selector(cmd, cmd2, false, function(selection)
-
-                local pod = string.gsub(selection[1], "pod/", "")
-                pod = string.reverse(pod)
-
-                local t={}
-                for str in string.gmatch(pod, "([^-]+)") do
-                    table.insert(t, str)
-                end
-                table.remove(t, 1)
-                table.remove(t, 1)
-
-                local service = table.concat(t, "-")
-                service = string.reverse(service)
-
-                local cmd2 = "kubectl delete deployment -n it-integration " .. service
-                local handle = io.popen(cmd2)
-                local result2 = handle:read("*a")
-                handle:close()
-
-                vim.notify(result2, "info")
-
-            end)
-        end
-
-        return {
-            context = context,
-            logs = logs,
-            describePod = describePod,
-            restart = restart,
-            undeploy = undeploy,
-            pods = pods
-
-        }
+        selector(cmd, cmd2, true)
+    end
+    local context = function ()
+        local cmd = 'kubectl config get-contexts -o name'
+        local cmd2 = 'kubectl config use-context '
+        selector(cmd, cmd2)
     end
 
 
-    --function podLogin {
-    --pod=$(kubectl get pods  -n it-integration| fzf); kubectl exec -it $(echo $pod | cut -f1 -d' ')  -n it-integration -- sh
-    --}
+
+    local cppod = function ()
+        local cmd = 'kubectl get pods '..namespaceParam()..' -o name'
+        local cmd2 = ''
+
+        selector(cmd, cmd2, false, function(selection)
+
+            local pod = string.gsub(selection[1], "pod/", "")
+            vim.fn.setreg("+", pod)
+            vim.notify(selection[1], "info")
+
+        end)
+    end
 
 
-    --# kubectl exec -it <pod name> -c logging -- sh
+    local config = function ()
+
+        -- kubectl get configmaps '..namespaceParam()..' generic-event-receiver-log4j2 -o yaml
+
+        local cmd = 'kubectl get configmaps '..namespaceParam()..' -o name'
+        local cmd2 = ''
+
+        selector(cmd, cmd2, false, function(selection)
+
+            local config = string.gsub(selection[1], "configmap/", "")
+
+            local cmd2 = "kubectl get configmaps "..namespaceParam().." " .. config .. " -o yaml"
+            local handle = io.popen(cmd2)
+            local result2 = handle:read("*a")
+            handle:close()
+
+            local win= vim.api.nvim_get_current_win()
+            local buf = vim.api.nvim_create_buf(false, true)
+            vim.api.nvim_win_set_buf(win,buf)
+
+            vim.api.nvim_put(self.convertToTable(result2) , "", false, true)
+
+        end)
+
+
+    end
+
+    local logs = function ()
+        local cmd = 'kubectl get pods '..namespaceParam()..' -o name'
+        local cmd2 = 'kubectl logs '..namespaceParam()..' '
+        selector(cmd, cmd2, true)
+    end
+
+    local undeploy = function ()
+        local cmd = 'kubectl get pods '..namespaceParam()..' -o name'
+        local cmd2 = ''
+        selector(cmd, cmd2, false, function(selection)
+
+            local pod = string.gsub(selection[1], "pod/", "")
+            pod = string.reverse(pod)
+
+            local t={}
+            for str in string.gmatch(pod, "([^-]+)") do
+                table.insert(t, str)
+            end
+            table.remove(t, 1)
+            table.remove(t, 1)
+
+            local service = table.concat(t, "-")
+            service = string.reverse(service)
+
+            local cmd2 = "kubectl delete deployment "..namespaceParam().." " .. service
+            local handle = io.popen(cmd2)
+            local result2 = handle:read("*a")
+            handle:close()
+
+            vim.notify(result2, "info")
+
+        end)
+    end
+
+    return {
+        context = context,
+        logs = logs,
+        describePod = describePod,
+        restart = restart,
+        undeploy = undeploy,
+        pods = pods,
+        config = config,
+        cppod = cppod,
+    }
+end
+
+
+--function podLogin {
+--pod=$(kubectl get pods  '..namespaceParam()..'| fzf); kubectl exec -it $(echo $pod | cut -f1 -d' ')  '..namespaceParam()..' -- sh
+--}
+
+
+--# kubectl exec -it <pod name> -c logging -- sh
 
