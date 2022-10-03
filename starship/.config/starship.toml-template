@@ -31,12 +31,12 @@ $docker_context\
 # You can also replace your username with a neat symbol like  to save some space
 [username]
 show_always = true
-style_user = "bg:COLOR1"
-style_root = "bg:COLOR1"
+style_user = "fg:COLOR7 bg:COLOR1"
+style_root = "fg:COLOR7 bg:COLOR1"
 format = '[ $user ]($style)'
 
 [directory]
-style = "bg:COLOR2"
+style = "fg:COLOR7 bg:COLOR2"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -58,75 +58,75 @@ truncation_symbol = "…/"
 
 [c]
 symbol = " "
-style = "bg:COLOR6"
-format = '[[ $symbol ($version) ](bg:COLOR6)]($style)'
+style = "fg:COLOR7 bg:COLOR6"
+format = '[[ $symbol ($version) ](fg:COLOR7 bg:COLOR6)]($style)'
 
 [docker_context]
 symbol = " "
-style = "bg:COLOR5"
+style = "fg:COLOR7 bg:COLOR5"
 format = '[[ $symbol $context ](bg:COLOR5)]($style) $path'
 
 [elixir]
 symbol = " "
-style = "bg:COLOR6"
-format = '[[ $symbol ($version) ](bg:COLOR6)]($style)'
+style = "fg:COLOR7 bg:COLOR6"
+format = '[[ $symbol ($version) ](fg:COLOR7 bg:COLOR6)]($style)'
 
 [elm]
 symbol = " "
-style = "bg:COLOR6"
-format = '[[ $symbol ($version) ](bg:COLOR6)]($style)'
+style = "fg:COLOR7 bg:COLOR6"
+format = '[[ $symbol ($version) ](fg:COLOR7 bg:COLOR6)]($style)'
 
 [git_branch]
 symbol = ""
-style = "bg:COLOR3"
-format = '[[ $symbol $branch ](bg:COLOR3)]($style)'
+style = "fg:COLOR7 bg:COLOR3"
+format = '[[ $symbol $branch ](fg:COLOR7 bg:COLOR3)]($style)'
 
 [git_status]
-style = "bg:COLOR3"
-format = '[[($all_status$ahead_behind )](bg:COLOR3)]($style)'
+style = "fg:COLOR7 bg:COLOR3"
+format = '[[($all_status$ahead_behind )](fg:COLOR7 bg:COLOR3)]($style)'
 
 [golang]
 symbol = " "
-style = "bg:COLOR6"
-format = '[[ $symbol ($version) ](bg:COLOR6)]($style)'
+style = "fg:COLOR7 bg:COLOR6"
+format = '[[ $symbol ($version) ](fg:COLOR7 bg:COLOR6)]($style)'
 
 [haskell]
 symbol = " "
-style = "bg:COLOR6"
-format = '[[ $symbol ($version) ](bg:COLOR6)]($style)'
+style = "fg:COLOR7 bg:COLOR6"
+format = '[[ $symbol ($version) ](fg:COLOR7 bg:COLOR6)]($style)'
 
 [helm]
 symbol = "⎈ "
-format = '[[ $symbol ($version) ](bg:COLOR6)]($style)'
-style = "bg:COLOR6"
+format = '[[ $symbol ($version) ](fg:COLOR7 bg:COLOR6)]($style)'
+style = "fg:COLOR7 bg:COLOR6"
 
 [java]
 symbol = " "
-style = "bg:COLOR6"
-format = '[[ $symbol ($version) ](bg:COLOR6)]($style)'
+style = "fg:COLOR7 bg:COLOR6"
+format = '[[ $symbol ($version) ](fg:COLOR7 bg:COLOR6)]($style)'
 
 [julia]
 symbol = " "
-style = "bg:COLOR6"
-format = '[[ $symbol ($version) ](bg:COLOR6)]($style)'
+style = "fg:COLOR7 bg:COLOR6"
+format = '[[ $symbol ($version) ](fg:COLOR7 bg:COLOR6)]($style)'
 
 [nodejs]
 symbol = ""
-style = "bg:COLOR6"
-format = '[[ $symbol ($version) ](bg:COLOR6)]($style)'
+style = "fg:COLOR7 bg:COLOR6"
+format = '[[ $symbol ($version) ](fg:COLOR7 bg:COLOR6)]($style)'
 
 [nim]
 symbol = " "
-style = "bg:COLOR6"
-format = '[[ $symbol ($version) ](bg:COLOR6)]($style)'
+style = "fg:COLOR7 bg:COLOR6"
+format = '[[ $symbol ($version) ](fg:COLOR7 bg:COLOR6)]($style)'
 
 [rust]
 symbol = ""
-style = "bg:COLOR6"
-format = '[[ $symbol ($version) ](bg:COLOR6)]($style)'
+style = "fg:COLOR7 bg:COLOR6"
+format = '[[ $symbol ($version) ](fg:COLOR7 bg:COLOR6)]($style)'
 
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "bg:#33658A"
+style = "fg:COLOR7 bg:#33658A"
 format = '[[ ♥ $time ](bg:#33658A)]($style)'

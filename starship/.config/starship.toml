@@ -1,14 +1,14 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 format = """
-[](#6F54A0)\
+[](#76C1FF)\
 $username\
-[](bg:#9231A3 fg:#6F54A0)\
+[](bg:#ff2a6d fg:#76C1FF)\
 $directory\
-[](fg:#9231A3 bg:#9F57A4)\
+[](fg:#ff2a6d bg:#f887ff)\
 $git_branch\
 $git_status\
-[](fg:#9F57A4 bg:#CE69DD)\
+[](fg:#f887ff bg:#05d9e8)\
 $c\
 $elixir\
 $elm\
@@ -20,9 +20,9 @@ $julia\
 $nodejs\
 $nim\
 $rust\
-[](fg:#CE69DD bg:#AB5ECE)\
+[](fg:#05d9e8 bg:#1afe49)\
 $docker_context\
-[ ](fg:#AB5ECE)\
+[ ](fg:#1afe49)\
 """
 
 # Disable the blank line at the start of the prompt
@@ -31,12 +31,12 @@ $docker_context\
 # You can also replace your username with a neat symbol like  to save some space
 [username]
 show_always = true
-style_user = "bg:#6F54A0"
-style_root = "bg:#6F54A0"
+style_user = "fg:#010120 bg:#76C1FF"
+style_root = "fg:#010120 bg:#76C1FF"
 format = '[ $user ]($style)'
 
 [directory]
-style = "bg:#9231A3"
+style = "fg:#010120 bg:#ff2a6d"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -58,75 +58,75 @@ truncation_symbol = "…/"
 
 [c]
 symbol = " "
-style = "bg:#CE69DD"
-format = '[[ $symbol ($version) ](bg:#CE69DD)]($style)'
+style = "fg:#010120 bg:#05d9e8"
+format = '[[ $symbol ($version) ](fg:#010120 bg:#05d9e8)]($style)'
 
 [docker_context]
 symbol = " "
-style = "bg:#AB5ECE"
-format = '[[ $symbol $context ](bg:#AB5ECE)]($style) $path'
+style = "fg:#010120 bg:#1afe49"
+format = '[[ $symbol $context ](bg:#1afe49)]($style) $path'
 
 [elixir]
 symbol = " "
-style = "bg:#CE69DD"
-format = '[[ $symbol ($version) ](bg:#CE69DD)]($style)'
+style = "fg:#010120 bg:#05d9e8"
+format = '[[ $symbol ($version) ](fg:#010120 bg:#05d9e8)]($style)'
 
 [elm]
 symbol = " "
-style = "bg:#CE69DD"
-format = '[[ $symbol ($version) ](bg:#CE69DD)]($style)'
+style = "fg:#010120 bg:#05d9e8"
+format = '[[ $symbol ($version) ](fg:#010120 bg:#05d9e8)]($style)'
 
 [git_branch]
 symbol = ""
-style = "bg:#9F57A4"
-format = '[[ $symbol $branch ](bg:#9F57A4)]($style)'
+style = "fg:#010120 bg:#f887ff"
+format = '[[ $symbol $branch ](fg:#010120 bg:#f887ff)]($style)'
 
 [git_status]
-style = "bg:#9F57A4"
-format = '[[($all_status$ahead_behind )](bg:#9F57A4)]($style)'
+style = "fg:#010120 bg:#f887ff"
+format = '[[($all_status$ahead_behind )](fg:#010120 bg:#f887ff)]($style)'
 
 [golang]
 symbol = " "
-style = "bg:#CE69DD"
-format = '[[ $symbol ($version) ](bg:#CE69DD)]($style)'
+style = "fg:#010120 bg:#05d9e8"
+format = '[[ $symbol ($version) ](fg:#010120 bg:#05d9e8)]($style)'
 
 [haskell]
 symbol = " "
-style = "bg:#CE69DD"
-format = '[[ $symbol ($version) ](bg:#CE69DD)]($style)'
+style = "fg:#010120 bg:#05d9e8"
+format = '[[ $symbol ($version) ](fg:#010120 bg:#05d9e8)]($style)'
 
 [helm]
 symbol = "⎈ "
-format = '[[ $symbol ($version) ](bg:#CE69DD)]($style)'
-style = "bg:#CE69DD"
+format = '[[ $symbol ($version) ](fg:#010120 bg:#05d9e8)]($style)'
+style = "fg:#010120 bg:#05d9e8"
 
 [java]
 symbol = " "
-style = "bg:#CE69DD"
-format = '[[ $symbol ($version) ](bg:#CE69DD)]($style)'
+style = "fg:#010120 bg:#05d9e8"
+format = '[[ $symbol ($version) ](fg:#010120 bg:#05d9e8)]($style)'
 
 [julia]
 symbol = " "
-style = "bg:#CE69DD"
-format = '[[ $symbol ($version) ](bg:#CE69DD)]($style)'
+style = "fg:#010120 bg:#05d9e8"
+format = '[[ $symbol ($version) ](fg:#010120 bg:#05d9e8)]($style)'
 
 [nodejs]
 symbol = ""
-style = "bg:#CE69DD"
-format = '[[ $symbol ($version) ](bg:#CE69DD)]($style)'
+style = "fg:#010120 bg:#05d9e8"
+format = '[[ $symbol ($version) ](fg:#010120 bg:#05d9e8)]($style)'
 
 [nim]
 symbol = " "
-style = "bg:#CE69DD"
-format = '[[ $symbol ($version) ](bg:#CE69DD)]($style)'
+style = "fg:#010120 bg:#05d9e8"
+format = '[[ $symbol ($version) ](fg:#010120 bg:#05d9e8)]($style)'
 
 [rust]
 symbol = ""
-style = "bg:#CE69DD"
-format = '[[ $symbol ($version) ](bg:#CE69DD)]($style)'
+style = "fg:#010120 bg:#05d9e8"
+format = '[[ $symbol ($version) ](fg:#010120 bg:#05d9e8)]($style)'
 
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "bg:#33658A"
+style = "fg:#010120 bg:#33658A"
 format = '[[ ♥ $time ](bg:#33658A)]($style)'

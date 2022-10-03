@@ -1,12 +1,12 @@
 
 local colors = {
-  blue   = '#6F54A0',
-  cyan   = '#9231A3',
-  black  = '#decbda',
-  white  = '#100b10',
-  red    = '#AB5ECE',
-  violet = '#CE69DD',
-  grey   = '#decbda',
+  blue   = '#76C1FF',
+  cyan   = '#ff2a6d',
+  black  = '#a91549',
+  white  = '#010120',
+  red    = '#1afe49',
+  violet = '#05d9e8',
+  grey   = '#010120',
 }
 
 local bubbles_theme = {
