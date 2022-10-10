@@ -23,14 +23,12 @@ export EDITOR=/usr/sbin/nvim
 export VISUAL=/usr/sbin/nvim
 # Path to your oh-my-zsh installation.
 # stty -ixon
-  export ZSH="/home/maren/.oh-my-zsh"
+export ZSH="/home/maren/.oh-my-zsh"
 # ZSH_THEME="powerlevel10k/powerlevel10k"
-  ZSH_TMUX_AUTOSTART=true
-  ZSH_TMUX_FIXTERM=true
+ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_FIXTERM=true
 
 
-export SOPS_KMS_ARN="arn:aws:kms:eu-west-1:787242137700:key/5b38d0d1-cd74-44b2-86ec-ec1dc621f0ee"
-export AWS_PROFILE=int_dev
 
 
 
@@ -66,7 +64,7 @@ export AWS_PROFILE=int_dev
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
- # ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -93,11 +91,11 @@ export AWS_PROFILE=int_dev
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
-  vi-mode
-  tmux
-  kubectl
-  )
+    git
+    vi-mode
+    tmux
+    kubectl
+)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.oh-my-zsh/plugins/arduino-cli.zsh
@@ -165,7 +163,11 @@ alias b64decode="echo -n '$1' | base64 --decode"
 
 alias b64encode="echo -n '$1' | base64"
 
-alias aws_profiles='export AWS_PROFILE=$(aws configure list-profiles | fzf )'
+
+
+
+
+
 
 
 source ~/exportedVars
@@ -181,7 +183,7 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 ZSH_TMUX_AUTOSTART=true
 
 # # synchronous alternative 
- cat ~/.cache/wal/sequences
+cat ~/.cache/wal/sequences
 #
 # # apply color scheme to TTY
 source ~/.cache/wal/colors-tty.sh
@@ -230,7 +232,7 @@ function config {
 }
 
 function fkill {
-kill $(ps aux | fzf | cut -f5 -d' ')
+    kill $(ps aux | fzf | cut -f5 -d' ')
 }
 
 function restartPod {
@@ -253,59 +255,92 @@ function descpod {
     pod=$(kubectl get pods  -n it-integration | fzf); kubectl describe pod $(echo $pod | cut -f1 -d' ') -n it-integration
 }
 
+function podconf {
+    pod=$(kubectl get configmaps -n it-integration -o name | sed "s/configmap\///g" | fzf); kubectl get configmaps -n it-integration $(echo $pod )  -o yaml
+
+}
+
+
+
+
 function undeploy {
     #
     pod=$(kubectl get pods   -n it-integration| fzf);
-IN=$(echo $pod | cut -f1 -d' ' | rev)     
-foo=${IN//\-/ }
-parts=(${(@s: :)foo})
-parts=(${parts:2})
+    IN=$(echo $pod | cut -f1 -d' ' | rev)     
+    foo=${IN//\-/ }
+    parts=(${(@s: :)foo})
+    parts=(${parts:2})
 
-mee=$(echo ${(j:-:)parts} | rev)
-kubectl delete deployment $mee  -n it-integration
+    mee=$(echo ${(j:-:)parts} | rev)
+    kubectl delete deployment $mee  -n it-integration
 }
 
 
+function paws {
 
-# kubectl exec -it <pod name> -c logging -- sh
-          
-function context {
+    aws_profile=$(aws configure list-profiles | fzf )
 
-    context="dev-it-integration\nnew-integration-dev\nnew-integration-stage\none-dev\none-prod\none-stage\nprod-it-integration\nrancher-desktop\nstage-it-integration"
-    context=$(echo $context | fzf); 
+    if [ "$aws_profile" = "int_dev_new" ]; then 
+        export SOPS_KMS_ARN="arn:aws:kms:eu-west-1:787242137700:key/5b38d0d1-cd74-44b2-86ec-ec1dc621f0ee"
+        export AWS_PROFILE=int_dev_new
+
+        context="new-integration-dev"
+    fi
+
+    if [ "$aws_profile" = "int_stage_new" ]; then 
+        export SOPS_KMS_ARN="arn:aws:kms:eu-west-1:345305210404:key/3dab200e-7d61-4a8f-bc05-acefbabe1269"
+        export AWS_PROFILE=int_stage_new
+
+        context="new-integration-stage"
+    fi
+
+    if [ "$aws_profile" = "int_prod_new" ]; then 
+        export SOPS_KMS_ARN="arn:aws:kms:eu-west-1:970612681725:key/81ec6758-0acd-468b-af08-9ca963bdaacc"
+        export AWS_PROFILE=int_prod_new
+
+        context="new-integration-prod"
+    fi
+
+    if [ "$aws_profile" = "int_dev" ]; then 
+        export SOPS_KMS_ARN="arn:aws:iam::227837763243:role/dev-k8s-main-it-integration-Developers"
+        export AWS_PROFILE=int_dev
+
+        context="dev-it-integration"
+    fi
+
+    if [ "$aws_profile" = "int_stage" ]; then 
+        export SOPS_KMS_ARN="arn:aws:iam::227837763243:role/stage-k8s-main-it-integration-Developers"
+        export AWS_PROFILE=int_stage
+
+        context="stage-it-integration"
+    fi
+
+    if [ "$aws_profile" = "int_prod" ]; then 
+        export SOPS_KMS_ARN="arn:aws:iam::066028779825:role/prod-k8s-main-it-integration-Developers"
+        export AWS_PROFILE=int_prod
+
+        context="prod-it-integration"
+    fi
+
     kubectl config use-context $context
 }
 
+# kubectl exec -it <pod name> -c logging -- sh
 
-function hsenc {
+function context {
 
-    context="int_dev\nint_stage\nint_prod"
+    context="dev-it-integration\nnew-integration-dev\nnew-integration-stage\ndev-it-integration\nprod-it-integration\nrancher-desktop\nstage-it-integration"
     context=$(echo $context | fzf); 
-export AWS_PROFILE=$context
-
-
-    env="dev\nstage\nprod"
-    env=$(echo $env | fzf); 
+    kubectl config use-context $context
 
 
 }
-
-
-function hsed {
-
-
-}
-function hconfup {
-
-
-}
-
 
 
 alias listPods='kubectl  get pods -n it-integration' 
 
 function lastCommit {
-repoUrl=$(git config --get remote.origin.url |sed -e 's/:/\//' -e 's/git@/https:\/\//' -e 's/\.git//'); commit=$(git log | head -n1 | sed -e 's/commit //') ; echo $repoUrl/commit/#$commit
+    repoUrl=$(git config --get remote.origin.url |sed -e 's/:/\//' -e 's/git@/https:\/\//' -e 's/\.git//'); commit=$(git log | head -n1 | sed -e 's/commit //') ; echo $repoUrl/commit/#$commit
 
 }
 

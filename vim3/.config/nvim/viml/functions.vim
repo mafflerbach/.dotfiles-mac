@@ -149,8 +149,8 @@ function! SubtaskJira(word)
 
 endfunction
 
-function! GetGithubLink(file)
-    let output = system("~/.local/bin/collection/getGithubLink.sh '". a:file."'")
+function! GetGithubLink(file, line)
+    let output = system("~/.local/bin/collection/getGithubLink.sh '". a:file."' '". a:line."'")
 endfunction
 
 function! GetAlternateSplit(file)

@@ -1,7 +1,7 @@
 local M = {}
 M.default = {
   -- Basic
-  bg = "#010120",
+  bg = "none",
   fg = "#a91549",
   -- Normal
   black = "#000000",

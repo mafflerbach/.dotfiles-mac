@@ -87,7 +87,7 @@ vim.api.nvim_set_keymap('n', '<leader>je',':lua Jira().edit(vim.fn.expand("<cWOR
 
 
 
-vim.api.nvim_set_keymap('n', '<leader>gf',':call GetGithubLink(expand("%:."))<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>gf',':call GetGithubLink(expand("%:."), line("."))<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>ga',':call GetAlternate(expand("%:."))<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>gA',':call GetAlternateSplit(expand("%:."))<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>jro',':call JiraOpenReview()<CR>', opts)
@@ -106,16 +106,16 @@ vim.api.nvim_set_keymap('n', '<leader>A',':Rg <C-r>=expand(\'<CWORD>\') <CR>', o
 
  -- :Rg LATER -g'*.md' -g'!bak'
 
-vim.api.nvim_set_keymap('n', '<leader>ds',':VimuxRunCommand "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk; mvn -Dmaven.surefire.debug  -Dtest=".expand("%:t:r")." test --offline"<CR>', {noremap = true})
+-- vim.api.nvim_set_keymap('n', '<leader>ds',':VimuxRunCommand "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk; mvn -Dmaven.surefire.debug  -Dtest=".expand("%:t:r")." test --offline"<CR>', {noremap = true})
 
 --vim.api.nvim_set_keymap('n', '<leader>rS',':call RunMvnTest()<CR>', opts)
 --vim.api.nvim_set_keymap('n', '<leader>rs',':call RunMvnThisTest(expand("%:."))<CR>', opts)
 --vim.api.nvim_set_keymap('n', '<leader>oq',':call OpenGradleTest(expand("%:."))<CR>', opts)
 
 
-vim.api.nvim_set_keymap('n', '<leader>rs',':TestFile<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>dt',':TestFile --debug-jvm<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>dnm,',':TestNearest --debug-jvm<CR>', {noremap = true})
+--vim.api.nvim_set_keymap('n', '<leader>rs',':TestFile<CR>', {noremap = true})
+--vim.api.nvim_set_keymap('n', '<leader>dt',':TestFile --debug-jvm<CR>', {noremap = true})
+--vim.api.nvim_set_keymap('n', '<leader>dnm,',':TestNearest --debug-jvm<CR>', {noremap = true})
 
 
 vim.api.nvim_set_keymap('n', 'gx','<Plug>(openbrowser-smart-search)', opts)

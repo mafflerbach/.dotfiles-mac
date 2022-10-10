@@ -23,7 +23,6 @@ require("cfg-dap")
 require("cfg-dap-ui")
 require("cfg-gitsigns")
 require("cfg-rest")
-require("cfg-vimtest")
 require("cfg-rusttools")
 require("cfg-telekasten")
 require("cfg-tokyonight")
@@ -33,7 +32,7 @@ require("kube")
 require("helm")
 require("jbehave")
 require("mappings")
-
+require("cfg-vimtest")
 
 EOF
 
@@ -46,5 +45,5 @@ let test#strategy = "vimux"
 
 
 let g:actualticket = "ints-6068"
-
+let g:mkdp_markdown_css = '/home/maren/.dotfiles/vim3/.config/nvim/markdown/index.css'
 " hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=dark guifg=white
