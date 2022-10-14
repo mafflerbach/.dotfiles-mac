@@ -127,7 +127,9 @@ use {
     '~/.dotfiles/vim3/.config/nvim/lua/jbehave',
     '~/.dotfiles/vim3/.config/nvim/lua/kube',
     '~/.dotfiles/vim3/.config/nvim/lua/helm',
+    '~/.dotfiles/vim3/.config/nvim/lua/java-dependencies',
     '~/.dotfiles/vim3/.config/nvim/lua/cyberpunk',
+    '~/.dotfiles/vim3/.config/nvim/lua/youtube',
 }
 
 use 'f-person/git-blame.nvim'

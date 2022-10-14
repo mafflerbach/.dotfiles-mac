@@ -1,14 +1,14 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 format = """
-[](#76C1FF)\
+[](#6A1D42)\
 $username\
-[](bg:#ff2a6d fg:#76C1FF)\
+[](bg:#330B2B fg:#6A1D42)\
 $directory\
-[](fg:#ff2a6d bg:#f887ff)\
+[](fg:#330B2B bg:#F52574)\
 $git_branch\
 $git_status\
-[](fg:#f887ff bg:#05d9e8)\
+[](fg:#F52574 bg:#10F3F3)\
 $c\
 $elixir\
 $elm\
@@ -20,9 +20,9 @@ $julia\
 $nodejs\
 $nim\
 $rust\
-[](fg:#05d9e8 bg:#1afe49)\
+[](fg:#10F3F3 bg:#A61649)\
 $docker_context\
-[ ](fg:#1afe49)\
+[ ](fg:#A61649)\
 """
 
 # Disable the blank line at the start of the prompt
@@ -31,12 +31,12 @@ $docker_context\
 # You can also replace your username with a neat symbol like  to save some space
 [username]
 show_always = true
-style_user = "fg:#010120 bg:#76C1FF"
-style_root = "fg:#010120 bg:#76C1FF"
+style_user = "fg:#143641 bg:#6A1D42"
+style_root = "fg:#143641 bg:#6A1D42"
 format = '[ $user ]($style)'
 
 [directory]
-style = "fg:#010120 bg:#ff2a6d"
+style = "fg:#143641 bg:#330B2B"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -58,75 +58,75 @@ truncation_symbol = "…/"
 
 [c]
 symbol = " "
-style = "fg:#010120 bg:#05d9e8"
-format = '[[ $symbol ($version) ](fg:#010120 bg:#05d9e8)]($style)'
+style = "fg:#143641 bg:#10F3F3"
+format = '[[ $symbol ($version) ](fg:#143641 bg:#10F3F3)]($style)'
 
 [docker_context]
 symbol = " "
-style = "fg:#010120 bg:#1afe49"
-format = '[[ $symbol $context ](bg:#1afe49)]($style) $path'
+style = "fg:#143641 bg:#A61649"
+format = '[[ $symbol $context ](bg:#A61649)]($style) $path'
 
 [elixir]
 symbol = " "
-style = "fg:#010120 bg:#05d9e8"
-format = '[[ $symbol ($version) ](fg:#010120 bg:#05d9e8)]($style)'
+style = "fg:#143641 bg:#10F3F3"
+format = '[[ $symbol ($version) ](fg:#143641 bg:#10F3F3)]($style)'
 
 [elm]
 symbol = " "
-style = "fg:#010120 bg:#05d9e8"
-format = '[[ $symbol ($version) ](fg:#010120 bg:#05d9e8)]($style)'
+style = "fg:#143641 bg:#10F3F3"
+format = '[[ $symbol ($version) ](fg:#143641 bg:#10F3F3)]($style)'
 
 [git_branch]
 symbol = ""
-style = "fg:#010120 bg:#f887ff"
-format = '[[ $symbol $branch ](fg:#010120 bg:#f887ff)]($style)'
+style = "fg:#143641 bg:#F52574"
+format = '[[ $symbol $branch ](fg:#143641 bg:#F52574)]($style)'
 
 [git_status]
-style = "fg:#010120 bg:#f887ff"
-format = '[[($all_status$ahead_behind )](fg:#010120 bg:#f887ff)]($style)'
+style = "fg:#143641 bg:#F52574"
+format = '[[($all_status$ahead_behind )](fg:#143641 bg:#F52574)]($style)'
 
 [golang]
 symbol = " "
-style = "fg:#010120 bg:#05d9e8"
-format = '[[ $symbol ($version) ](fg:#010120 bg:#05d9e8)]($style)'
+style = "fg:#143641 bg:#10F3F3"
+format = '[[ $symbol ($version) ](fg:#143641 bg:#10F3F3)]($style)'
 
 [haskell]
 symbol = " "
-style = "fg:#010120 bg:#05d9e8"
-format = '[[ $symbol ($version) ](fg:#010120 bg:#05d9e8)]($style)'
+style = "fg:#143641 bg:#10F3F3"
+format = '[[ $symbol ($version) ](fg:#143641 bg:#10F3F3)]($style)'
 
 [helm]
 symbol = "⎈ "
-format = '[[ $symbol ($version) ](fg:#010120 bg:#05d9e8)]($style)'
-style = "fg:#010120 bg:#05d9e8"
+format = '[[ $symbol ($version) ](fg:#143641 bg:#10F3F3)]($style)'
+style = "fg:#143641 bg:#10F3F3"
 
 [java]
 symbol = " "
-style = "fg:#010120 bg:#05d9e8"
-format = '[[ $symbol ($version) ](fg:#010120 bg:#05d9e8)]($style)'
+style = "fg:#143641 bg:#10F3F3"
+format = '[[ $symbol ($version) ](fg:#143641 bg:#10F3F3)]($style)'
 
 [julia]
 symbol = " "
-style = "fg:#010120 bg:#05d9e8"
-format = '[[ $symbol ($version) ](fg:#010120 bg:#05d9e8)]($style)'
+style = "fg:#143641 bg:#10F3F3"
+format = '[[ $symbol ($version) ](fg:#143641 bg:#10F3F3)]($style)'
 
 [nodejs]
 symbol = ""
-style = "fg:#010120 bg:#05d9e8"
-format = '[[ $symbol ($version) ](fg:#010120 bg:#05d9e8)]($style)'
+style = "fg:#143641 bg:#10F3F3"
+format = '[[ $symbol ($version) ](fg:#143641 bg:#10F3F3)]($style)'
 
 [nim]
 symbol = " "
-style = "fg:#010120 bg:#05d9e8"
-format = '[[ $symbol ($version) ](fg:#010120 bg:#05d9e8)]($style)'
+style = "fg:#143641 bg:#10F3F3"
+format = '[[ $symbol ($version) ](fg:#143641 bg:#10F3F3)]($style)'
 
 [rust]
 symbol = ""
-style = "fg:#010120 bg:#05d9e8"
-format = '[[ $symbol ($version) ](fg:#010120 bg:#05d9e8)]($style)'
+style = "fg:#143641 bg:#10F3F3"
+format = '[[ $symbol ($version) ](fg:#143641 bg:#10F3F3)]($style)'
 
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "fg:#010120 bg:#33658A"
+style = "fg:#143641 bg:#33658A"
 format = '[[ ♥ $time ](bg:#33658A)]($style)'

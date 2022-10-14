@@ -111,7 +111,7 @@ function Kube()
         local t = getPodList()
         fuzzyPicker(t, function()
             local selection = action_state.get_selected_entry()
-            local t2 = cmdResultAsTable(cmd2 .. " " .. string.gsub(selection[1], "pod/", ""))
+            local t2 = cmdResult(cmd2 .. " " .. string.gsub(selection[1], "pod/", ""))
 
             vim.notify(t2, "info")
 
@@ -128,7 +128,7 @@ function Kube()
             local t = getPodList()
             fuzzyPicker(t, function()
                 local selection = action_state.get_selected_entry()
-                local t2 = cmdResultAsTable(cmd2 .. " " .. string.gsub(selection[1], "pod/", ""))
+                local t2 = cmdResult(cmd2 .. " " .. string.gsub(selection[1], "pod/", ""))
 
                 NewBuffer(t2)
 
@@ -136,7 +136,7 @@ function Kube()
 
         else
 
-            local t2 = cmdResultAsTable(cmd2 .. " " .. string.gsub(podname, "pod/", ""))
+            local t2 = cmdResult(cmd2 .. " " .. string.gsub(podname, "pod/", ""))
             NewBuffer(t2)
 
         end
@@ -148,10 +148,10 @@ function Kube()
         local cmd = 'kubectl config get-contexts -o name'
         local cmd2 = 'kubectl config use-context '
 
-        local t = cmdResultAsTable(cmd)
+        local t = cmdResult(cmd)
         fuzzyPicker(t, function()
             local selection = action_state.get_selected_entry()
-            local t2 = cmdResultAsTable(cmd2 .. selection[1])
+            local t2 = cmdResult(cmd2 .. selection[1])
 
             vim.notify(t2, "info")
 
@@ -173,13 +173,13 @@ function Kube()
 
 
     local config = function ()
-        local t = cmdResultAsTable('kubectl get configmaps '..namespaceParam()..' -o name')
+        local t = cmdResult('kubectl get configmaps '..namespaceParam()..' -o name')
 
         fuzzyPicker(t, function()
             local selection = action_state.get_selected_entry()
             local configSel = string.gsub(selection[1], "configmap/", "")
             local cmd2 = "kubectl get configmaps "..namespaceParam().." " .. configSel .. " -o yaml"
-            local t2 = cmdResultAsTable(cmd2)
+            local t2 = cmdResult(cmd2)
 
             NewBuffer(t2)
 
@@ -193,7 +193,7 @@ function Kube()
             local selection = action_state.get_selected_entry()
             local pod = string.gsub(selection[1], "pod/", "")
             local cmd2 = 'kubectl logs '..namespaceParam()..' ' .. pod
-            local t2 = cmdResultAsTable(cmd2)
+            local t2 = cmdResult(cmd2)
 
             NewBuffer(t2)
 
@@ -277,7 +277,7 @@ function Kube()
             local selection = action_state.get_selected_entry()
             local service = getServiceName(selection[1])
             local cmd2 = "kubectl describe service "..namespaceParam().." " .. service
-            local t3 = cmdResultAsTable(cmd2)
+            local t3 = cmdResult(cmd2)
 
             NewBuffer(t3)
 
@@ -295,7 +295,7 @@ function Kube()
             local selection = action_state.get_selected_entry()
             local service = getServiceName(selection[1])
             local cmd2 = "kubectl delete deployment "..namespaceParam().." " .. service
-            local t3 = cmdResultAsTable(cmd2)
+            local t3 = cmdResult(cmd2)
 
             vim.notify(t3, "info")
 

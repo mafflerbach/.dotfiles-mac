@@ -18,7 +18,7 @@ local namespaceParam = function()
 end
 
 
-function cmdResultAsTable(cmd)
+function cmdResult(cmd)
     local handle = io.popen(cmd)
     local result = handle:read("*a")
     handle:close()
@@ -55,8 +55,10 @@ end
 
 function getPodList()
     local cmd = 'kubectl get pods '..namespaceParam()..' -o name'
-    return cmdResultAsTable(cmd)
+    return cmdResult(cmd)
 end
+
+
 
 
 function fuzzyPicker (finderTable,  cb)

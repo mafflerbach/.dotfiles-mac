@@ -18,24 +18,24 @@ configuration {
 }
 
 * {
-    background-color:             	#0e0d2d00;
-    text-color: 					#f3ded2;
+    background-color:             	#02032000;
+    text-color: 					#F9F9DC;
 }
 
 window {
     border: 						1;
-    border-color: 					#AA9B9399;
+    border-color: 					#02032099;
     padding: 						10;
     width: 							70%;
     height: 						50%;
     location:                       center;
-    background-color:             	#0e0d2d00;
+    background-color:             	#02032000;
 }
 
 prompt {
     spacing: 						0;
     border: 						0;
-    text-color: 					#f3ded2;
+    text-color: 					#F9F9DC;
 }
 
 textbox-prompt-colon {
@@ -47,30 +47,30 @@ textbox-prompt-colon {
 
 entry {
     spacing:    					0;
-    text-color: 					#f3ded2;
+    text-color: 					#F9F9DC;
 }
 
 case-indicator {
     spacing:    					0;
-    text-color: 					#f3ded2;
+    text-color: 					#F9F9DC;
 }
 
 inputbar {
     spacing:    					0px;
-    text-color: 					#f3ded2;
+    text-color: 					#F9F9DC;
     padding:    					1px;
     children: 						[ prompt,textbox-prompt-colon,entry,case-indicator ];
 }
 
 mainbox {
     border: 						0px;
-    border-color: 					#f3ded2;
+    border-color: 					#F9F9DC;
 }
 
 listview {
     fixed-height: 					0;
     border: 						0px;
-    border-color: 					#f3ded2;
+    border-color: 					#F9F9DC;
     spacing: 						4px;
     scrollbar: 						false;
 }
@@ -80,78 +80,78 @@ element {
     padding: 						5px;
 }
 element normal.normal {
-    background-color: 				#0e0d2d00;
-    text-color:       				#f3ded2;
+    background-color: 				#02032000;
+    text-color:       				#F9F9DC;
 }
 element normal.urgent {
-    background-color: 				#0e0d2d00;
-    text-color:       				#f3ded2;
+    background-color: 				#02032000;
+    text-color:       				#F9F9DC;
 }
 element normal.active {
-    background-color: 				#0e0d2d00;
-    text-color:       				#f3ded2;
+    background-color: 				#02032000;
+    text-color:       				#F9F9DC;
 }
 element selected.normal {
-    background-color: 				#B06AA599;
-    text-color:       				#f3ded2;
+    background-color: 				#6A1D4299;
+    text-color:       				#F9F9DC;
 }
 element selected.urgent {
-    background-color: 				#B06AA599;
-    text-color:       				#f3ded2;
+    background-color: 				#6A1D4299;
+    text-color:       				#F9F9DC;
 }
 element selected.active {
-    background-color: 				#B06AA599;
-    text-color:       				#f3ded2;
+    background-color: 				#6A1D4299;
+    text-color:       				#F9F9DC;
 }
 element alternate.normal {
-    background-color: 				#0e0d2d00;
-    text-color:       				#f3ded2;
+    background-color: 				#02032000;
+    text-color:       				#F9F9DC;
 }
 element alternate.urgent {
-    background-color: 				#0e0d2d00;
-    text-color:       				#f3ded2;
+    background-color: 				#02032000;
+    text-color:       				#F9F9DC;
 }
 element alternate.active {
-    background-color: 				#0e0d2d00;
-    text-color:       				#f3ded2;
+    background-color: 				#02032000;
+    text-color:       				#F9F9DC;
 }
 
 sidebar {
     border:       					0px;
-    border-color: 					#f3ded2;
+    border-color: 					#F9F9DC;
 }
 
 button {
-    background-color:             	#0e0d2d00;
+    background-color:             	#02032000;
     margin: 						5px;
     padding: 						5px;
-    text-color: 					#f3ded2;
+    text-color: 					#F9F9DC;
     border: 						0px;
-    border-color: 					#f3ded2;
+    border-color: 					#F9F9DC;
 }
 
 button selected {
-    background-color:             	#0e0d2d00;
-    text-color: 					#f3ded2;
+    background-color:             	#02032000;
+    text-color: 					#F9F9DC;
     border: 						0px;
-    border-color: 					#f3ded2;
+    border-color: 					#F9F9DC;
 }
 
 scrollbar {
     width:        					4px;
     border:       					0px;
-    handle-color: 					#f3ded2;
+    handle-color: 					#F9F9DC;
     handle-width: 					8px;
     padding:      					0;
 }
 
 message {
     border: 						0px;
-    border-color: 					#f3ded2;
+    border-color: 					#F9F9DC;
     padding: 						1px;
 }
 
 textbox {
-    text-color: 					#f3ded2;
+    text-color: 					#F9F9DC;
 }
 

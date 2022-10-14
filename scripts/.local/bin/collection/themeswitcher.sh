@@ -18,13 +18,17 @@ do
     in
 
     l) 
-      echo wal -l -i /home/maren/.dotfiles/wallpaper/$wallpaper 
-      wal -l -i /home/maren/.dotfiles/wallpaper/$wallpaper 
+      #echo wal -l -i /home/maren/.dotfiles/wallpaper/$wallpaper 
+      #wal -l -i /home/maren/.dotfiles/wallpaper/$wallpaper 
+
+      ~/.local/bin/collection/extractor.sh /home/maren/.dotfiles/wallpaper/$wallpaper
 
     ;;
     d)
-      echo wal -i /home/maren/.dotfiles/wallpaper/$wallpaper  
-      wal -i /home/maren/.dotfiles/wallpaper/$wallpaper  
+      #echo wal -i /home/maren/.dotfiles/wallpaper/$wallpaper  
+      #wal -i /home/maren/.dotfiles/wallpaper/$wallpaper  
+      ~/.local/bin/collection/extractor.sh /home/maren/.dotfiles/wallpaper/$wallpaper
+wal --theme ~/.dotfiles/scripts/.local/bin/collection/data/colorscheme.json
     ;;
 esac
 done

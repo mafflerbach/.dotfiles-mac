@@ -74,8 +74,5 @@ sed -e "s/BGCOLOR/$background/g" \
     -e "s/COLOR15/$color15/g" \
     /home/maren/.dotfiles/polybar/.config/polybar/config-template> /home/maren/.config/polybar/config
 
-pkill polybar
-pkill polybar
-pkill polybar
-pkill polybar
+pkill -9 polybar
 bash /home/maren/.config/polybar/launch.sh &

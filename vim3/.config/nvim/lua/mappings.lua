@@ -91,8 +91,6 @@ vim.api.nvim_set_keymap('n', '<leader>gf',':call GetGithubLink(expand("%:."), li
 vim.api.nvim_set_keymap('n', '<leader>ga',':call GetAlternate(expand("%:."))<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>gA',':call GetAlternateSplit(expand("%:."))<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>jro',':call JiraOpenReview()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>jd',':call JiraDone(expand("<cWORD>"))<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>jt',':call JiraTodo(expand("<cWORD>"))<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>jl',':call SubtaskJira(g:ActualTicket)<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>jm',':call MineJira()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>jn',':call JiraCreateSubtask(expand("<cWORD>"))<CR>', opts)
@@ -185,6 +183,7 @@ vim.api.nvim_set_keymap("n", ",kp", ":lua Kube().pods()", opts)
 vim.api.nvim_set_keymap("n", ",kcp", ":lua Kube().cppod()", opts)
 vim.api.nvim_set_keymap("n", ",kc", ":lua Kube().config()", opts)
 
-
+vim.api.nvim_set_keymap("n", ",ey", ":lua Youtube().getEmbedCode()<CR>", opts)
+vim.api.nvim_set_keymap("n", ",fj", ":%!python -m json.tool<CR>", opts)
 
 
