@@ -105,7 +105,7 @@ source ~/.dotfiles/misc/zsh/ghCompletion.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+ export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -160,7 +160,6 @@ alias urldecode='sed "s@+@ @g;s@%@\\\\x@g" | xargs -0 printf "%b"'
 
 alias b64decode="echo -n '$1' | base64 --decode"
 
-
 alias b64encode="echo -n '$1' | base64"
 
 
@@ -193,7 +192,6 @@ autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
 
-export LANG=en_US.UTF-9
 export LC_ALL=en_US.UTF-8
 export JAVA_HOME=/usr/lib/jvm/default
 
@@ -275,33 +273,50 @@ function undeploy {
     kubectl delete deployment $mee  -n it-integration
 }
 
+function ehs {
+
+    file=$(fzf -q "charts secret ")
+helm secrets enc $file
+
+}
+function dhs {
+
+    file=$(fzf -q "charts secret ")
+helm secrets dec $file
+
+}
+
 
 function paws {
 
-    aws_profile=$(aws configure list-profiles | fzf )
+    if [ "$1" != "" ]; then 
+        aws_profile="$1"
+    else 
+        aws_profile=$(aws configure list-profiles | fzf )
+    fi
 
-    if [ "$aws_profile" = "int_dev_new" ]; then 
+    if [ "$aws_profile" = "oneinf-integration-dev" ]; then 
         export SOPS_KMS_ARN="arn:aws:kms:eu-west-1:787242137700:key/5b38d0d1-cd74-44b2-86ec-ec1dc621f0ee"
-        export AWS_PROFILE=int_dev_new
+        export AWS_PROFILE=oneinf-integration-dev
 
-        context="new-integration-dev"
+        context="oneinf-integration-dev"
     fi
 
-    if [ "$aws_profile" = "int_stage_new" ]; then 
+    if [ "$aws_profile" = "oneinf-integration-stage" ]; then 
         export SOPS_KMS_ARN="arn:aws:kms:eu-west-1:345305210404:key/3dab200e-7d61-4a8f-bc05-acefbabe1269"
-        export AWS_PROFILE=int_stage_new
+        export AWS_PROFILE=oneinf-integration-stage
 
-        context="new-integration-stage"
+        context="oneinf-integration-stage"
     fi
 
-    if [ "$aws_profile" = "int_prod_new" ]; then 
+    if [ "$aws_profile" = "oneinf-integration-prod" ]; then 
         export SOPS_KMS_ARN="arn:aws:kms:eu-west-1:970612681725:key/81ec6758-0acd-468b-af08-9ca963bdaacc"
-        export AWS_PROFILE=int_prod_new
+        export AWS_PROFILE=oneinf-integration-prod
 
-        context="new-integration-prod"
+        context="oneinf-integration-prod"
     fi
 
-    if [ "$aws_profile" = "int_dev" ]; then 
+    if [ "$aws_profile" = "dev-it-integration" ]; then 
         export SOPS_KMS_ARN="arn:aws:iam::227837763243:role/dev-k8s-main-it-integration-Developers"
         export AWS_PROFILE=int_dev
 
@@ -315,10 +330,9 @@ function paws {
         context="stage-it-integration"
     fi
 
-    if [ "$aws_profile" = "int_prod" ]; then 
+    if [ "$aws_profile" = "prod-it-integration" ]; then 
         export SOPS_KMS_ARN="arn:aws:iam::066028779825:role/prod-k8s-main-it-integration-Developers"
         export AWS_PROFILE=int_prod
-
         context="prod-it-integration"
     fi
 
@@ -329,7 +343,8 @@ function paws {
 
 function context {
 
-    context="dev-it-integration\nnew-integration-dev\nnew-integration-stage\ndev-it-integration\nprod-it-integration\nrancher-desktop\nstage-it-integration"
+
+    context="oneinf-integration-dev\noneinf-integration-prod\noneinf-integration-stage\stage-it-integration\ndev-it-integration\nprod-it-integration\nrancher-desktop\nstage-it-integration"
     context=$(echo $context | fzf); 
     kubectl config use-context $context
 
@@ -338,6 +353,11 @@ function context {
 
 
 alias listPods='kubectl  get pods -n it-integration' 
+function wae {
+    watson edit $(watson log -s | fzf | cut -d',' -f1)
+}
+
+
 
 function lastCommit {
     repoUrl=$(git config --get remote.origin.url |sed -e 's/:/\//' -e 's/git@/https:\/\//' -e 's/\.git//'); commit=$(git log | head -n1 | sed -e 's/commit //') ; echo $repoUrl/commit/#$commit

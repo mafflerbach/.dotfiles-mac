@@ -51,7 +51,7 @@ font-0 = misc fixed:pixelsize=12;1
 font-1 = "FontAwesome:size=12;1"
 modules-left = xmonad
 modules-center = watson battery cpu memory filesystem
-modules-right = pulseaudio date eth wlan
+modules-right = pulseaudio eth wlan date 
 
 [bar/networkBar]
 monitor = ${env:MONITOR:}

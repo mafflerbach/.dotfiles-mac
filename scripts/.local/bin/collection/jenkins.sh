@@ -28,9 +28,11 @@ if [ "$job" != "" ]; then
     fi
 
     if [ "$option" == "build" ]; then
-        $JENKINS_EXEC -webSocket -auth $JENKINS_AUTH -s $JENKINS_URL build $jobname
-    fi
+        echo $JENKINS_EXEC -webSocket -auth $JENKINS_AUTH -s $JENKINS_URL build $jobname
 
+
+    fi
+echo $link
     qutebrowser "$link"
 fi
 

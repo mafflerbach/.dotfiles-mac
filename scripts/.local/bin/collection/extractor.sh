@@ -1,6 +1,14 @@
 #!/bin/bash
 
 file="$1"
+if [ "$2" == "" ]; then
+    mode="dark"
+else 
+    mode="light"
+fi
+
+echo $mode
+
 
 area=$(magick $file -format "%[fx:w*h]" info:)
 # data=$(magick cyberpunk.jpg -kmeans 8 -format "%c" histogram:info:  | sed 's/://g' | awk -v area=$area '{print 100*$1/area, "%,", $3}' | sed 's/ *//g' | sort -nr -k1,1 -t ",")
@@ -33,11 +41,21 @@ if [ ${#test} -eq 9 ]; then
         arr2[$i]=${arr2[$i]:0:7}
     done
 
+
+    
 fi
 
+    if [ "$mode" == "light" ]; then
+        fg=${arr2[0]}
+        bg=${arr[0]}
 
+        arr[0]=$fg
+        arr2[0]=$bg
+
+        echo 
+
+    fi
 echo "
-
 {
     \"wallpaper\": \"$file\",
     \"alpha\": \"100\",

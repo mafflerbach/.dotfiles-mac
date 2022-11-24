@@ -1,5 +1,6 @@
 lua << EOF
 local execute = vim.api.nvim_command
+vim.opt.termguicolors = true
 local fn = vim.fn
 
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -13,7 +14,7 @@ require('plugins')
 require("nvim-lsp-installer").setup {}
 
 require("cfg-cmp")
-require("cfg-luadev")
+require("cfg-neodev")
 require("cfg-lsp")
 require("cfg-gh")
 require("cfg-lualine")
@@ -30,11 +31,21 @@ require("cfg-treesitter")
 require("jira")
 require("kube")
 require("helm")
+require("sere")
+require("json-formatter")
 require("java-dependencies")
 require("jbehave")
 require("youtube")
 require("mappings")
 require("cfg-vimtest")
+require("cfg-neogit")
+require("cfg-notify")
+require("cfg-catppuccin")
+require("symbols-outline").setup()
+require("nvim-dap-virtual-text").setup()
+
+-- local neogit = require('neogit')
+-- neogit.setup {}
 
 EOF
 

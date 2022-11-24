@@ -1,8 +1,7 @@
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
-
+capabilities = require('cmp_nvim_lsp').default_capabilities()
 local workspace_dir = '/home/maren/.workspace/' .. project_name
 
 local config = {
@@ -92,6 +91,6 @@ end
 
 local opts = { noremap=true, silent=true }
 
-require('jdtls').start_or_attach(config)
 require('jdtls').setup_dap()
+require('jdtls').start_or_attach(config)
 

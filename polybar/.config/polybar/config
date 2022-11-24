@@ -51,7 +51,7 @@ font-0 = misc fixed:pixelsize=12;1
 font-1 = "FontAwesome:size=12;1"
 modules-left = xmonad
 modules-center = watson battery cpu memory filesystem
-modules-right = pulseaudio date eth wlan
+modules-right = pulseaudio eth wlan date 
 
 [bar/networkBar]
 monitor = ${env:MONITOR:}
@@ -220,7 +220,7 @@ interval = 25
 
 mount-0 = /home
 
-label-mounted = %{F#330B2B} %{F-} %percentage_used%% / %total%
+label-mounted = %{F#302C43} %{F-} %percentage_used%% / %total%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
@@ -231,7 +231,7 @@ label-song-ellipsis = true
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = "%{F#346168} %{F-}"
+format-prefix = "%{F#B8AAF1} %{F-}"
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.cpu-format-underline}
 label = %percentage:2%%
@@ -297,14 +297,14 @@ format-prefix =
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline =${colors.date-format-underline}
 
-label = %{F#020320}%{F-} %time% %date%
+label = %{F#1E1E2E}%{F-} %time% %date%
 
 
 [module/pulseaudio]
 type = internal/pulseaudio
 
 format-volume = <label-volume>
-label-volume = %{F#6A1D42} %{F-} %percentage%%
+label-volume = %{F#443F5D} %{F-} %percentage%%
 label-volume-foreground = ${root.foreground}
 format-volume-underline = ${colors.format-volume-underline}
 
@@ -342,7 +342,7 @@ format-charging-underline = ${colors.format-charging-underline}
 format-discharging = <animation-discharging> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = "%{F#10F3F3}%{F-}"
+format-full-prefix = "%{F#7BC0E9}%{F-}"
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
@@ -374,7 +374,7 @@ format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
 
-label = %{F#143641}%{F-} %temperature-c%
+label = %{F#5C5E84}%{F-} %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 

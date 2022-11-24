@@ -20,6 +20,7 @@ $julia\
 $nodejs\
 $nim\
 $rust\
+$aws\
 [](fg:COLOR6 bg:COLOR5)\
 $docker_context\
 [ ](fg:COLOR5)\
@@ -122,6 +123,11 @@ format = '[[ $symbol ($version) ](fg:COLOR7 bg:COLOR6)]($style)'
 
 [rust]
 symbol = ""
+style = "fg:COLOR7 bg:COLOR6"
+format = '[[ $symbol ($version) ](fg:COLOR7 bg:COLOR6)]($style)'
+
+[aws]
+symbol = "☁️"
 style = "fg:COLOR7 bg:COLOR6"
 format = '[[ $symbol ($version) ](fg:COLOR7 bg:COLOR6)]($style)'
 

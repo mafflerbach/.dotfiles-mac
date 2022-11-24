@@ -19,6 +19,7 @@
 // @include      http://int-mqfe-p02.sixt.de:*/admin/*
 // @include      http://int-mq-p03.sixt.de:*/admin/*
 // @include      http://int-mq-p04.sixt.de:*/admin/*
+// @include      http://localhost:*/admin/*
 // @grant        GM.setClipboard
 // @grant        GM_addStyle
 // @require      http://code.jquery.com/jquery-3.3.1.min.js

@@ -26,23 +26,26 @@ while :; do
 
             # create new tmux session named VPN and establish vpn connection
             sleep 2
-            tmux new-session -d -s "VPN"  sudo cato_client --user "$user" --account sixt-rac --password="$pass"
+            cd /opt/cato/; 
+            tmux new-session -d -s "VPN"   cato_cclient start 
+            # tmux new-session -d -s "VPN"  sudo cato_client --user "$user" --account sixt-rac --password="$pass"
 
             sleep 1
-            # send root password to system auth
+            send root password to system auth
             tmux send-keys -t "VPN:0" $sysPass Enter
             ;;
         -k) 
             # reactivate wifi connection for the case, that i want to detach from my docking station later
             if [ "$wifiConnecton" == "no" ]; then
-                 nmcli device connect "$wifiInterface"
+                nmcli device connect "$wifiInterface"
             fi
 
             sysPass=$(pass show Privat/system | head -n1)
-            tmux new-session -d -s "XXXXXX"  sudo killall cato_client
+            cd /opt/cato/; 
+            tmux new-session -d -s "XXXXXX"   cato_cclient stop
             sleep 2
             tmux send-keys -t "XXXXXX:0" $sysPass Enter
-            # kill tmux session with vpn connection process
+            kill tmux session with vpn connection process
             sleep 2
             tmux kill-session -t XXXXXX
             tmux kill-session -t VPN

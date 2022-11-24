@@ -31,7 +31,8 @@ vim.api.nvim_set_keymap('n', '<leader>b','<cmd>lua require(\'telescope.builtin\'
  vim.api.nvim_set_keymap('n', '<leader>gl',':!git pull<CR>', { noremap = true})
  vim.api.nvim_set_keymap('n', '<leader>gh',':!git push<CR>', { noremap = true})
 
-vim.api.nvim_set_keymap('n', '<leader>gs',':LazyGit<CR>', {noremap = true, silent = true})
+ vim.api.nvim_set_keymap('n', '<leader>gs',':Neogit<CR>', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('n', '<leader>gs',':LazyGit<CR>', {noremap = true, silent = true})
 
 vim.api.nvim_set_keymap('n', '<c-h>',':TmuxNavigateLeft<cr>', opts)
 vim.api.nvim_set_keymap('n', '<c-j>',':TmuxNavigateDown<cr>', opts)
@@ -73,7 +74,7 @@ vim.api.nvim_set_keymap('i', '<CR>',[[compe#confirm('<CR>')]],  {noremap = true,
 
 
 
-vim.api.nvim_set_keymap('n', '<leader>jS',':lua Jira().showQuery("showMigrationSprint") <CR>', opts) 
+vim.api.nvim_set_keymap('n', '<leader>jS',':lua Jira().showQuery("showMigrationSprint") <CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>jru',':lua Jira().showQuery("showCurrentRunBoard") <CR> ', opts)
 vim.api.nvim_set_keymap('n', '<leader>jv',':lua Jira().showIssue(vim.fn.expand("<cWORD>"))', opts)
 vim.api.nvim_set_keymap('n', '<leader>ju',':lua Jira().unassign(vim.fn.expand("<cWORD>"))<CR>', opts)
@@ -131,9 +132,9 @@ vim.api.nvim_set_keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.b
 vim.api.nvim_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 vim.api.nvim_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references(); vim.cmd("copen")<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_qflist()<CR>', opts)
 -- Java specific
 vim.api.nvim_set_keymap("n", "<leader>oi", "<Cmd>lua require'jdtls'.organize_imports()<CR>", opts)
@@ -178,12 +179,28 @@ vim.api.nvim_set_keymap("n", ",kr", ":lua Kube().restart()", opts)
 vim.api.nvim_set_keymap("n", ",ku", ":lua Kube().undeploy()", opts)
 vim.api.nvim_set_keymap("n", ",kc", ":lua Kube().context()", opts)
 vim.api.nvim_set_keymap("n", ",kd", ":lua Kube().describePod()", opts)
+vim.api.nvim_set_keymap("n", ",kd", ":lua Kube().describeIngress()", opts)
 vim.api.nvim_set_keymap("n", ",kl", ":lua Kube().logs()", opts)
 vim.api.nvim_set_keymap("n", ",kp", ":lua Kube().pods()", opts)
 vim.api.nvim_set_keymap("n", ",kcp", ":lua Kube().cppod()", opts)
 vim.api.nvim_set_keymap("n", ",kc", ":lua Kube().config()", opts)
 
 vim.api.nvim_set_keymap("n", ",ey", ":lua Youtube().getEmbedCode()<CR>", opts)
-vim.api.nvim_set_keymap("n", ",fj", ":%!python -m json.tool<CR>", opts)
+
+vim.api.nvim_set_keymap("n", ",fj", ":lua JsonFormatter().formatFile()<CR>", opts)
+vim.api.nvim_set_keymap("n", ",fl", ":lua JsonFormatter().formatLine()<CR>", opts)
+vim.api.nvim_set_keymap("v", ",fj", ":lua JsonFormatter().formatSelection()<CR>", opts)
+vim.api.nvim_set_keymap("v", ",vfj", ":lua JsonFormatter().formatInNewVSplit()<CR>", opts)
+vim.api.nvim_set_keymap("v", ",sfj", ":lua JsonFormatter().formatInNewSplit()<CR>", opts)
+
+vim.api.nvim_set_keymap("v", ",vfl", ":lua JsonFormatter().formatLineInNewVSplit()<CR>", opts)
+vim.api.nvim_set_keymap("v", ",sfl", ":lua JsonFormatter().formatLineInNewSplit()<CR>", opts)
+
+vim.api.nvim_set_keymap("n", "wddt", ":windo diffthis", opts)
+vim.api.nvim_set_keymap("n", "wddo", ":windo diffoff", opts)
+
+vim.api.nvim_set_keymap("n", ",d", "Golog.secret: int_support", {})
+vim.api.nvim_set_keymap("n", ",s", "Golog.secret: 4Ea3sPMrR", {})
+vim.api.nvim_set_keymap("n", ",p", "Golog.secret: nkaBVtMrYkz3", {})
 
 

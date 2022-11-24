@@ -112,7 +112,7 @@ function Kube()
         fuzzyPicker(t, function()
             local selection = action_state.get_selected_entry()
             local t2 = cmdResult(cmd2 .. " " .. string.gsub(selection[1], "pod/", ""))
-
+            
             vim.notify(t2, "info")
 
         end)
@@ -271,6 +271,23 @@ function Kube()
 
     end
 
+
+    local describeIngress = function ()
+        local t = getPodList()
+        fuzzyPicker(t, function()
+            local selection = action_state.get_selected_entry()
+            local service = getServiceName(selection[1])
+            local cmd2 = "kubectl describe ingress "..namespaceParam().." " .. service
+            local t3 = cmdResult(cmd2)
+
+            NewBuffer(t3)
+        end)
+
+    end
+
+
+
+
     local describeService = function ()
         local t = getPodList()
         fuzzyPicker(t, function()
@@ -306,6 +323,7 @@ function Kube()
         context = context,
         logs = logs,
         describePod = describePod,
+        describeIngress = describeIngress,
         describeService = describeService,
         restart = restart,
         undeploy = undeploy,
@@ -315,6 +333,10 @@ function Kube()
         listPods = listPods,
         _getMenu = getMenu,
     }
+
+
+
+-- kubectl describe ingress service-generic-event-receiver
 end
 
 

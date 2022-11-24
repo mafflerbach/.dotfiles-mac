@@ -18,8 +18,9 @@ vim.g.tokyonight_transparent_sidebar = true
 vim.g.tokyonight_transparent = true
 vim.opt.background = "dark"
 
- vim.cmd("colorscheme tokyonight-night")
-vim.cmd("colorscheme cyberpunk")
+vim.api.nvim_command "colorscheme catppuccin"
+-- vim.cmd("colorscheme tokyonight-night")
+-- vim.cmd("colorscheme cyberpunk")
 
 vim.opt.termguicolors = true
 require 'colorizer'.setup()

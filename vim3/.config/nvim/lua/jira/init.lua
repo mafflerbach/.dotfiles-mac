@@ -42,6 +42,10 @@ function Jira ()
         return t
     end
 
+function self.refresh()
+    Jira().showQuery("showMigrationSprint")
+end
+
 
     local function showEdit(result, bufName, opts)
         local popup = Popup({
@@ -69,14 +73,13 @@ function Jira ()
             local save = popup:map("n", "s", function(bufnr)
                 local url = opts.url
 
-
                 local content = vim.api.nvim_buf_get_lines(0, 0 ,vim.api.nvim_buf_line_count(0), false)
                 local newContent =""
                 for _, lines in ipairs(content) do
                     newContent = newContent..  lines
                 end
 
-                local saveurl = "cloudflared access curl \""..url.."\" --request POST --data '"..newContent.."' -H \"Content-Type: application/json\" -s"
+                local saveurl = "curl \""..url.."\" --request POST --data '"..newContent.."' -H \"Content-Type: application/json\" -s" .. config.curl
                 local handle = io.popen(saveurl)
                 local result = handle:read("*a")
                 handle:close()
@@ -100,7 +103,7 @@ function Jira ()
         end
 
 
-        local function showOutput(result, bufName)
+        local function showOutput(result, bufName, opts)
             local popup = Popup({
                 enter = true,
                 focusable = true,
@@ -155,7 +158,11 @@ function Jira ()
 
             local function fetch(url)
 
-                local handle = io.popen("cloudflared access curl \""..url.."\" -s")
+                local curl =  'curl "'..url..'" '.. config.curl .. ' -s'
+
+
+                print(vim.inspect(curl))
+                local handle = io.popen(curl)
                 local result = handle:read("*a")
                 handle:close()
 
@@ -164,26 +171,23 @@ function Jira ()
 
 
             local function postReq(url, body)
-                url = "cloudflared access curl \""..url.."\" --request POST --data '"..body.."' -H \"Content-Type: application/json\" -s"
-                print(url)
+                url = "curl \""..url.."\" --request POST --data '"..body.."' -H \"Content-Type: application/json\" -s " .. config.curl
+
                 local handle = io.popen(url)
                 local result = handle:read("*a")
                 handle:close()
 
 
-                print(result)
             end
 
             local function putReq(url, body)
 
-                url = "cloudflared access curl \""..url.."\" --request PUT --data '"..body.."' -H \"Content-Type: application/json\" -s";
-                print(url)
+                url = "curl \""..url.."\" --request PUT --data '"..body.."' -H \"Content-Type: application/json\" -s " .. config.curl
                 local handle = io.popen(url)
                 local result = handle:read("*a")
                 handle:close()
 
 
-                print(result)
             end
 
 
@@ -239,6 +243,21 @@ function Jira ()
 
 
 
+            local function convertToPandoc(str)
+
+                str = str:gsub("h1.", "#")
+                str = str:gsub("h2.", "##")
+                str = str:gsub("h3.", "###")
+                str = str:gsub("h4.", "####")
+                str = str:gsub("h5.", "#####")
+                str = str:gsub("h6.", "######")
+                str = str:gsub("{code.*", "```")
+                str = str:gsub("{code}", "```")
+                str = str:gsub("\r", "")
+
+                return str
+            end
+
             local function fetchTicketResult(ticket)
 
                 local url = config.url .. "/rest/api/2/issue/" .. ticket
@@ -272,7 +291,7 @@ function Jira ()
                     local splitDescription = split(description, "\n")
                     for index, value in ipairs(splitDescription) do
                         local output=""
-                        output =output.. " " .. value
+                        output =output.. " " .. convertToPandoc(value)
                         table.insert(outputTab, output)
 
                     end
@@ -290,9 +309,32 @@ function Jira ()
                     table.insert(outputTab, output)
                 end
 
+                table.insert(outputTab,"COMMENTS:")
+
+                local comment = t.fields.comment
+
+                if comment then
+                    for index, value in ipairs(comment.comments) do
+                        local output=""
+                        output =output.. " " .. fill(value.author.displayName, 10)
+
+                        table.insert(outputTab, output)
+
+                        if value.body then
+                            local splitBody = split(value.body, "\n")
+                            for index2, value2 in ipairs(splitBody) do
+                                local output2=""
+                                output2 =output2.. " " .. convertToPandoc(value2)                                table.insert(outputTab, output2)
+
+                            end
+                        end
+                    end
+                end
+
                 return outputTab
 
             end
+
 
             local function fetchSearchResult(url)
                 local body = fetch(url)
@@ -305,6 +347,7 @@ function Jira ()
                 local maxLenSummary=0
 
                 for index, value in ipairs(t.issues) do
+
                     local assignee=value.fields.assignee;
                     local assigneeName="XXX"
                     if assignee then
@@ -385,6 +428,7 @@ function Jira ()
                 local body = "{\"fields\": {\"assignee\":{\"name\":\"\"}}}"
                 local url = config.url .. "/rest/api/2/issue/" .. issue
 
+                print("unassigning ".. issue)
                 putReq(url, body);
             end
 
@@ -407,8 +451,6 @@ function Jira ()
                 end
                 local lunajson = require 'lunajson'
 
-                print(vim.inspect(action))
-                print(vim.inspect(action))
                 if action == "create" then
                     local url = config.url .. "/rest/api/2/issue/" .. currentIssue
                     postReq(url, newContent)
@@ -420,7 +462,6 @@ function Jira ()
                     postReq(url, newContent)
                 end
 
-                --    print(lunajson.encode(newContent))
 
             end
 
@@ -431,6 +472,7 @@ function Jira ()
                 local body = '{"transition":{"id":"'..transitionId..'"}}'
                 local url = config.url .. "/rest/api/2/issue/" .. issue .. "/transitions"
 
+                print("set ".. issue .. " to done")
                 postReq(url, body);
             end
             local function progress(issue)
@@ -441,6 +483,7 @@ function Jira ()
                 local body = '{"transition":{"id":"'..transitionId..'"}}'
                 local url = config.url .. "/rest/api/2/issue/" .. issue .. "/transitions"
 
+                print("set ".. issue .. " to progress")
                 postReq(url, body);
             end
 
@@ -452,6 +495,7 @@ function Jira ()
                 local body = '{"transition":{"id":'..transitionId..'}}'
                 local url = config.url .. "/rest/api/2/issue/" .. issue .. "/transitions"
 
+                print("set ".. issue .. " to todo")
                 postReq(url, body);
             end
             local function review(issue)
@@ -461,6 +505,7 @@ function Jira ()
                 local body = '{"transition":{"id":'..transitionId..'}}'
                 local url = config.url .. "/rest/api/2/issue/" .. issue .. "/transitions"
 
+                print("set ".. issue .. " to review")
                 postReq(url, body);
             end
 
@@ -473,9 +518,7 @@ function Jira ()
                 table.insert(t,  '{"body": "EDIT ME"}')
                 showOutput(t, issue)
 
-
-                -- postReq(url, body);
-            end
+           end
 
             local function edit(issue)
                 currentIssue = issue
@@ -487,7 +530,7 @@ function Jira ()
 
 
             function self.getProjectId()
-                local cmd = "cloudflared access curl https://jira.sixt.com/rest/api/2/project -s | jq '.[] | \"\\(.key),\\(.id)\" ' | sed 's/\\\"//g' "
+                local cmd = "curl https://jira.sixt.com/rest/api/2/project -s ".. config.curl .." | jq '.[] | \"\\(.key),\\(.id)\" ' | sed 's/\\\"//g' "
                 local handle = io.popen(cmd)
                 local result = handle:read("*a")
                 handle:close()
@@ -512,21 +555,13 @@ function Jira ()
                                 local selection = action_state.get_selected_entry()
                                 local splitresult = self.split(selection[1], ",")
 
-                                local cmd2 = "cloudflared access curl https://jira.sixt.com/rest/api/2/issue/createmeta/"..splitresult[2].."/issuetypes -s | jq '.values[] | \"\\(.name),\\(.id)\" ' | sed 's/\\\"//g' "
+                                local cmd2 = "curl https://jira.sixt.com/rest/api/2/issue/createmeta/"..splitresult[2].."/issuetypes ".. config.curl.." -s | jq '.values[] | \"\\(.name),\\(.id)\" ' | sed 's/\\\"//g' "
 
                                 local handle = io.popen(cmd2)
                                 local result2 = handle:read("*a")
                                 handle:close()
                                 --          
                                 ContextSelect2(opts, splitresult[2], self.convertToTable(result2))
-                                print(vim.inspect(result2))
-                                print(vim.inspect(result2))
-                                -- http://localhost:8080/rest/api/2/issue/createmeta/{projectIdOrKey}/issuetypes/{issueTypeId}
-
-
-
-
-
 
 
                             end)
@@ -588,13 +623,6 @@ function Jira ()
 
                                 action = "create"
                                 showEdit(outputTab, "CREATE", { url = url} )
-                                --
-                                --postReq(url, body)
-                                --local handle = io.popen(cmd2)
-                                --local result2 = handle:read("*a")
-                                --handle:close()
-                                --           
-                                -- http://localhost:8080/rest/api/2/issue/createmeta/{projectIdOrKey}/issuetypes/{issueTypeId}
 
                             end)
                             return true
@@ -604,7 +632,6 @@ function Jira ()
 
                 contextSelect()
 
-
             end
 
 
@@ -612,7 +639,9 @@ function Jira ()
                 self.getProjectId()
             end
 
-
+local function test()
+print(vim.inspect(config.curl))
+end
 
             return {
                 edit = edit,
@@ -625,12 +654,10 @@ function Jira ()
                 assign= assign,
                 unassign = unassign,
                 showQuery= showQuery,
-                showIssue = showIssue
+                showIssue = showIssue,
+                test= test,
+
+
             }
 
         end
-
-
-
-
-

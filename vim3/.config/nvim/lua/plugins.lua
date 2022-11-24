@@ -2,7 +2,7 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function()
     -- Packer can manage itself
-    use "folke/lua-dev.nvim"
+    use "folke/neodev.nvim"
     use 'wbthomason/packer.nvim'
     use "williamboman/nvim-lsp-installer"
     use "neovim/nvim-lspconfig"
@@ -38,7 +38,7 @@ return require('packer').startup(function()
         }
     }
 
-
+    
     use {
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons',
@@ -65,7 +65,12 @@ return require('packer').startup(function()
 
     use 'preservim/nerdcommenter'
 
-    use 'kdheepak/lazygit.nvim'
+    use { 'TimUntersberger/neogit',   requires = {
+        'nvim-lua/plenary.nvim',
+        'sindrets/diffview.nvim'
+    }
+}
+--     use 'kdheepak/lazygit.nvim'
     use {
         'lewis6991/gitsigns.nvim',
         requires = {
@@ -127,6 +132,8 @@ use {
     '~/.dotfiles/vim3/.config/nvim/lua/jbehave',
     '~/.dotfiles/vim3/.config/nvim/lua/kube',
     '~/.dotfiles/vim3/.config/nvim/lua/helm',
+    '~/.dotfiles/vim3/.config/nvim/lua/sere',
+    '~/.dotfiles/vim3/.config/nvim/lua/json-formatter',
     '~/.dotfiles/vim3/.config/nvim/lua/java-dependencies',
     '~/.dotfiles/vim3/.config/nvim/lua/cyberpunk',
     '~/.dotfiles/vim3/.config/nvim/lua/youtube',
@@ -152,13 +159,22 @@ use 'dylanaraps/wal.vim'
 use 'folke/tokyonight.nvim'
 use 'Mofiqul/vscode.nvim'
 
+use {
+    "catppuccin/nvim",
+    as = "catppuccin",
+}
 
+    use 'theHamsta/nvim-dap-virtual-text'
+
+use 'andymass/vim-matchup'
 use({
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
 })
 
 use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+
+
 
 end)
 

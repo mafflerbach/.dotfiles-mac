@@ -17,9 +17,10 @@ else
   vim.cmd("let test#java#runner = 'gradletest'")
   testType = "gradle"
 
-vim.api.nvim_set_keymap('n', '<leader>rs',':TestFile<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>dt',':TestFile --debug-jvm<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>dnm,',':TestNearest --debug-jvm<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>rs',':call RunMvnThisTest(expand("%:."))<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>ds',':VimuxRunCommand "./gradlew jbehave --tests ".expand("%:t:r")." --debug-jvm"<CR>', {noremap = true})
+--vim.api.nvim_set_keymap('n', '<leader>dt',':TestFile --debug-jvm<CR>', {noremap = true})
+--vim.api.nvim_set_keymap('n', '<leader>dnm,',':TestNearest --debug-jvm<CR>', {noremap = true})
 
 
 end

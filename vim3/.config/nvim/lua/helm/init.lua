@@ -135,8 +135,8 @@ function Helm ()
                 local result = handle:read("*a")
                 handle:close()
 
+                vim.notify(command, "info")
                 vim.notify(result, "info")
-
             end)
 
 

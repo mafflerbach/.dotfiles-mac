@@ -99,7 +99,7 @@ endfunction
 function! RunMvnThisTest(file) 
 
     bd! __Potion_Bytecode__
-    vsplit __Potion_Bytecode__
+    split __Potion_Bytecode__
     normal! ggdG
     setlocal buftype=logs
 

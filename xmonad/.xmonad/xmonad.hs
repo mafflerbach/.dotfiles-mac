@@ -86,8 +86,8 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
-myNormalBorderColor  = "#020320"
-myFocusedBorderColor = "#346168"
+myNormalBorderColor  = "#1E1E2E"
+myFocusedBorderColor = "#B8AAF1"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -320,11 +320,11 @@ myStartupHook = do
 
 -- Run xmonad with the settings you specify. No need to modify this.
 --
-gray      = "#346168"
-gray2     = "#A61649"
-red       = "#020320"
-blue      = "#6A1D42"
-white     = "#F9F9DC"
+gray      = "#B8AAF1"
+gray2     = "#9AB8F1"
+red       = "#1E1E2E"
+blue      = "#443F5D"
+white     = "#DAD9C7"
 
 
 

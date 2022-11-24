@@ -21,8 +21,8 @@ do
       #echo wal -l -i /home/maren/.dotfiles/wallpaper/$wallpaper 
       #wal -l -i /home/maren/.dotfiles/wallpaper/$wallpaper 
 
-      ~/.local/bin/collection/extractor.sh /home/maren/.dotfiles/wallpaper/$wallpaper
-
+      ~/.local/bin/collection/extractor.sh /home/maren/.dotfiles/wallpaper/$wallpaper light
+wal --theme ~/.dotfiles/scripts/.local/bin/collection/data/colorscheme.json
     ;;
     d)
       #echo wal -i /home/maren/.dotfiles/wallpaper/$wallpaper  
@@ -36,11 +36,11 @@ done
       /home/maren/.local/bin/collection/rofiThemeGenerator.sh
       #/home/maren/.local/bin/collection/awesomeThemeGenerator.sh
       /home/maren/.local/bin/collection/polybarThemegenerator.sh
-      /home/maren/.local/bin/collection/xmobarThemeGenerator.sh
+      # /home/maren/.local/bin/collection/xmobarThemeGenerator.sh
       /home/maren/.local/bin/collection/starshipThemeGenerator.sh
       /home/maren/.local/bin/collection/lualineThemeGenerator.sh
       /home/maren/.local/bin/collection/tmuxThemeGenerator.sh
 
-qutebrowser :config-source
+# qutebrowser :config-source
 
 feh --bg-fill /home/maren/.dotfiles/wallpaper/$wallpaper
