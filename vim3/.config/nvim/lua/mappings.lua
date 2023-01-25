@@ -105,7 +105,7 @@ vim.api.nvim_set_keymap('n', '<leader>A',':Rg <C-r>=expand(\'<CWORD>\') <CR>', o
 
  -- :Rg LATER -g'*.md' -g'!bak'
 
--- vim.api.nvim_set_keymap('n', '<leader>ds',':VimuxRunCommand "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk; mvn -Dmaven.surefire.debug  -Dtest=".expand("%:t:r")." test --offline"<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>ds',':VimuxRunCommand "mvn -Dmaven.surefire.debug  -Dtest=".expand("%:t:r")." test --offline"<CR>', {noremap = true})
 
 --vim.api.nvim_set_keymap('n', '<leader>rS',':call RunMvnTest()<CR>', opts)
 --vim.api.nvim_set_keymap('n', '<leader>rs',':call RunMvnThisTest(expand("%:."))<CR>', opts)
@@ -117,8 +117,6 @@ vim.api.nvim_set_keymap('n', '<leader>A',':Rg <C-r>=expand(\'<CWORD>\') <CR>', o
 --vim.api.nvim_set_keymap('n', '<leader>dnm,',':TestNearest --debug-jvm<CR>', {noremap = true})
 
 
-vim.api.nvim_set_keymap('n', 'gx','<Plug>(openbrowser-smart-search)', opts)
-vim.api.nvim_set_keymap('v', 'gx','<Plug>(openbrowser-smart-search)', opts)
 
 
 vim.api.nvim_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -135,7 +133,7 @@ vim.api.nvim_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references(); vim.cmd("
 vim.api.nvim_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_qflist()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>q', '<cmd>lua vim.diagnostic.setqflist()<CR>', {})
 -- Java specific
 vim.api.nvim_set_keymap("n", "<leader>oi", "<Cmd>lua require'jdtls'.organize_imports()<CR>", opts)
 vim.api.nvim_set_keymap("v", "<leader>xv", "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", opts)
@@ -199,8 +197,7 @@ vim.api.nvim_set_keymap("v", ",sfl", ":lua JsonFormatter().formatLineInNewSplit(
 vim.api.nvim_set_keymap("n", "wddt", ":windo diffthis", opts)
 vim.api.nvim_set_keymap("n", "wddo", ":windo diffoff", opts)
 
-vim.api.nvim_set_keymap("n", ",d", "Golog.secret: int_support", {})
-vim.api.nvim_set_keymap("n", ",s", "Golog.secret: 4Ea3sPMrR", {})
-vim.api.nvim_set_keymap("n", ",p", "Golog.secret: nkaBVtMrYkz3", {})
 
+vim.api.nvim_set_keymap("n", "ex", ":exec '!'.getline('.')<CR>", opts)
+vim.api.nvim_set_keymap('n', 'gx', ":exec '!qutebrowser '.getline('.')<CR>", opts)
 

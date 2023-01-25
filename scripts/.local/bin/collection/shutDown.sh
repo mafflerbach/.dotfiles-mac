@@ -1,45 +1,28 @@
 #!/bin/bash
 
-
-export DISPLAY=:0
-export XAUTHORITY=/home/maren/.Xauthority
 ARR=()
 ARR+=("Lock")
-ARR+=("Monitor")
 ARR+=("Suspend")
-ARR+=("Reboot")
-ARR+=("Exit")
 ARR+=("Shutdown")
 
-CHOICE="$(printf '%s\n' "${ARR[@]}" | rofi -dmenu -config $HOME/.config/rofi/rofi.rasi -p " Power")"
+choice="$(printf '%s\n' "${ARR[@]}" | choose )"
 
-if [ "$CHOICE" == "Shutdown" ]
+if [ "$choice" == "Shutdown" ]
 then
     shutdown now
 fi
 
-
-if [ "$CHOICE" == "Monitor" ]
+if [ "$choice" == "Suspend" ]
 then
-    xset dpms force off
+    pmset sleepnow
 fi
 
-if [ "$CHOICE" == "Suspend" ]
+if [ "$choice" == "Lock" ]
 then
-    bash /home/maren/.dotfiles/scripts/.local/bin/collection/lock.sh 
-    systemctl suspend
+    pmset displaysleepnow
 fi
 
-if [ "$CHOICE" == "Lock" ]
-then
-    dm-tool switch-to-greeter
-    #bash /home/maren/.dotfiles/scripts/.local/bin/collection/lock.sh 
-fi
-if [ "$CHOICE" == "Exit" ]
-then
-    i3-msg exit
-fi
-if [ "$CHOICE" == "Reboot" ]
+if [ "$choice" == "Reboot" ]
 then
     reboot
 fi

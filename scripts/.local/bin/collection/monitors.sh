@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 
-select=$(ls -1 /home/maren/.screenlayout | rofi -dmenu -theme /home/maren/.config/rofi/rofi.rasi)
+select=$(ls -1 /home/maren/.screenlayout | choose )
 
 
 bash /home/maren/.screenlayout/$select

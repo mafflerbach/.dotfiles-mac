@@ -1,8 +1,8 @@
--- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
+-- See `:help v.lsp.start_client` for an overview of the supported `config` options.
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities()
-local workspace_dir = '/home/maren/.workspace/' .. project_name
+local workspace_dir = '/Users/maren/.workspace/' .. project_name
 
 local config = {
   -- The command that starts the language server
@@ -10,7 +10,7 @@ local config = {
   cmd = {
 
     -- 💀
-    'java', -- or '/path/to/java11_or_newer/bin/java'
+    '/Users/maren/.sdkman/candidates/java/18.0.2-sem/bin/java', -- or '/path/to/java11_or_newer/bin/java'
             -- depends on if `java` is in your $PATH env variable and if it points to the right version.
     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
     '-Dosgi.bundles.defaultStartLevel=4',
@@ -21,16 +21,15 @@ local config = {
     '--add-modules=ALL-SYSTEM',
     '--add-opens', 'java.base/java.util=ALL-UNNAMED',
     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
-
     -- 💀
-    '-jar', '/home/maren/.local/share/java/jdtls/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
+    '-jar', '/Users/maren/.local/share/libs/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
          -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                       ^^^^^^^^^^^^^^
          -- Must point to the                                                     Change this to
          -- eclipse.jdt.ls installation                                           the actual version
 
 
     -- 💀
-    '-configuration', '/home/maren/.local/share/java/jdtls/config_linux',
+    '-configuration', '/Users/maren/.local/share/libs/config_mac',
                     -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        ^^^^^^
                     -- Must point to the                      Change to one of `linux`, `win` or `mac`
                     -- eclipse.jdt.ls installation            Depending on your system.
@@ -64,7 +63,7 @@ local config = {
   -- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
   init_options = {
     bundles = {
-        vim.fn.glob("/home/maren/Download/com.microsoft.java.debug.plugin-0.40.0.jar")
+        vim.fn.glob("/Users/maren/.local/share/libs/com.microsoft.java.debug.plugin-0.43.0.jar")
     }
   },
 }
@@ -72,11 +71,11 @@ local config = {
 -- or attaches to an existing client & server depending on the `root_dir`.
 
 local bundles = {
-  vim.fn.glob("/home/maren/Download/com.microsoft.java.debug.plugin-0.40.0.jar"),
+  vim.fn.glob("/Users/maren/.local/share/libs/com.microsoft.java.debug.plugin-0.43.0.jar"),
 };
 
 -- This is the new part
-vim.list_extend(bundles, vim.split(vim.fn.glob("/home/maren/development/vscode-java-test/java-extension/com.microsoft.java.test.runner/target/*.jar"), "\n"))
+vim.list_extend(bundles, vim.split(vim.fn.glob("/Users/maren/.local/share/libs/vscode-java-test/java-extension/com.microsoft.java.test.runner/target/*.jar"), "\n"))
 config['init_options'] = {
   bundles = bundles;
 }

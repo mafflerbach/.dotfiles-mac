@@ -1,6 +1,6 @@
 #!/bin/bash
 
-shopt -s nullglob globstar
+# shopt -s nullglob globstar
 
 typeit=0
 if [[ $1 == "--type" ]]; then
@@ -13,14 +13,16 @@ password_files=( "$prefix"/**/*.gpg )
 password_files=( "${password_files[@]#"$prefix"/}" )
 password_files=( "${password_files[@]%.gpg}" )
 
-password=$(printf '%s\n' "${password_files[@]}" | rofi -dmenu "$@" -theme $HOME/.config/rofi/rofi.rasi)
-echo $password
-[[ -n $password ]] || exit
+passwordFile=$(find $prefix -name "*.gpg" | sed -e "s/\.\///" -e "s#/Users/maren/.password-store/##" | choose)
+path=${passwordFile/\.gpg/ }
+
+[[ -n $passwordFile ]] || exit
 
 if [[ $typeit -eq 0 ]]; then
-    pass show -c "$password" | tail -n1  2>/dev/null
-
+echo $path
+    pass show -c $path 
 else
-    uname=$(pass show $password | tail -n1 )
-    xdotool type "$uname"
+    uname=$(pass show $path | tail -n1 )
+
+osascript /Users/maren/applescript/tuser.scpt "$uname" 
 fi

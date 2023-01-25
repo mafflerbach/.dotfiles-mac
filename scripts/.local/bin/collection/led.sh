@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-input=$(echo -e "off\non\nrainbow\naurora\ncyberpunk\nwhite\nblue and pink\nviolete and orange"| rofi -dmenu -theme $HOME/.config/rofi/rofi.rasi ) 
+input=$(echo -e "off\non\nrainbow\naurora\ncyberpunk\nwhite\nblue and pink\nviolete and orange"| choose ) 
 echo $input
 
 if [ "$input" == "on" ]; then 

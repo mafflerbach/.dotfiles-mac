@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FQSN=`exa -1 --no-icons ~/development | grep service | rofi -dmenu -theme $HOME/.config/rofi/rofi.rasi ` 
+FQSN=`exa -1 --no-icons ~/development | grep service | choose ` 
 
 
 https://ci.goorange.sixt.com/jenkins/api/json?pretty=true

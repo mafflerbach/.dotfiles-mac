@@ -12,18 +12,19 @@ PATH=$HOME/.composer/vendor/bin:$PATH:
 PATH=$HOME/.local/bin:$PATH:
 PATH=$HOME/.local/bin/collection:$PATH:
 PATH=$HOME/go/bin:$PATH:
+PATH=/opt/homebrew/bin:$PATH:
 PATH=$HOME/.local/locations:$PATH:
 PATH=$HOME/node_modules/.bin:$PATH:
 PATH=$HOME/.cargo/bin:$PATH:
 PATH=$HOME/development/esp-idf/tools:$PATH:
 PATH=$HOME/Downloads/gcc-arm-9.2-2019.12-aarch64-arm-none-linux-gnueabihf/bin:$PATH:
+PATH=/bin/:$PATH:
 
-
-export EDITOR=/usr/sbin/nvim
-export VISUAL=/usr/sbin/nvim
+export EDITOR=/opt/homebrew/bin/nvim
+export VISUAL=/opt/homebrew/bin/nvim
 # Path to your oh-my-zsh installation.
 # stty -ixon
-export ZSH="/home/maren/.oh-my-zsh"
+export ZSH="/Users/maren/.oh-my-zsh"
 # ZSH_THEME="powerlevel10k/powerlevel10k"
 ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_FIXTERM=true
@@ -98,7 +99,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-source ~/.oh-my-zsh/plugins/arduino-cli.zsh
+# source ~/.oh-my-zsh/plugins/arduino-cli.zsh
 source ~/.dotfiles/misc/zsh/ghCompletion.sh
 # User configuration
 
@@ -111,7 +112,7 @@ source ~/.dotfiles/misc/zsh/ghCompletion.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
 # fi
 
 # Compilation flags
@@ -149,7 +150,7 @@ alias pro="zsh  ~/.local/bin/collection/selectproject.sh"
 
 alias branches="git branch | grep \* | cut -d ' ' -f2"
 alias gitremote="git remote -v | head -n1 | cut -f2 | sed s/\(fetch\)//g | c"
-ipaddrtemp=$(ip -j addr | jq '.[]  | select (.ifname == "tun0").addr_info[0].local')
+# ipaddrtemp=$(ip -j addr | jq '.[]  | select (.ifname == "tun0").addr_info[0].local')
 alias vpnaddress="echo $(echo "maren@$ipaddrtemp\:support")"
 
 
@@ -169,12 +170,12 @@ alias b64encode="echo -n '$1' | base64"
 
 
 
-source ~/exportedVars
+# source ~/exportedVars
 export FZF_DEFAULT_OPTS="--ansi"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-source "$HOME/.fzf/shell/key-bindings.zsh"
+# source "$HOME/.fzf/shell/key-bindings.zsh"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
@@ -182,10 +183,10 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 ZSH_TMUX_AUTOSTART=true
 
 # # synchronous alternative 
-cat ~/.cache/wal/sequences
+# cat ~/.cache/wal/sequences
 #
 # # apply color scheme to TTY
-source ~/.cache/wal/colors-tty.sh
+# source ~/.cache/wal/colors-tty.sh
 
 
 autoload edit-command-line; zle -N edit-command-line
@@ -200,29 +201,23 @@ export PATH="${PATH}:${COREMAN_HOME}/bin"
 
 
 
-alias comment='f() { jira issue comment add $1 };f' 
-alias subtaskUnassign='f() { jira issue assign $1 x };f' 
-alias subtaskAssign='f() { jira issue assign $1 m9338  };f' 
-alias subtaskReview='f() { jira issue move $1 "In Review" };f' 
-alias subtaskProgress='f() { jira issue move $1 "In Progress" };f' 
-alias subtaskDone='f() { jira issue move $1 "Done" };f' 
-alias sprint='jira issue list --plain -q  "sprint in openSprints() and type !=  Epic and project=INTS and type = story" --order-by status' 
-alias subtask='f() { jira issue list  --plain --columns assignee,summary,status -q  "project = INTS  AND Sprint in openSprints() AND type = Sub-task and parent = $1 " };f' 
-alias subtaskView='f() { jira issue view $1};f' 
 alias tree=br
-alias gent="mkdir tags; ctags --tag-relative=yes -R -f tags/tags  --fields=+aimlS"
 alias bigFiles="du -a . | sort -n -r | head -n 20"
 
+
+alias deplDev="paws oneinf-integration-dev; sops -d values/dev/secrets.enc.yaml > values/dev/secrets.yaml; ansible-playbook playbooks/solution.yml -t setup,confi,deploy -i inventories/dev"
+alias deplStage="paws oneinf-integration-stage; sops -d values/stage/secrets.enc.yaml > values/stage/secrets.yaml; ansible-playbook playbooks/solution.yml -t setup,confi,deploy -i inventories/stage"
+alias deplProd="paws oneinf-integration-prod; sops -d values/prod/secrets.enc.yaml > values/prod/secrets.yaml; ansible-playbook playbooks/solution.yml -t setup,confi,deploy -i inventories/prod"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export BROWSER=/usr/bin/qutebrowser
+export BROWSER=/opt/homebrew/bin/qutebrowser
 export DISPLAY=:0
 
 alias mpv="devour mpv --input-ipc-server=/tmp/mpvsocket "
-alias qutebrowser="devour qutebrowser"
 alias zathura="devour zathura"
 alias sabnzbd="devour /usr/lib/sabnzbd/SABnzbd.py"
 alias get_idf='. $HOME/development/esp-idf/export.sh'
-alias vim='/usr/sbin/nvim'
+alias vim='/opt/homebrew/bin/nvim'
 alias ls='exa --icons --git -a'
 
 function config {
@@ -243,7 +238,7 @@ function podLogs {
 }
 
 function podFor {
-    pod=$(kubectl get pods -n it-integration | fzf); kubectl port-forward $(echo $pod | cut -f1 -d' ') 9191:8080 -n it-integration
+    pod=$(kubectl get pods -n it-integration | fzf); kubectl port-forward $(echo $pod | cut -f1 -d' ') 5005:5005 -n it-integration
 }
 
 function podLogin {
@@ -262,15 +257,20 @@ function podconf {
 
 
 function undeploy {
-    #
-    pod=$(kubectl get pods   -n it-integration| fzf);
-    IN=$(echo $pod | cut -f1 -d' ' | rev)     
-    foo=${IN//\-/ }
-    parts=(${(@s: :)foo})
-    parts=(${parts:2})
 
-    mee=$(echo ${(j:-:)parts} | rev)
-    kubectl delete deployment $mee  -n it-integration
+
+    if [ "$1" != "" ]; then 
+        service="$1"
+    else 
+        pod=$(kubectl get pods   -n it-integration| fzf);
+        IN=$(echo $pod | cut -f1 -d' ' | rev)     
+        foo=${IN//\-/ }
+        parts=(${(@s: :)foo})
+        parts=(${parts:2})
+        service=$(echo ${(j:-:)parts} | rev)
+    fi
+
+    kubectl delete deployment $service  -n it-integration
 }
 
 function ehs {
@@ -281,8 +281,8 @@ helm secrets enc $file
 }
 function dhs {
 
-    file=$(fzf -q "charts secret ")
-helm secrets dec $file
+    file=$(fzf -q "secret yaml")
+helm secrets edit $file
 
 }
 
@@ -323,7 +323,7 @@ function paws {
         context="dev-it-integration"
     fi
 
-    if [ "$aws_profile" = "int_stage" ]; then 
+    if [ "$aws_profile" = "stage-it-integration" ]; then 
         export SOPS_KMS_ARN="arn:aws:iam::227837763243:role/stage-k8s-main-it-integration-Developers"
         export AWS_PROFILE=int_stage
 
@@ -365,11 +365,11 @@ function lastCommit {
 }
 
 
-PATH="/home/maren/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/maren/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/maren/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/maren/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/maren/perl5"; export PERL_MM_OPT;
+PATH="/Users/maren/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/maren/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/maren/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/maren/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/maren/perl5"; export PERL_MM_OPT;
 
 
 #source ~/dotfiles/.credencials
@@ -390,5 +390,5 @@ export SDKMAN_DIR="$HOME/.sdkman"
 eval "$(starship init zsh)"
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/home/maren/.rd/bin:$PATH"
+export PATH="/Users/maren/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

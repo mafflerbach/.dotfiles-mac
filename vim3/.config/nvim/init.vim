@@ -50,13 +50,13 @@ require("nvim-dap-virtual-text").setup()
 EOF
 
 
-:so /home/maren/.dotfiles/vim3/.config/nvim/viml/functions.vim
-:so /home/maren/.dotfiles/vim3/.config/nvim/viml/mappings.vim
+:so /Users/maren/.dotfiles/vim3/.config/nvim/viml/functions.vim
+:so /Users/maren/.dotfiles/vim3/.config/nvim/viml/mappings.vim
 
 "let test#java#runner = 'gradletest'
 let test#strategy = "vimux"
 
 
-let g:actualticket = "ints-6068"
-let g:mkdp_markdown_css = '/home/maren/.dotfiles/vim3/.config/nvim/markdown/index.css'
+let g:actualticket = ""
+let g:mkdp_markdown_css = '/Users/maren/.dotfiles/vim3/.config/nvim/markdown/index.css'
 " hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=dark guifg=white

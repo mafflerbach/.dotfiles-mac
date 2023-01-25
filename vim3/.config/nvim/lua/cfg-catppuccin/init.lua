@@ -1,5 +1,5 @@
 require("catppuccin").setup({
-    flavour = "chai", -- latte, frappe, macchiato, mocha, chai
+    flavour = "mocha", -- latte, frappe, macchiato, mocha, mocha
     background = { -- :h background
         light = "latte",
         dark = "mocha",

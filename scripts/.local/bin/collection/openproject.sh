@@ -7,7 +7,7 @@ if [ -d ~/development/$FQSN ]; then
     nvim
 else 
     cd ~/development
-   checkoutName="solutions.java.$FQSN"
+   checkoutName="$FQSN"
     gh repo clone "Sixt-Int/$checkoutName"
     if [ -d ~/development/$checkoutName ]; then
         cd ~/development/$checkoutName

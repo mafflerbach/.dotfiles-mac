@@ -1,6 +1,0 @@
-{{/*  table template */ -}} 
-{{$w := sub termWidth 170 -}}
- {{ "Issue" | printf "%-10s" }}   {{ "Summary" | printf (printf "%%-%ds" (sub $w 9)) }}   {{"Status" | printf "%-12s"}}  {{ "Assignee" | printf "%-12s" }} 
-{{ range .issues -}} 
- {{ .key | printf "%-10s"}}   {{ .fields.summary | abbrev (sub $w 9) | printf (printf "%%-%ds" (sub $w 9)) }}   {{ .fields.status.name | printf "%-12s" }}  {{if .fields.assignee}} {{.fields.assignee.name | printf "%-10s"  }} {{else}}<unassigned>{{end}} 
-{{ end -}}

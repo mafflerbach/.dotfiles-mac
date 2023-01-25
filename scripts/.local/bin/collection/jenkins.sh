@@ -13,9 +13,9 @@ export JENKINS_CLI="$JENKINS_EXEC -auth @$JENKINS_AUTH -s $JENKINS_URL"
 
 alias jenkins-cli="$JENKINS_CLI"
 
-option=$(echo -e "show\nbuild" | rofi -dmenu -theme $HOME/.config/rofi/rofi.rasi)
+option=$(echo -e "show\nbuild" | choose )
 
-job=$(cat "$HOME/.dotfiles/scripts/.local/bin/collection/date/empty" "$HOME/.dotfiles/scripts/.local/bin/collection/data/jeninsJobList" | rofi -dmenu -theme $HOME/.config/rofi/rofi.rasi)
+job=$(cat "$HOME/.dotfiles/scripts/.local/bin/collection/date/empty" "$HOME/.dotfiles/scripts/.local/bin/collection/data/jeninsJobList" | choose)
 
 echo $job
 if [ "$job" != "" ]; then
@@ -28,8 +28,7 @@ if [ "$job" != "" ]; then
     fi
 
     if [ "$option" == "build" ]; then
-        echo $JENKINS_EXEC -webSocket -auth $JENKINS_AUTH -s $JENKINS_URL build $jobname
-
+echo        $JENKINS_EXEC -webSocket -auth $JENKINS_AUTH -s $JENKINS_URL build $jobname
 
     fi
 echo $link

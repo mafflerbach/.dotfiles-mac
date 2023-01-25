@@ -1,31 +1,31 @@
 
-Pause MPV|/home/maren/.local/bin/collection/mpv.sh -s
-Resume MPV|/home/maren/.local/bin/collection/mpv.sh -r
-dark|/home/maren/.local/bin/collection/themeswitcher.sh -d
-fqsn|/home/maren/.local/bin/collection/copyFqsn.sh
-keyboard activate|/home/maren/.local/bin/collection/keyboardSwitch.sh true
-keyboard deaktivate|/home/maren/.local/bin/collection/keyboardSwitch.sh false
-light|/home/maren/.local/bin/collection/themeswitcher.sh -l
-tuser|/home/maren/.local/bin/collection/user.sh --type
-user|/home/maren/.local/bin/collection/user.sh
-pass|/home/maren/.local/bin/collection/passScript.sh
-queue|/home/maren/.local/bin/collection/copyErrorQueue.sh
-tpass|/home/maren/.local/bin/collection/passScript.sh --type
-megatron|/home/maren/.local/bin/collection/megatron.sh
-jenkins|/home/maren/.local/bin/collection/jenkins.sh
-goorange|/home/maren/.local/bin/collection/goorangJenkins.sh
+Pause MPV|/Users/maren/.local/bin/collection/mpv.sh -s
+Resume MPV|/Users/maren/.local/bin/collection/mpv.sh -r
+dark|/Users/maren/.local/bin/collection/themeswitcher.sh -d
+fqsn|/Users/maren/.local/bin/collection/copyFqsn.sh
+keyboard activate|/Users/maren/.local/bin/collection/keyboardSwitch.sh true
+keyboard deaktivate|/Users/maren/.local/bin/collection/keyboardSwitch.sh false
+light|/Users/maren/.local/bin/collection/themeswitcher.sh -l
+tuser|/Users/maren/.local/bin/collection/user.sh --type
+user|/Users/maren/.local/bin/collection/user.sh
+pass|/Users/maren/.local/bin/collection/passScript.sh
+queue|/Users/maren/.local/bin/collection/copyErrorQueue.sh
+tpass|/Users/maren/.local/bin/collection/passScript.sh --type
+megatron|/Users/maren/.local/bin/collection/megatron.sh
+jenkins|/Users/maren/.local/bin/collection/jenkins.sh
+goorange|/Users/maren/.local/bin/collection/goorangJenkins.sh
 watson restart|watson restart
 watson stop|watson stop
-monitors|/home/maren/.local/bin/collection/monitors.sh
-audio|/home/maren/.local/bin/collection/switchAudioOut.sh -o
-mic|/home/maren/.local/bin/collection/switchAudioOut.sh -m
+monitors|/Users/maren/.local/bin/collection/monitors.sh
+audio|/Users/maren/.local/bin/collection/switchAudioOut.sh -o
+mic|/Users/maren/.local/bin/collection/switchAudioOut.sh -m
 screen Area|maim -s /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png
 screen window|maim -i $(xdotool getactivewindow) /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png
 screen all|sleep 2; maim /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png
-connect vpn|/home/maren/.local/bin/collection/vpn2.sh -c
-disconnect vpn|/home/maren/.local/bin/collection/vpn2.sh -k
-play | /home/maren/.local/bin/collection/playUrl.sh
-led | /home/maren/.local/bin/collection/led.sh
+connect vpn|/Users/maren/.local/bin/collection/vpn3.sh -c
+disconnect vpn|/Users/maren/.local/bin/collection/vpn3.sh -k
+play | /Users/maren/.local/bin/collection/playUrl.sh
+led | /Users/maren/.local/bin/collection/led.sh
 
 
 

@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-FQSN=`ls -1 /home/maren/development | rofi -dmenu -theme $HOME/.config/rofi/rofi.rasi ` 
+FQSN=`ls -1tr /Users/maren/development | choose ` 
 
 
 echo "export FQSN=${FQSN//\-/_}" > /home/maren/exportedVars 
